@@ -1,0 +1,131 @@
+import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
+import { 
+  Flex, Heading, Box, useDisclosure, IconButton, Collapse, useBreakpointValue, Drawer, DrawerOverlay, DrawerContent, Center, Button
+} from '@chakra-ui/react'
+import { useSession } from "next-auth/react"
+import Image from 'next/image'
+import Link from 'next/link'
+
+const colors = {
+  bg: "",
+  border: "green.900",
+  hover: "green.900",
+  icon: "green"
+}
+
+
+type StackLinkProps = {
+  href?: string
+  children?: React.ReactElement | string
+}
+export const StackLink = ({children, href}:StackLinkProps) => {
+  const hoverBg = useBreakpointValue({
+    base: colors.hover, 
+    sm:   colors.hover, 
+    md:   "" 
+  }) 
+  return (
+    <Flex
+      direction="row"
+      height={[10, 10, "30px"]}
+      _hover={{bg: hoverBg}}
+      borderTop={['1px', '1px', '0px']}
+      borderTopColor={[colors.border, colors.border]}
+      justifyContent={["center"]}
+      alignContent={["center"]}
+      px={2}
+    >
+      <Center>
+        <Link href={href?href:"#"}>
+          {children}
+        </Link>
+      </Center>
+    </Flex>
+  )
+}
+
+const LoginLink = () => {
+  const { status } = useSession()
+  if (status == "authenticated")
+    return (
+      <StackLink href={'/auth/signout'}> Sign Out </StackLink>
+    )
+  return (
+      <StackLink href={'/auth/signin'}> Sign In </StackLink>
+  )
+}
+
+const NavStack = () => (
+  <Flex direction={['column', 'column', 'row']}>
+    <StackLink href={'/'}>        Home </StackLink>
+    <StackLink href={'/about'}>   About </StackLink>
+    <StackLink href={'/program'}> Program </StackLink>
+    <StackLink href={'/contact'}> Contact </StackLink>
+    <LoginLink />
+  </Flex>
+)
+ 
+const Navbar = () => {
+  const { onToggle, isOpen } = useDisclosure()
+
+  return (
+    <Box bg={colors.bg} >
+      <Flex 
+        position="relative"
+        zIndex={100}
+        w="100%" 
+      >
+        <Flex
+          position="relative"
+          w="100%"
+          px={[3, 3,6]}
+          py={5}
+          align="center"
+          justify={"space-between"}
+        >
+          <Flex 
+            position={"static"}
+          >
+            <Link href='/'>
+              <Image src={"/logo.png"} alt={''} width={50} height={50} />
+            </Link>
+            <Link href='/'>
+              <Heading ml={[1, 2, 5]} mt={1} size={'xl'}>
+                SIMPIC
+              </Heading>
+            </Link>
+          </Flex>
+
+          <Box display={["block", "block", "none"]}>
+            <IconButton
+              onClick={onToggle}
+              icon={
+                isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
+              }
+              variant={'link'}
+              colorScheme={colors.icon}
+              aria-label={'Toggle Navigation'}
+            />
+          </Box>
+
+          <Box display={["none", "none", "block"]}>
+            <NavStack/>
+          </Box>
+        </Flex>
+      </Flex>
+
+      <Box>
+        <Box display={["block", "block", "none"]}>
+          <Collapse in={isOpen} animateOpacity={false}>
+            <Box position="relative" zIndex={100}>
+              <NavStack />
+            </Box>
+          </Collapse>
+        </Box>
+      </Box>
+      
+    </Box>
+  );
+}
+
+export default Navbar
