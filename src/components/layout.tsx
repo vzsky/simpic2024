@@ -1,23 +1,28 @@
 import { ReactNode } from 'react'
 import { Box, Container, useToken } from "@chakra-ui/react"
 import Navbar from './nav/navbar'
+import Footer from './footer'
 
 type Props = {
   children: ReactNode
+  footer?: boolean
 }
 
-const Layout = ({children}: Props) => {
-  const [blue, orange] = useToken('colors', ['blue.990', 'orange.900'])
+const Layout = ({children, footer = true}: Props) => {
+  // const [blue, orange] = useToken('colors', ['blue.990', 'orange.900'])
   return (
       <Box
-        minH="100vh"
         overflow="hidden" 
-        style={{backgroundImage: `url(https://grainy-gradients.vercel.app/noise.svg), linear-gradient(to top right,${blue}, ${orange})`}}
+        bgGradient={"linear(to-tr, blue.990, orange.900)"}
+    // style={{backgroundImage: `url(https://grainy-gradients.vercel.app/noise.svg), linear-gradient(to top right,${blue}, ${orange})`}}
       >
-        <Navbar />
-        <Container maxW={'5xl'}  >
-          {children}
-        </Container>
+        <Box minH="100vh">
+          <Navbar />
+          <Container maxW={'5xl'} mb={10}>
+            {children}
+          </Container>
+        </Box>
+        {footer && <Footer />}
       </Box>
   )
 }

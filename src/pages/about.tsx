@@ -1,6 +1,6 @@
 import { NextPage } from "next"
 import Layout from "../components/layout"
-import { Box, Button, Center, Heading, Text } from "@chakra-ui/react"
+import { Box, Button, Center, Heading, Text, Image, Flex } from "@chakra-ui/react"
 import { lorem } from "../helper/client"
 import HistoryBox from "../components/historyBox"
 import Link from "next/link"
@@ -11,16 +11,13 @@ const AboutSection   = () => (
     <Heading size={'xl'}>
       About SIMPIC
     </Heading>
-    <Text>
+    <Text mt={5}>
       Welcome to Siriraj International Microbiology, Parasitology, and Immunology Competition (SIMPIC 2024) ! 
-      <br/>
-      As a prestigious and globally recognized event, we take immense pride in helding space and opportunities that bring together brilliant minds in the fields of microbiology, 
-      parasitology, and immunology from all around the world. 
-      <br/>
-      Our competition serves as a hub for aspiring medical students to showcase their medical knowledge, and forge meaningful connections within the scientific community and 
-      international friendships. With a rich tradition of excellence, we are committed to advancing knowledge, promoting collaboration, and driving advancements in these 
-      vital disciplines. 
-      <br/>
+      <br/> <br/>
+      As a prestigious and globally recognized event, we take immense pride in helding space and opportunities that bring together brilliant minds in the fields of microbiology,  parasitology, and immunology from all around the world. 
+      <br/> <br/>
+      Our competition serves as a hub for aspiring medical students to showcase their medical knowledge, and forge meaningful connections within the scientific community and international friendships. With a rich tradition of excellence, we are committed to advancing knowledge, promoting collaboration, and driving advancements in these vital disciplines. 
+      <br/> <br/>
       Join us in this exciting journey of discovery, learning, and exploration as we collectively strive to push the boundaries of scientific understanding and culture exchanging
     </Text>
   </Box>
@@ -33,7 +30,6 @@ const HistorySection = () => (
         History
       </Heading>
       <Center flexDirection={'column-reverse'} mt={5}>
-        
         <HistoryBox year={2012} name={'1st - SIMIC'}>
           SIMIC (Siriraj International Microbiology and Immunology Competition) firstly held in 2011-2012 after Thailand hosted IFMSA's General Assembly. This event sparked the idea among Siriraj medical students, driven by Dr.Janewit Wongboonsin, Dr. Bantawit Sudsanguan, and a dedicated team, to establish an annual international gathering, focusing on 'PLAN' qualities: Publicity, Leadership, Academic Excellence, and Networking. Thus, SIMIC was conceived as a platform for knowledge exchange, growth, and meaningful experiences.
         </HistoryBox>
@@ -103,9 +99,37 @@ const PresMesSection = () => (
     <Heading size={'xl'}>
       President Message
     </Heading>
-    <Text>
-      {lorem(150)}
-    </Text>
+    <Flex direction={["column-reverse", "column-reverse", "column-reverse", "row"]}>
+      <Text mt={5}>
+        With the year gone by, the wait is now done. Our annual competition is back for everyone! <br/>
+        Hello, aspiring participants, <br/> <br/>
+
+        We, on behalf of the SIMPIC organizing committee, extend a warm embrace to medical students from every corner of the world. Welcome to our esteemed international competition, SIMPIC 2024! <br/> <br/>
+
+        Across thirteen years of evolution, this year marks a leap forward in crafting an extraordinary and indelible event, specially customized for medical students. <br/> <br/>
+
+        Mark your calendars for January 18–21, 2024. With meticulous consideration, we've refined the competition rules, drawing from invaluable insights garnered over previous editions. Anticipate a year of heightened thrills, profound engagement, and unparalleled fervor that surpasses all past experiences. <br/> <br/>
+
+        "Join Us for an Unforgettable Journey: A symphony of unique competitions, cultural immersion, and the allure of Bangkok awaits. From the very first note to the final crescendo, let SIMPIC be the canvas where we paint smiles and weave cherished memories together." <br/> <br/>
+
+        Be part of the SIMPIC family! <br/>
+
+        Naphak Banditrittidej <br/>
+        Presidents, SIMPIC 2024 <br/>
+
+      </Text>
+
+      <Center>
+        <Image 
+          pl={[0, 0, 0, 5]} mt={5} 
+          w={["100%", "100%", "100%", "50%"]}
+          maxW={"400px"}
+          objectFit={"contain"} 
+          src={"placeholder.png"} 
+          alt={"placeholder"} 
+        />
+      </Center>
+    </Flex>
   </Box>
 )
 
