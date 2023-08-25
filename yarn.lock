@@ -1527,7 +1527,7 @@ chalk@^4.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-client-only@0.0.1:
+client-only@0.0.1, client-only@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/client-only/-/client-only-0.0.1.tgz#38bba5d403c41ab150bff64a95c85013cf73bca1"
   integrity sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==
@@ -2568,6 +2568,11 @@ lodash.mergewith@4.6.2:
   resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.2.tgz#617121f89ac55f59047c7aec1ccd6654c6590f55"
   integrity sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==
 
+lodash@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+
 loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
@@ -2982,6 +2987,16 @@ react-focus-lock@^2.9.4:
     use-callback-ref "^1.3.0"
     use-sidecar "^1.1.2"
 
+react-hook-form@^7.45.4:
+  version "7.45.4"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.45.4.tgz#73d228b704026ae95d7e5f7b207a681b173ec62a"
+  integrity sha512-HGDV1JOOBPZj10LB3+OZgfDBTn+IeEsNOKiq/cxbQAIbKaiJUe/KV8DBUzsx0Gx/7IG/orWqRRm736JwOfUSWQ==
+
+react-icons@^4.10.1:
+  version "4.10.1"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.10.1.tgz#3f3b5eec1f63c1796f6a26174a1091ca6437a500"
+  integrity sha512-/ngzDP/77tlCfqthiiGNZeYFACw85fUjZtLbedmJ5DTlNDIwETxhwBzdOJ21zj4iJdvc0J3y7yOsX3PpxAJzrw==
+
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -3288,6 +3303,14 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
+swr@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/swr/-/swr-2.2.1.tgz#19b89a9034a62a73c30dbf06857a0a31981cd60a"
+  integrity sha512-KJVA7dGtOBeZ+2sycEuzUfVIP5lZ/cd0xjevv85n2YG0x1uHJQicjAtahVZL6xG3+TjqhbBqimwYzVo3saeVXQ==
+  dependencies:
+    client-only "^0.0.1"
+    use-sync-external-store "^1.2.0"
+
 tapable@^2.2.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-2.2.1.tgz#1967a73ef4060a82f12ab96af86d52fdb76eeca0"
@@ -3439,6 +3462,11 @@ use-sidecar@^1.1.2:
   dependencies:
     detect-node-es "^1.1.0"
     tslib "^2.0.0"
+
+use-sync-external-store@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
+  integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
 
 uuid@^8.3.2:
   version "8.3.2"

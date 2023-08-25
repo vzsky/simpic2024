@@ -100,30 +100,34 @@ const PresMesSection = () => (
       President Message
     </Heading>
     <Flex direction={["column-reverse", "column-reverse", "column-reverse", "row"]}>
-      <Text mt={5}>
-        With the year gone by, the wait is now done. Our annual competition is back for everyone! <br/>
-        Hello, aspiring participants, <br/> <br/>
+      <Box w={["100%", "100%", "100%", "50%"]}>
+        <Text mt={5}>
+          With the year gone by, the wait is now done. Our annual competition is back for everyone! <br/>
+          Hello, aspiring participants, <br/> <br/>
 
-        We, on behalf of the SIMPIC organizing committee, extend a warm embrace to medical students from every corner of the world. Welcome to our esteemed international competition, SIMPIC 2024! <br/> <br/>
+          We, on behalf of the SIMPIC organizing committee, extend a warm embrace to medical students from every corner of the world. Welcome to our esteemed international competition, SIMPIC 2024! <br/> <br/>
 
-        Across thirteen years of evolution, this year marks a leap forward in crafting an extraordinary and indelible event, specially customized for medical students. <br/> <br/>
+          Across thirteen years of evolution, this year marks a leap forward in crafting an extraordinary and indelible event, specially customized for medical students. <br/> <br/>
 
-        Mark your calendars for January 18–21, 2024. With meticulous consideration, we've refined the competition rules, drawing from invaluable insights garnered over previous editions. Anticipate a year of heightened thrills, profound engagement, and unparalleled fervor that surpasses all past experiences. <br/> <br/>
+          Mark your calendars for January 18–21, 2024. With meticulous consideration, we've refined the competition rules, drawing from invaluable insights garnered over previous editions. Anticipate a year of heightened thrills, profound engagement, and unparalleled fervor that surpasses all past experiences. <br/> <br/>
 
-        "Join Us for an Unforgettable Journey: A symphony of unique competitions, cultural immersion, and the allure of Bangkok awaits. From the very first note to the final crescendo, let SIMPIC be the canvas where we paint smiles and weave cherished memories together." <br/> <br/>
+          "Join Us for an Unforgettable Journey: A symphony of unique competitions, cultural immersion, and the allure of Bangkok awaits. From the very first note to the final crescendo, let SIMPIC be the canvas where we paint smiles and weave cherished memories together." <br/> <br/>
 
-        Be part of the SIMPIC family! <br/>
+          Be part of the SIMPIC family! <br/>
 
-        Naphak Banditrittidej <br/>
-        Presidents, SIMPIC 2024 <br/>
+          Naphak Banditrittidej <br/>
+          Presidents, SIMPIC 2024 <br/>
 
       </Text>
+      </Box>
 
-      <Center>
+      <Center
+          w={["100%", "100%", "100%", "50%"]}
+      >
         <Image 
           pl={[0, 0, 0, 5]} mt={5} 
-          w={["100%", "100%", "100%", "50%"]}
-          maxW={"400px"}
+          w={"100%"}
+          maxW={["400px", "400px", "400px", "450px"]}
           objectFit={"contain"} 
           src={"placeholder.png"} 
           alt={"placeholder"} 

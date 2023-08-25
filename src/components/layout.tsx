@@ -18,7 +18,7 @@ const Layout = ({children, footer = true}: Props) => {
       >
         <Box minH="100vh">
           <Navbar />
-          <Container maxW={'5xl'} mb={10}>
+          <Container maxW={'5xl'} pb={10}>
             {children}
           </Container>
         </Box>

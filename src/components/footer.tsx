@@ -1,4 +1,6 @@
-import { Box, Center, Flex, Text } from "@chakra-ui/react"
+import { Box, Center, Flex, Grid, Image, Text, Icon } from "@chakra-ui/react"
+import Link from "next/link";
+import { FaFacebookF, FaInstagram, FaTiktok, FaYoutube } from 'react-icons/fa';
 
 export const Footer = () => (
   <Box
@@ -6,31 +8,51 @@ export const Footer = () => (
     fontFamily="silkscreen"
     fontSize="7"
   >
-    <Flex
+    <Grid
+      templateColumns='repeat(3, 1fr)'
       mt={2}
-      mx={10}
       justifyContent="space-between"
     >
-      <Box> 
-        COPYRIGHT
-      </Box>
+      <Center flexDirection="column" > 
+        <Text>
+          COPYRIGHT 2023
+        </Text>
+        <Text>
+          SIMPIC 2024
+        </Text>
+      </Center>
+      <Center>
+        <Image alt="logo" src="logo.png" w={10} />
+      </Center>
+      <Center flexDirection="column">
+        <Text>
+          contact@simpic2024.com
+        </Text>
+        <Box mt={2}>
+          <Link href="https://www.facebook.com/SIMPICOfficial"> 
+            <Icon mx={2} as={FaFacebookF} />
+          </Link>
+          <Link href="https://www.tiktok.com/@simpic_official">
+            <Icon mx={2} as={FaTiktok} />
+          </Link>
+          <Link href="https://www.instagram.com/simpic_official/">
+            <Icon mx={2} as={FaInstagram} />
+          </Link>
+          <Link href="/"> 
+            <Icon mx={2} as={FaYoutube} /> 
+          </Link>
+        </Box>
+      </Center>
+    </Grid>
+    <Center flexDir={"column"} my={3}>
+      <Text>
+        Faculty of Medicine Siriraj Hospital, Mahidol University
+      </Text>
+      <Text>
+        2 Thanon Wang Lang, Siri Rat, Bangkok Noi, Bangkok
+      </Text>
       <Box>
-        ""CONTACT INFO""
       </Box>
-      <Box>
-        simpic 2024
-      </Box>
-    </Flex>
-    <Center flexDir={"column"} my={2}>
-      <Text>
-        Disclaimer here about the website and so on
-      </Text>
-      <Text>
-        Probly write some more text here
-      </Text>
-      <Text>
-        To be determined
-      </Text>
     </Center>
   </Box>
 )
