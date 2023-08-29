@@ -1,12 +1,12 @@
-import { Box, useBreakpointValue } from '@chakra-ui/react'
+import { Box, ResponsiveValue, useBreakpointValue } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 import { MotionFlex } from './motionFactory'
 import Link from 'next/link'
 export type TiltedBoxProps = {
   children: ReactNode, 
-  size: number[], 
+  size: (number|null) [], 
   color?: string,
-  style: object[],
+  style: (object|null) [],
   href?: string
 }
 const TiltedBox = ({children, size, color, style: styles, href}: TiltedBoxProps) => {

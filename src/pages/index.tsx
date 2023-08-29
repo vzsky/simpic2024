@@ -5,10 +5,13 @@ import Layout from '../components/layout'
 import TiltedBox from '../components/tiltedBox'
 import { useMeasure } from '../helper/client'
 import { useRef } from 'react'
+import { useSession } from 'next-auth/react'
 
 const position = (top: number, left: number) => ({position: 'relative', top, left})
 
 const TiltedBoxes = () => {
+  const { status } = useSession()
+
   const boxRef = useRef<any>(null)
   const { width } = useMeasure(boxRef)
 
@@ -52,9 +55,13 @@ const TiltedBoxes = () => {
           style={[position(-75, s/2-25), position(-75, t/2-25), position(-3*m + 0, 2*u)]} 
           size={[s, t, m]} 
           color={"white"}
-          href={'/auth/signin'}
+          href={'/user'}
         > 
-          <Heading size={['md', 'lg', 'md', 'lg']}> Register </Heading> 
+          <Heading size={['md', 'lg', 'md', 'lg']}> 
+            {status == "unauthenticated" && "Register"}
+            {status == "loading" && "Register"}
+            {status == "authenticated" && "User Page"}
+          </Heading> 
         </TiltedBox>
 
         <TiltedBox 

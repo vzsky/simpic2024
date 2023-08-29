@@ -2,7 +2,7 @@ import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import { 
   Flex, Heading, Box, useDisclosure, IconButton, Collapse, useBreakpointValue, Drawer, DrawerOverlay, DrawerContent, Center, Button
 } from '@chakra-ui/react'
-import { useSession } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -16,9 +16,10 @@ const colors = {
 
 type StackLinkProps = {
   href?: string
+  onClick?: (_: any) => (any)
   children?: React.ReactElement | string
 }
-export const StackLink = ({children, href}:StackLinkProps) => {
+export const StackLink = ({children, href, onClick}:StackLinkProps) => {
   const hoverBg = useBreakpointValue({
     base: colors.hover, 
     sm:   colors.hover, 
@@ -33,6 +34,7 @@ export const StackLink = ({children, href}:StackLinkProps) => {
       borderTopColor={[colors.border, colors.border]}
       justifyContent={["center"]}
       alignContent={["center"]}
+      onClick={onClick}
       px={2}
     >
       <Center>
@@ -47,17 +49,20 @@ export const StackLink = ({children, href}:StackLinkProps) => {
 const LoginLink = () => {
   const { status } = useSession()
   if (status == "authenticated")
-    return (
-      <StackLink href={'/auth/signout'}> Sign Out </StackLink>
-    )
-  return (
-      <StackLink href={'/auth/signin'}> Sign In </StackLink>
-  )
+    return <StackLink onClick={signOut}> Sign Out </StackLink>
+  return <StackLink href={'/auth/signin'}> Sign In </StackLink> 
+}
+
+const HomeLink = () => {
+  const { status } = useSession()
+  if (status == "authenticated") 
+    return <StackLink href="/user"> Home </StackLink>
+  return <StackLink href="/"> Home </StackLink>
 }
 
 const NavStack = () => (
   <Flex direction={['column', 'column', 'row']}>
-    <StackLink href={'/'}>        Home </StackLink>
+    <HomeLink />
     <StackLink href={'/about'}>   About </StackLink>
     <StackLink href={'/program'}> Program </StackLink>
     <StackLink href={'/contact'}> Contact </StackLink>

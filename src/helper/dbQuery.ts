@@ -29,18 +29,18 @@ export const queryUser = async (id:Types.ObjectId): Promise<IUser> => {
 
 export const getUserFromRequest = async (req: NextApiRequest) => {
   const token = await getToken({ req })
-  if (!token) throw new Error("Unauthenicated, no token received")
-  if (!token.email) throw new Error("Invald token: no email found")
+  if (!token) throw "Unauthenicated, no token received"
+  if (!token.email) throw "Invald token: no email found"
   const user = await getUser(token.email)
-  if (!user) throw new Error("Cannot get userid from email")
+  if (!user) throw "Cannot get userid from email"
   return user
 }
 
 export const getUserIdFromRequest = async (req: NextApiRequest) => {
   const token = await getToken({ req })
-  if (!token) throw new Error("Unauthenicated, no token received")
-  if (!token.email) throw new Error("Invald token: no email found")
+  if (!token) throw "Unauthenicated, no token received"
+  if (!token.email) throw "Invald token: no email found"
   const userid = await getUserId(token.email)
-  if (!userid) throw new Error("Cannot get userid from email")
+  if (!userid) throw "Cannot get userid from email"
   return userid
 }
