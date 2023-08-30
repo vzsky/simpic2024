@@ -6,7 +6,7 @@ export const Footer = () => (
   <Box
     borderTop="2px dashed" 
     fontFamily="silkscreen"
-    fontSize="7"
+    fontSize="8"
   >
     <Grid
       templateColumns='repeat(3, 1fr)'
@@ -30,16 +30,16 @@ export const Footer = () => (
         </Text>
         <Box mt={2}>
           <Link href="https://www.facebook.com/SIMPICOfficial"> 
-            <Icon mx={2} as={FaFacebookF} />
+            <Icon boxSize={'10px'} mx={2} as={FaFacebookF} />
           </Link>
           <Link href="https://www.tiktok.com/@simpic_official">
-            <Icon mx={2} as={FaTiktok} />
+            <Icon boxSize={'10px'} mx={2} as={FaTiktok} />
           </Link>
           <Link href="https://www.instagram.com/simpic_official/">
-            <Icon mx={2} as={FaInstagram} />
+            <Icon boxSize={'10px'} mx={2} as={FaInstagram} />
           </Link>
           <Link href="/"> 
-            <Icon mx={2} as={FaYoutube} /> 
+            <Icon boxSize={'10px'} mx={2} as={FaYoutube} /> 
           </Link>
         </Box>
       </Center>

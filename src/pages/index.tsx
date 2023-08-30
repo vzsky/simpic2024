@@ -60,7 +60,7 @@ const TiltedBoxes = () => {
           <Heading size={['md', 'lg', 'md', 'lg']}> 
             {status == "unauthenticated" && "Register"}
             {status == "loading" && "Register"}
-            {status == "authenticated" && "User Page"}
+            {status == "authenticated" && "Register"}
           </Heading> 
         </TiltedBox>
 
