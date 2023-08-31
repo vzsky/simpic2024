@@ -2,6 +2,7 @@ import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import { 
   Flex, Heading, Box, useDisclosure, IconButton, Collapse, useBreakpointValue, Drawer, DrawerOverlay, DrawerContent, Center, Button
 } from '@chakra-ui/react'
+import { Session } from 'next-auth'
 import { signOut, useSession } from "next-auth/react"
 import Image from 'next/image'
 import Link from 'next/link'
@@ -69,6 +70,21 @@ const NavStack = () => (
     <LoginLink />
   </Flex>
 )
+
+const Welcome = () => {
+  const { status, data } = useSession()
+  const getName = (data: Session) => {
+    if (!data.user) return "user"
+    if (data.user.name) return data.user.name
+    return data.user.email
+  }
+  if (status == "authenticated" && data && data.user) return (
+    <Center>
+      <Heading ml={2} fontSize={"13"}> Welcome, {getName(data)} </Heading>
+    </Center>
+  )
+  return <> </>
+}
  
 const Navbar = () => {
   const { onToggle, isOpen } = useDisclosure()
@@ -95,9 +111,10 @@ const Navbar = () => {
               <Image src={"/logo.png"} alt={''} width={50} height={50} />
             </Link>
             <Link href='/'>
-              <Heading ml={[1, 2, 5]} mt={1} size={'xl'}>
+              <Heading ml={[1, 2, 5]} size={'xl'}>
                 SIMPIC
               </Heading>
+              <Welcome />
             </Link>
           </Flex>
 

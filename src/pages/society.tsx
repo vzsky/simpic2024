@@ -45,30 +45,32 @@ const Gallery = () => (
 )
 
 
-const Society: NextPage = () => {
+export const Society = () => {
   return (
-    <Layout>
-      <Center flexDirection={"column"}>
-        <Heading size="3xl"> SIMPIC SOCIETY </Heading>
+    <Center flexDirection={"column"}>
+      <Heading size="3xl"> SIMPIC SOCIETY </Heading>
 
-        <Flex w={"100%"} direction={"column"} alignItems={["start", "start", "center"]} mt={5}>
-          <Heading my={3} size={["md", "xl", "lg"]}> BE PART OF OUR COMMUNITY </Heading>
-          <SocialMedia />
-        </Flex>
+      <Flex w={"100%"} direction={"column"} alignItems={["start", "start", "center"]} mt={5}>
+        <Heading my={3} size={["md", "xl", "lg"]}> BE PART OF OUR COMMUNITY </Heading>
+        <SocialMedia />
+      </Flex>
 
-        <Flex w={"100%"} direction={"column"}  alignItems={["start", "start", "center"]} mt={5}>
-          <Heading my={3} size={["md", "xl", "lg"]}> PANDEMOS </Heading>
-          <Pandemos />
-        </Flex> 
+      <Flex w={"100%"} direction={"column"}  alignItems={["start", "start", "center"]} mt={5}>
+        <Heading my={3} size={["md", "xl", "lg"]}> PANDEMOS </Heading>
+        <Pandemos />
+      </Flex> 
 
-        <Flex w={"100%"} direction={"column"}  alignItems={["start", "start", "center"]} mt={5}>
-          <Heading my={3} size={["md", "xl", "lg"]}> GALLERY </Heading>
-          <Gallery />
-        </Flex>
+      <Flex w={"100%"} direction={"column"}  alignItems={["start", "start", "center"]} mt={5}>
+        <Heading my={3} size={["md", "xl", "lg"]}> GALLERY </Heading>
+        <Gallery />
+      </Flex>
 
-      </Center>
-    </Layout>
+    </Center>
   )
 }
 
-export default Society
+const SocietyPage: NextPage = () => (
+  <Layout> <Society /> </Layout>
+)
+
+export default SocietyPage

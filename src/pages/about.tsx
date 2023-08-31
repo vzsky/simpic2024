@@ -6,7 +6,7 @@ import HistoryBox from "../components/historyBox"
 import Link from "next/link"
 import { LayoutGroup } from "framer-motion"
 
-const AboutSection   = () => (
+export const AboutSection   = () => (
   <Box mt={'3rem'}>
     <Heading size={'xl'}>
       About SIMPIC
@@ -94,7 +94,7 @@ const HistorySection = () => (
   </Box>
 )
 
-const PresMesSection = () => (
+export const PresMesSection = () => (
   <Box mt={'4rem'}>
     <Heading size={'xl'}>
       President Message

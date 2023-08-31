@@ -75,25 +75,31 @@ It’s your choice! Choose one of these and enjoy your time with friends on this
   )
 }
 
-const Program: NextPage = () => {
+export const Program = () => {
+  return (
+    <Center flexDirection={"column"}>
+      <Heading size="3xl"> PROGRAM </Heading>
+
+      <Flex w={"100%"} direction={"column"} alignItems={["start", "start", "center"]} mt={5}>
+        <Heading my={3} size={["md", "xl", "lg"]}> TIMETABLE </Heading>
+        <Itinerary schedules={schedules} />
+      </Flex>
+
+      <Flex w={"100%"} direction={"column"}  alignItems={["start", "start", "center"]} mt={5}>
+        <Heading my={3} size={["md", "xl", "lg"]}> EXCURSION </Heading>
+        <Excursion />
+      </Flex> 
+
+    </Center>
+  )
+}
+
+const ProgramPage: NextPage = () => {
   return (
     <Layout>
-      <Center flexDirection={"column"}>
-        <Heading size="3xl"> PROGRAM </Heading>
-
-        <Flex w={"100%"} direction={"column"} alignItems={["start", "start", "center"]} mt={5}>
-          <Heading my={3} size={["md", "xl", "lg"]}> TIMETABLE </Heading>
-          <Itinerary schedules={schedules} />
-        </Flex>
-
-        <Flex w={"100%"} direction={"column"}  alignItems={["start", "start", "center"]} mt={5}>
-          <Heading my={3} size={["md", "xl", "lg"]}> EXCURSION </Heading>
-          <Excursion />
-        </Flex> 
-
-      </Center>
+      <Program />
     </Layout>
   )
 }
 
-export default Program
+export default ProgramPage

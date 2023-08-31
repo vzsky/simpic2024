@@ -6,6 +6,9 @@ import TiltedBox from '../components/tiltedBox'
 import { useMeasure } from '../helper/client'
 import { useRef } from 'react'
 import { useSession } from 'next-auth/react'
+import { AboutSection, PresMesSection } from './about'
+import { Program } from './program'
+import { Society } from './society'
 
 const position = (top: number, left: number) => ({position: 'relative', top, left})
 
@@ -60,7 +63,7 @@ const TiltedBoxes = () => {
           <Heading size={['md', 'lg', 'md', 'lg']}> 
             {status == "unauthenticated" && "Register"}
             {status == "loading" && "Register"}
-            {status == "authenticated" && "Register"}
+            {status == "authenticated" && "User"}
           </Heading> 
         </TiltedBox>
 
@@ -99,6 +102,14 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <TiltedBoxes />
+      <AboutSection />
+      <PresMesSection />
+      <Box mt={5}> 
+        <Program />
+      </Box>
+      <Box mt={5}> 
+        <Society />
+      </Box> 
     </Layout>
   )
 }
