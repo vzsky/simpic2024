@@ -1,6 +1,5 @@
-import { Button, Container, Input } from "@chakra-ui/react"
+import { Button, Container, Heading, Input, Text } from "@chakra-ui/react"
 import { signIn } from "next-auth/react"
-// import { useRouter } from "next/router"
 import { useState } from "react"
 import Layout from "../../components/layout"
 
@@ -15,13 +14,14 @@ const SignIn = () => {
 
   return (
     <Layout>
-      <Container m={5}>
-        Please enter your email:
-        <Input width="90%" type="email" placeholder={"your@email.com"} value={email} onChange={handleChange}/>
-        <Button mt={3} variant="solid" onClick={handleClick}>
-          Next
-        </Button>
-      </Container>
+      <Heading size={["lg", "xl"]}> No need for password </Heading>
+      <Heading size={["sm", "md"]} mt={2}> Sign up or Log in with your email </Heading>
+      
+      <Text mt={5}> Enter your email: </Text>
+      <Input width="90%" type="email" placeholder={"your@email.com"} value={email} onChange={handleChange}/>
+      <Button mt={3} variant="solid" onClick={handleClick}>
+        Send Login Link
+      </Button>
     </Layout>
   )
 }

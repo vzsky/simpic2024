@@ -10,10 +10,8 @@ const Error = () => {
   
   return (
     <Layout>
-      <Container m={5}>
-        There was an error in signing in.
-        Error message: {error}
-      </Container>
+      There was an error in signing in.
+      Error message: {error}
     </Layout>
   )
 }

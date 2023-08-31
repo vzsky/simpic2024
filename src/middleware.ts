@@ -18,5 +18,5 @@ export default withAuth({
 })
 
 export const config = {
-  matcher: ['/api/admin/:slug*', '/api/user/:slug*', '/user/:slug*', '/admin/:slug*'],
+  matcher: ['/api/admin/:slug*', '/api/user/:slug*', '/user/:slug*', '/admin/:slug*', '/user', '/admin'],
 }
