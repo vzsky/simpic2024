@@ -6,6 +6,15 @@ import { debouncedTime } from '../settings';
 
 export const fetcher = (url: string) => fetch(url).then(r => r.json())
 
+export const httpReq = (url: string, method: string, body: object) => fetch(url, {
+    method,
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  })
+
 export const makeDebouncedHandler = (duration:number) =>
   debounce((e, handler) => handler(e), duration);
 

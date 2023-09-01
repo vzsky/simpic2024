@@ -3,6 +3,7 @@ import { NextApiRequest } from 'next';
 import { getToken } from 'next-auth/jwt';
 import { connectMongoose } from '../database/mongoose';
 import UserModel, { IUser } from '../database/users.model';
+import TeamModel, { ITeam } from '../database/team.model';
 
 export const getUser = async (email:string): Promise<IUser> => {
   await connectMongoose()
@@ -25,6 +26,12 @@ export const queryUser = async (id:Types.ObjectId): Promise<IUser> => {
   await connectMongoose()
   const user = await UserModel.findOne({_id:id})
   return user
+}
+
+export const queryTeam = async (id:Types.ObjectId): Promise<ITeam> => {
+  await connectMongoose()
+  const team = await TeamModel.findOne({_id:id})
+  return team
 }
 
 export const getUserFromRequest = async (req: NextApiRequest) => {

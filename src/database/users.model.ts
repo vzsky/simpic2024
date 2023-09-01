@@ -6,6 +6,7 @@ export interface IUser {
   email: string
   isAdmin: boolean
   userinfo: UserInfo
+  teams: Types.ObjectId[]
 }
 
 const userSchema = new Schema<IUser>({
@@ -18,7 +19,8 @@ const userSchema = new Schema<IUser>({
     type: Boolean, 
     default: false
   },
-  userinfo: UserInfoSchema
+  userinfo: UserInfoSchema, 
+  teams: [Schema.ObjectId]
 })
 
 const UserModel = models.users || model<IUser>('users', userSchema)
