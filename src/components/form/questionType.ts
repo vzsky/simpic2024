@@ -33,13 +33,18 @@ export interface CustomQuestion {
   }) => JSX.Element,
 }
 
+export interface Decoration {
+  type: 'decoration', 
+  render: () => JSX.Element
+}
+
 export interface GroupedQuestions {
   type: 'group',
   groupedDirection: ResponsiveValue<'row'|'column'|'initial'|'inherit'>,
   questions: Questions,
   display: ResponsiveValue<'none'|'flex'>
 }
-export type Question = (ChoiceQuestion | TextQuestion | SelectQuestion | CustomQuestion) & {
+export type Question = (ChoiceQuestion | TextQuestion | SelectQuestion | CustomQuestion | Decoration) & {
   required?: boolean
 }
 export type Questions = (Question|GroupedQuestions)[]

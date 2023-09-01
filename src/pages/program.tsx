@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Heading, Icon, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react"
+import { Box, Button, Center, Flex, Heading, Icon, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react"
 import { NextPage } from "next"
 import Layout from "../components/layout"
 import { useState } from "react"
@@ -17,19 +17,21 @@ const TableRow = ({schedule}: {schedule: Schedule}) => {
       </Td>
       <Td> 
         <MotionBox layout="position">
-          <Text> {schedule.title} </Text>
+          <Text align="right"> {schedule.title} </Text>
           {open && 
             <MotionFlex 
               mt={2} color="orange.200" 
-              justifyContent="center" alignItems="center" 
+              justifyContent="end" alignItems="center" 
               w={"100%"}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
             >
               <Icon boxSize={'15px'} as={FaLocationArrow} /> 
               <Text fontSize={12} ml={1}> {schedule.venue} </Text>
-              <Icon boxSize={'15px'} as={GiClothes} ml={5}/> 
-              <Text fontSize={12} ml={1}> {schedule.clothes} </Text>
+              {/* 
+                <Icon boxSize={'15px'} as={GiClothes} ml={5}/> 
+                <Text fontSize={12} ml={1}> {schedule.clothes} </Text>
+              */}
             </MotionFlex>
           }
         </MotionBox>
@@ -38,29 +40,69 @@ const TableRow = ({schedule}: {schedule: Schedule}) => {
   )
 }
 
-const Itinerary = ({schedules} : {schedules: Schedule[][]}) => (
-  <Flex>
-    <TableContainer>
-      <Table w={[800]} overflow={"hidden"} colorScheme="green" variant='simple'>
-        <Thead>
-          <Tr> <Th w={"21%"}> </Th> <Th> </Th> </Tr> 
-        </Thead>
-        {schedules.map((day, ind) => (<>
+// const Itinerary = ({schedules} : {schedules: Schedule[][]}) => (
+//   <Flex>
+//     <TableContainer>
+//       <Table w={[800]} overflow={"hidden"} colorScheme="green" variant='simple'>
+//         <Thead>
+//           <Tr> <Th w={"21%"}> </Th> <Th> </Th> </Tr> 
+//         </Thead>
+//         {schedules.map((day, ind) => (<>
+//           <Thead>
+//             <Tr>
+//               <Th colSpan={2} fontSize="lg" color="white"> Day {ind} : {ind+17} Jan 2024</Th>
+//             </Tr>
+//           </Thead>
+//           <Tbody>
+//             {day.map((schedule, ind) => (
+//               <TableRow key={ind} schedule={schedule} />
+//             ))}
+//           </Tbody>
+//         </>))}
+//       </Table>
+//     </TableContainer>
+//   </Flex>
+// )
+
+const Itinerary = ({schedules} : {schedules: Schedule[][]}) => {
+  const [selector, setSelector] = useState(1)
+  return (
+    <Flex direction="column">
+      <Flex justifyContent="space-evenly">
+        <Button variant={selector==0?"orange":"green"} onClick={() => setSelector(0)}> Day 0 </Button>
+        <Button variant={selector==1?"orange":"green"} onClick={() => setSelector(1)}> Day 1 </Button>
+        <Button variant={selector==2?"orange":"green"} onClick={() => setSelector(2)}> Day 2 </Button>
+        <Button variant={selector==3?"orange":"green"} onClick={() => setSelector(3)}> Day 3 </Button>
+        <Button variant={selector==4?"orange":"green"} onClick={() => setSelector(4)}> Day 4 </Button>
+      </Flex>
+      <TableContainer>
+        <Table w={[800]} overflow="hidden" colorScheme="green" variant="simple">
+          <Thead>
+            <Tr> <Th w={"30%"}> </Th> <Th> </Th> </Tr>
+          </Thead>
           <Thead>
             <Tr>
-              <Th colSpan={2} fontSize="lg" color="white"> Day {ind} : {ind+17} Jan 2024</Th>
+              <Th colSpan={2} fontSize="lg" color="white">
+                <Flex justifyContent="space-between">
+                  <Text> Day {selector} : {selector + 17} Jan 2024 </Text>
+                  <Flex> 
+                    <Icon boxSize={'15px'} as={GiClothes}/> 
+                    <Text fontSize={12} ml={1}> {schedules[selector][0].clothes} </Text>
+                  </Flex>
+                </Flex>
+              </Th>
             </Tr>
           </Thead>
           <Tbody>
-            {day.map((schedule, ind) => (
+            {schedules[selector].map((schedule, ind) => (
               <TableRow key={ind} schedule={schedule} />
             ))}
           </Tbody>
-        </>))}
-      </Table>
-    </TableContainer>
-  </Flex>
-)
+        </Table>
+      </TableContainer>
+    </Flex>
+  )
+}
 
 const Excursion = () => {
   const [ route, setRoute ] = useState(0)

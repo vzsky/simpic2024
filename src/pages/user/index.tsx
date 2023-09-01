@@ -21,25 +21,18 @@ const Home: NextPage = () => {
             size={[s, null, m]} 
             style={[position(0, 0), null, position(0, 0)]}
             color="white"
-            href="/user/status"
+            href="/user/myinfo"
           >
-            Status 
+            My Info
           </TiltedBox>
-          <TiltedBox
-            size={[s, null, m]} 
-            style={[position(0, s), null, position(0-30, m-30)]}
-            color="white"
-            href="/user/info"
-          > 
-            Information 
-          </TiltedBox>
+
           <TiltedBox 
             size={[s, null, m]} 
-            style={[position(0, 0), null, position(-2*m, 2*m-60)]}
+            style={[position(0, 0), null, position(-m, 2*m-60)]}
             color="white"
-            href="/user/payment"
+            href="/user/myteam"
           > 
-            Payment 
+            My Team
           </TiltedBox>
         </Flex>
       </Box>

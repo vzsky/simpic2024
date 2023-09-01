@@ -37,8 +37,9 @@ export default NextAuth({
     async session ({ session, token }) {
       return {...session, user: token}
     },
-    async redirect ({}) {
-      return '/'
+    async redirect ({ url, baseUrl }) {
+      if (url.startsWith("/")) return `${baseUrl}${url}`
+      return baseUrl
     }
   },
   providers: [

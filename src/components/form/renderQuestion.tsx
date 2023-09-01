@@ -17,7 +17,7 @@ interface RenderQuestionProps {
   onChange: (_: any) => void
 }
 export const RenderQuestion = ({question, field, submit, errors, disabled, onChange}:RenderQuestionProps):JSX.Element => (
-  <>
+  <Flex p={2} w={"100%"}>
     {(question.type == 'choice') && (
       <ChoiceQuestion 
         submit={submit} 
@@ -72,7 +72,7 @@ export const RenderQuestion = ({question, field, submit, errors, disabled, onCha
         onChange={onChange}
       />
     )}
-  </>
+  </Flex>
 )
 
 interface RenderGroupedQuestionsProps {
@@ -89,39 +89,42 @@ export const RenderGroupedQuestion = (
   {questions, submit, errors, control, groupedDirection, display, disabled, shouldSubmitOnChange}:RenderGroupedQuestionsProps
 ):JSX.Element => {
   return (
-    <Flex direction={groupedDirection} display={display} justifyContent={'space-between'}>
-      {questions.map((question, ind) => {
-        if (question.type == 'group') return (
-          <RenderGroupedQuestion
-            key={ind}
-            questions={question.questions}
-            submit={submit}
-            errors={errors}
-            control={control}
-            groupedDirection={question.groupedDirection}
-            display={question.display}
-            disabled={disabled}
-            shouldSubmitOnChange={shouldSubmitOnChange}
-          />
-        )
-        else return (
-          <Controller
-            key={ind}
-            render={({ field }) => (
-              <RenderQuestion 
-                disabled={disabled}
-                question={question} 
-                onChange={shouldSubmitOnChange ? submitOnChange(field.onChange, submit) : field.onChange}
-                field={field}
-                submit={submit}
-                errors={errors}
-              />
-            )}
-            name={question.name}
-            control={control}
-          />
-        )
-      })}
-    </Flex>
+      <Flex position="relative" direction={groupedDirection} display={display} justifyContent={'space-between'} w="100%">
+        {questions.map((question, ind) => {
+          if (question.type == 'group') return (
+            <RenderGroupedQuestion
+              key={ind}
+              questions={question.questions}
+              submit={submit}
+              errors={errors}
+              control={control}
+              groupedDirection={question.groupedDirection}
+              display={question.display}
+              disabled={disabled}
+              shouldSubmitOnChange={shouldSubmitOnChange}
+            />
+          )
+          if (question.type == 'decoration') return (
+            <question.render />
+          )
+          else return (
+            <Controller
+              key={ind}
+              render={({ field }) => (
+                <RenderQuestion 
+                  disabled={disabled}
+                  question={question} 
+                  onChange={shouldSubmitOnChange ? submitOnChange(field.onChange, submit) : field.onChange}
+                  field={field}
+                  submit={submit}
+                  errors={errors}
+                />
+              )}
+              name={question.name}
+              control={control}
+            />
+          )
+        })}
+      </Flex>
   )
 }

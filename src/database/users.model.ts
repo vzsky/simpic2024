@@ -1,9 +1,11 @@
 import { model, models, Schema, Types } from 'mongoose'
+import { UserInfo, UserInfoSchema } from './userinfo'
 
 export interface IUser {
   _id: Types.ObjectId
   email: string
   isAdmin: boolean
+  userinfo: UserInfo
 }
 
 const userSchema = new Schema<IUser>({
@@ -15,7 +17,8 @@ const userSchema = new Schema<IUser>({
   isAdmin: {
     type: Boolean, 
     default: false
-  }
+  },
+  userinfo: UserInfoSchema
 })
 
 const UserModel = models.users || model<IUser>('users', userSchema)

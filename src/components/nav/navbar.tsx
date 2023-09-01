@@ -1,6 +1,6 @@
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import { 
-  Flex, Heading, Box, useDisclosure, IconButton, Collapse, useBreakpointValue, Drawer, DrawerOverlay, DrawerContent, Center, Button
+  Flex, Heading, Box, useDisclosure, IconButton, Collapse, useBreakpointValue, Drawer, DrawerOverlay, DrawerContent, Center, Button, Text
 } from '@chakra-ui/react'
 import { Session } from 'next-auth'
 import { signOut, useSession } from "next-auth/react"
@@ -40,7 +40,7 @@ export const StackLink = ({children, href, onClick}:StackLinkProps) => {
     >
       <Center>
         <Link href={href?href:"#"}>
-          {children}
+          <Text whiteSpace={"nowrap"}> {children} </Text>
         </Link>
       </Center>
     </Flex>

@@ -66,7 +66,7 @@ const GenericForm = ({url, renderForm, defaultValues, preSubmit}: Props) => {
       // successful
       console.log('save form response - ok')
       const data = await response.json()
-      reset(data) // they used to be nothing here but I changed this. Let's see if any error occur for auto saving forms
+      if (Object.keys(data).length > 0) reset(data)
       setLastSubmit(data['lastSubmit'])
       return
     }
