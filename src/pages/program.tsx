@@ -6,100 +6,103 @@ import { FaLocationArrow } from "react-icons/fa"
 import { GiClothes } from "react-icons/gi"
 import { MotionBox, MotionFlex } from "../components/motionFactory"
 import { schedules, Schedule } from "../helper/data/schedules"
+import { AnimatePresence, motion } from "framer-motion"
 
 const TableRow = ({schedule}: {schedule: Schedule}) => {
   const [open, setOpen] = useState(false)
   const toggleOpen = () => setOpen(!open)
   return (
-    <Tr _hover={{color: "orange.200"}} onClick={toggleOpen}>
-      <Td> 
-        <MotionBox layout="position"> {schedule.time} </MotionBox>
-      </Td>
-      <Td> 
-        <MotionBox layout="position">
-          <Text align="right"> {schedule.title} </Text>
+    <MotionFlex 
+      layout="position"
+      _hover={{color: "orange.200"}} 
+      onClick={toggleOpen} 
+      justifyContent={"space-between"}
+      borderBottom="1px solid"
+      borderColor={"white"}
+      flexDirection={["column", "row"]}
+      my={[0, 5]}
+    >
+      <Box w={["100%", "30%"]}>
+        <Text> {schedule.time} </Text>
+      </Box>
+      <MotionBox layout="position" w={["100%", "70%"]}>
+        <Text mb={2} align={"right"}> {schedule.title} </Text>
+        <AnimatePresence>
           {open && 
             <MotionFlex 
-              mt={2} color="orange.200" 
-              justifyContent="end" alignItems="center" 
+              color="orange.200" 
               w={"100%"}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
+              position={open ? "relative" : "absolute"}
+              initial={{ opacity: 0, y: -10, height: 0 }}
+              animate={{ opacity: 1, y: 0, height: "auto" }}
+              exit={{ opacity: 0, y: -10, height: 0 }}
+              transition={{ opacity: { duration: 0.2}, height: { duration: 0.2 }, y: { duration: 0.5} }}
+              alignItems={"end"}
+              justifyContent={"end"}
+              flexDirection={"row"}
             >
-              <Icon boxSize={'15px'} as={FaLocationArrow} /> 
-              <Text fontSize={12} ml={1}> {schedule.venue} </Text>
-              {/* 
-                <Icon boxSize={'15px'} as={GiClothes} ml={5}/> 
-                <Text fontSize={12} ml={1}> {schedule.clothes} </Text>
-              */}
+              <Icon mt={"3px"} alignSelf={"start"} boxSize={'12px'} as={FaLocationArrow} /> 
+              <Text mb={2} whiteSpace={["pre", null, "normal"]} align={'right'} fontSize={12} ml={1}> {schedule.venue} </Text>
             </MotionFlex>
           }
-        </MotionBox>
-      </Td>
-    </Tr>
+        </AnimatePresence>
+      </MotionBox>
+    </MotionFlex>
   )
 }
 
-// const Itinerary = ({schedules} : {schedules: Schedule[][]}) => (
-//   <Flex>
-//     <TableContainer>
-//       <Table w={[800]} overflow={"hidden"} colorScheme="green" variant='simple'>
-//         <Thead>
-//           <Tr> <Th w={"21%"}> </Th> <Th> </Th> </Tr> 
-//         </Thead>
-//         {schedules.map((day, ind) => (<>
-//           <Thead>
-//             <Tr>
-//               <Th colSpan={2} fontSize="lg" color="white"> Day {ind} : {ind+17} Jan 2024</Th>
-//             </Tr>
-//           </Thead>
-//           <Tbody>
-//             {day.map((schedule, ind) => (
-//               <TableRow key={ind} schedule={schedule} />
-//             ))}
-//           </Tbody>
-//         </>))}
-//       </Table>
-//     </TableContainer>
-//   </Flex>
-// )
+/*
+      <MotionBox layout="position"> 
+        <Text fontSize={'md'}> {schedule.time} </Text>
+      </MotionBox>
+      <MotionBox layout> 
+        <MotionBox layout>
+          <Text fontSize={["sm", "md"]} align="right"> {schedule.title} </Text>
+        </MotionBox>
+        {open && 
+          <MotionFlex 
+            mt={2} mb={2} color="orange.200" 
+            w={"100%"}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            alignItems={"end"}
+            justifyContent={"end"}
+            flexDirection={"row"}
+          >
+            <Icon mt={'2px'} alignSelf={"end"} boxSize={'15px'} as={FaLocationArrow} /> 
+            <Text whiteSpace={["pre", null, "normal"]} align={'right'} fontSize={12} ml={1}> {schedule.venue} </Text>
+          </MotionFlex>
+        }
+      </MotionBox>
+*/
 
 const Itinerary = ({schedules} : {schedules: Schedule[][]}) => {
   const [selector, setSelector] = useState(1)
   return (
-    <Flex direction="column">
-      <Flex justifyContent="space-evenly">
-        <Button variant={selector==0?"orange":"green"} onClick={() => setSelector(0)}> Day 0 </Button>
-        <Button variant={selector==1?"orange":"green"} onClick={() => setSelector(1)}> Day 1 </Button>
-        <Button variant={selector==2?"orange":"green"} onClick={() => setSelector(2)}> Day 2 </Button>
-        <Button variant={selector==3?"orange":"green"} onClick={() => setSelector(3)}> Day 3 </Button>
-        <Button variant={selector==4?"orange":"green"} onClick={() => setSelector(4)}> Day 4 </Button>
+    <Flex direction="column" w={["100%"]} maxW="100%">
+      <Flex justifyContent="space-evenly" flexWrap={"wrap"}>
+        <Button size="sm" m={1} variant={selector==0?"orange":"green"} onClick={() => setSelector(0)}> Day 0 </Button>
+        <Button size="sm" m={1} variant={selector==1?"orange":"green"} onClick={() => setSelector(1)}> Day 1 </Button>
+        <Button size="sm" m={1} variant={selector==2?"orange":"green"} onClick={() => setSelector(2)}> Day 2 </Button>
+        <Button size="sm" m={1} variant={selector==3?"orange":"green"} onClick={() => setSelector(3)}> Day 3 </Button>
+        <Button size="sm" m={1} variant={selector==4?"orange":"green"} onClick={() => setSelector(4)}> Day 4 </Button>
       </Flex>
-      <TableContainer>
-        <Table w={[800]} overflow="hidden" colorScheme="green" variant="simple">
-          <Thead>
-            <Tr> <Th w={"30%"}> </Th> <Th> </Th> </Tr>
-          </Thead>
-          <Thead>
-            <Tr>
-              <Th colSpan={2} fontSize="lg" color="white">
-                <Flex justifyContent="space-between">
-                  <Text> Day {selector} : {selector + 17} Jan 2024 </Text>
-                  <Flex> 
-                    <Icon boxSize={'15px'} as={GiClothes}/> 
-                    <Text fontSize={12} ml={1}> {schedules[selector][0].clothes} </Text>
-                  </Flex>
-                </Flex>
-              </Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {schedules[selector].map((schedule, ind) => (
-              <TableRow key={ind} schedule={schedule} />
-            ))}
-          </Tbody>
-        </Table>
-      </TableContainer>
+      <MotionBox w={['100%']} overflow="hidden"> 
+        <MotionBox fontSize={["sm", "lg"]} color="white">
+          <MotionFlex pt={5} pb={5} justifyContent={"space-between"} flexDirection={['column', 'row']}>
+            <Heading fontSize={[10, 12]} mt={[0, 2]}> Day {selector} : {selector + 17} Jan 2024 </Heading>
+            <Flex mt={2} alignSelf={"end"}> 
+              <Icon boxSize={'15px'} as={GiClothes}/> 
+              <Heading whiteSpace={'pre'} fontSize={[8, 12]} ml={1}> {schedules[selector][0].clothes} </Heading>
+            </Flex>
+          </MotionFlex>
+        </MotionBox>
+        <MotionBox>
+          {schedules[selector].map((schedule, ind) => (
+            <TableRow key={selector * 1000 + ind} schedule={schedule} />
+          ))}
+        </MotionBox>
+      </MotionBox>
     </Flex>
   )
 }

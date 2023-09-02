@@ -9,6 +9,7 @@ const getInitialDefaultValues = (questions:Questions): {[x:string]:any} => (
       if (question.type == 'group') {
         return getInitialDefaultValues(question.questions)
       }
+      if (question.type == 'decoration') return {'_':''}
       else return ({[question.name]:''})
     })
     .reduce((acc, now) => ({...acc, ...now}))

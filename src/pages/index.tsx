@@ -105,10 +105,10 @@ const Home: NextPage = () => {
       <TiltedBoxes />
       <AboutSection />
       <PresMesSection />
-      <Box mt={5}> 
+      <Box mt={10}> 
         <Program />
       </Box>
-      <Box mt={5}> 
+      <Box mt={10}> 
         <Society />
       </Box>
       <Center mt={5} flexDirection="column">

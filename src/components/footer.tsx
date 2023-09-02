@@ -1,9 +1,11 @@
 import { Box, Center, Flex, Grid, Image, Text, Icon } from "@chakra-ui/react"
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaTiktok, FaYoutube } from 'react-icons/fa';
+import { MotionBox } from "./motionFactory";
 
 export const Footer = () => (
-  <Box
+  <MotionBox
+    layout="position"
     borderTop="2px dashed" 
     fontFamily="silkscreen"
     fontSize="8"
@@ -54,7 +56,7 @@ export const Footer = () => (
       <Box>
       </Box>
     </Center>
-  </Box>
+  </MotionBox>
 )
 
 export default Footer

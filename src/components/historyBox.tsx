@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 import { MotionBox, MotionFlex } from "./motionFactory"
 import { ReactNode, useState, useRef, useEffect } from "react"
 import { useAnimation, useInView } from "framer-motion"
@@ -6,7 +6,7 @@ import { useAnimation, useInView } from "framer-motion"
 type HistoryBoxType = {
   year: number
   name: string
-  children: ReactNode
+  children?: ReactNode
   defaultOpen?: boolean
 }
 export const HistoryBox = ({year, name, children, defaultOpen}: HistoryBoxType) => {
@@ -23,34 +23,35 @@ export const HistoryBox = ({year, name, children, defaultOpen}: HistoryBoxType) 
 
   const toggleDisplay = () => { setDisplay(!display) }
   return (
-    <MotionBox
-      m={2}
-      p={3}
-      w={['100%', '60%']}
-      cursor={'pointer'}
-      onClick={toggleDisplay}
-      bgGradient={"linear(to-r, orange.700, yellow.800)"}
-      style={{borderRadius: "10px"}}
-      layout
-      layoutId={name}
-      ref={ref}
+    <Flex w={['100%', '60%']}>
+      <MotionBox layout="position" pt={5} w={"20%"}>
+        YEAR {year}
+      </MotionBox>
+      <MotionBox
+        m={2}
+        p={3}
+        w={"80%"}
+        cursor={children ? 'pointer' : 'auto'}
+        onClick={children ? toggleDisplay : () => {}}
+        bgGradient={"linear(to-r, orange.700, yellow.800)"}
+        style={{borderRadius: "10px"}}
+        layout
+        layoutId={name}
+        ref={ref}
 
-      variants={{ 
-        visible: { y: 0, opacity: 1, transition: { duration: 0.5 }},
-        hidden: { y: 100, opacity: 0}
-      }}
+        variants={{ 
+          visible: { y: 0, opacity: 1, transition: { duration: 0.3 }},
+          hidden: { y: 50, opacity: 0}
+        }}
 
-      initial="hidden"
-      animate={control}
-    >
-      <MotionFlex layout="position" direction={['column', 'row']} justify={'space-between'}>
-        <Box>
-          YEAR {year}
-        </Box>
-        <Box>
-          {name}
-        </Box>
-      </MotionFlex>
+        initial="hidden"
+        animate={control}
+      >
+        <MotionFlex layout="position" direction={['column', 'row']} justifyContent={'space-between'}> 
+          <Box>
+            {name}
+          </Box>
+        </MotionFlex>
       { display && 
         <MotionBox   
           mt={3} 
@@ -61,8 +62,9 @@ export const HistoryBox = ({year, name, children, defaultOpen}: HistoryBoxType) 
         >
           {children}
         </MotionBox>
-      }
-    </MotionBox>
+        }
+      </MotionBox>
+    </Flex>
   )
 }
 

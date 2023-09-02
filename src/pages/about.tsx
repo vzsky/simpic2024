@@ -1,7 +1,6 @@
 import { NextPage } from "next"
 import Layout from "../components/layout"
 import { Box, Button, Center, Heading, Text, Image, Flex } from "@chakra-ui/react"
-import { lorem } from "../helper/client"
 import HistoryBox from "../components/historyBox"
 import Link from "next/link"
 import { LayoutGroup } from "framer-motion"
@@ -12,7 +11,7 @@ export const AboutSection   = () => (
       About SIMPIC
     </Heading>
     <Text mt={5}>
-      Welcome to Siriraj International Microbiology, Parasitology, and Immunology Competition (SIMPIC 2024) ! 
+      Welcome to Siriraj International Medical Microbiology, Parasitology, and Immunology Competition (SIMPIC 2024) ! 
       <br/> <br/>
       As a prestigious and globally recognized event, we take immense pride in helding space and opportunities that bring together brilliant minds in the fields of microbiology,  parasitology, and immunology from all around the world. 
       <br/> <br/>
@@ -43,38 +42,26 @@ const HistorySection = () => (
           SIMPIC is more than a competition; it's a canvas where simplicity merges with innovation. As we convene for this edition, let's explore the elegance of simplicity in both science and life, embracing the vibrant spirit of Bangkok City.
         </HistoryBox>
        
-        <HistoryBox year={2015} name={'4th - SIMPIC'}>
-          {lorem(20)}
-        </HistoryBox>
+        <HistoryBox year={2015} name={'4th - SIMPIC'}/>
        
-        <HistoryBox year={2016} name={'5th - SIMPIC'}>
-          {lorem(20)}
-        </HistoryBox>
+        <HistoryBox year={2016} name={'5th - SIMPIC'}/>
 
-        <HistoryBox year={2017} name={'6th - SIMPIC'}>
-          {lorem(20)}
-        </HistoryBox>
+        <HistoryBox year={2017} name={'6th - SIMPIC'}/>
         
         <HistoryBox year={2018} name={'7th - SIMPIC'}>
           The emergence of SIMPIC 7th heralds a captivating journey into the heart of Thai village traditions, a thematic homage to cultural exchange. After six successful editions, this chapter embraces the essence of the culture of Thailand, where heritage and innovation converge. Much like the diverse threads woven into a traditional fabric, SIMPIC interlaces 'TRADITION' values: Teamwork, Research, Appreciation, Diversity, Innovation, Thai Identity, Inspiration, Open-mindedness, and Networking
           SIMPIC is more than an event; it's a tapestry where cultures blend, ideas flourish, and connections flourish. With this edition, we step into a realm where the past and present unite, fostering not only scientific exploration but also the spirit of Thai village wisdom.
         </HistoryBox>
        
-        <HistoryBox year={2019} name={'8th - ???'}>
-          {lorem(20)}
-        </HistoryBox>
+        <HistoryBox year={2019} name={'8th - ???'}/>
        
-        <HistoryBox year={2020} name={'9th - COVID-19 Pandemic [Canceled]'}>
-          {lorem(20)}
-        </HistoryBox>
+        <HistoryBox year={2020} name={'9th - [COVID19]'}/>
        
         <HistoryBox year={2021} name={'10th - SIMPICSED'}>
           In 2021, SIMPIC ventured into a new realm with a special edition aptly named SIMPICSED, embracing the virtual domain for an innovative and immersive experience. Navigating through the digital landscape, participants embarked on a journey that transcended geographical boundaries, delving into the world of online connectivity and exploration. While physically apart, we united under the banner of science and discovery, sharing insights and forging connections in ways that only the online world could offer. SIMPICSED marked a remarkable chapter, reflecting our adaptability and commitment to advancing the frontiers of microbiology, parasitology, and immunology even in the face of unprecedented challenges.
         </HistoryBox>
 
-        <HistoryBox year={2022} name={'11th - Online'}>
-          {lorem(20)}
-        </HistoryBox>
+        <HistoryBox year={2022} name={'11th - Online'}/>
 
         <HistoryBox year={2023} name={'12th - SIMPIC'}>
           The dawn of SIMPIC 12th marks a triumphant return to onsite engagement, a revival after the challenges posed by the pandemic. Echoing the vibrant pulse of contemporary Thai art, this edition draws inspiration from the rich tapestry of local creativity.
@@ -86,7 +73,7 @@ const HistorySection = () => (
           <Heading size={'md'}> Journeying 'Into a Small World' of Microbiology, Parasitology, and Immunology. </Heading>
           <Center flexDirection={'column'}>
             <Text size={'md'} mt={5}> Be Part of Our SIMPIC this year </Text>
-            <Link href={'/auth/signin'}> <Button my={3}> Register Now </Button> </Link>
+            <Link href={'/auth/signin'}> <Button variant="light" my={3}> Register Now </Button> </Link>
           </Center>
         </HistoryBox>
       </Center>
@@ -129,8 +116,8 @@ export const PresMesSection = () => (
           w={"100%"}
           maxW={["400px", "400px", "400px", "450px"]}
           objectFit={"contain"} 
-          src={"placeholder.png"} 
-          alt={"placeholder"} 
+          src={"pres.jpeg"} 
+          alt={"president"} 
         />
       </Center>
     </Flex>

@@ -29,6 +29,15 @@ export const Button = {
         color: 'white',
       }
     },
+    light: {
+      border: '2px solid',
+      borderColor: "white",
+      borderRadius: '5',
+      _hover: {
+        bg: "white", 
+        color: "orange.800"
+      }
+    }
   },
   defaultProps: {
     size: 'md',
