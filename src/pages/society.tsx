@@ -80,36 +80,36 @@ const Gallery = () => (
     <Center flexDirection="column" w="100%">
       <Flex direction={["column", "row"]}>
         <Box>
-          <Image mx={[0, 5]} my={[1, null, null, 10]} w={[200, 150, 200, 250]} src={"/simpic12/2.jpg"} alt="" />
+          <Image mx={[0, 5]} my={[1, null, null, 10]} w={[200, 150, 200, 250]} src={"/simpic12/2.JPG"} alt="" />
         </Box>
         <Box>
-          <Image mx={[0, 5]} my={[1]} w={[200, null, null, 350]} src={"/simpic12/3.jpg"} alt="" />
+          <Image mx={[0, 5]} my={[1]} w={[200, null, null, 350]} src={"/simpic12/3.JPG"} alt="" />
         </Box>
       </Flex>
       <Flex justifyContent={"center"} alignItems={"center"} direction={["column", "column", "row"]}>
         <Flex direction={["column", "row"]}>
           <Box>
-            <Image mx={[0, 5]} my={[1, null, null, 5]} w={[200, null, 170, 200]} src={"/simpic12/7.jpg"} alt="" />
+            <Image mx={[0, 5]} my={[1, null, null, 5]} w={[200, null, 170, 200]} src={"/simpic12/7.JPG"} alt="" />
           </Box>
           <Box>
-            <Image mx={[0, 5]} my={[1, 1, 5]} w={[200, 150, 150, 200]} src={"/simpic12/8.jpg"} alt="" />
+            <Image mx={[0, 5]} my={[1, 1, 5]} w={[200, 150, 150, 200]} src={"/simpic12/8.JPG"} alt="" />
           </Box>
         </Flex>
         <Box>
-          <Image mx={[0, 0, 5]} my={[1]} w={[200, 250, 200]} src={"/simpic12/4.jpg"} alt="" />
+          <Image mx={[0, 0, 5]} my={[1]} w={[200, 250, 200]} src={"/simpic12/4.JPG"} alt="" />
         </Box>
       </Flex>
       <Flex justifyContent={"center"} alignItems={"center"} direction={["column", "row"]}>
         <Flex direction={["column", "column", "column", "row"]}>
           <Box>
-            <Image mx={[0, 5]} my={[1, 5, null, -10]} w={[200, null, null, 300]} src={"/simpic12/5.jpg"} alt="" />
+            <Image mx={[0, 5]} my={[1, 5, null, -10]} w={[200, null, null, 300]} src={"/simpic12/5.JPG"} alt="" />
           </Box>
           <Box>
-            <Image mx={[0, 5]} my={[1, 5, null, -10]} w={[200]} src={"/simpic12/6.jpg"} alt="" />
+            <Image mx={[0, 5]} my={[1, 5, null, -10]} w={[200]} src={"/simpic12/6.JPG"} alt="" />
           </Box>
         </Flex>
         <Box>
-          <Image mx={[0, 5]} my={[1, 10]} w={[150]} src={"/simpic12/1.jpg"} alt="" />
+          <Image mx={[0, 5]} my={[1, 10]} w={[150]} src={"/simpic12/1.JPG"} alt="" />
         </Box>
       </Flex>
     </Center>
