@@ -22,7 +22,9 @@ const Layout = ({children, footer = true}: Props) => {
         <Box minH="100vh">
           <Navbar />
           <Container maxW={'5xl'} pb={10}>
+            <MotionBox exit={{ opacity: 0 }}>
             {children}
+            </MotionBox>
           </Container>
         </Box>
         {footer && <Footer />}

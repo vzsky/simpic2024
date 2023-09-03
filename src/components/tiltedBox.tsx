@@ -1,6 +1,6 @@
 import { Box, ResponsiveValue, useBreakpointValue } from '@chakra-ui/react'
 import { ReactNode } from 'react'
-import { MotionFlex } from './motionFactory'
+import { MotionBox, MotionFlex } from './motionFactory'
 import Link from 'next/link'
 export type TiltedBoxProps = {
   children: ReactNode, 
@@ -29,6 +29,7 @@ const TiltedBox = ({children, size, color, style: styles, href}: TiltedBoxProps)
 
         whileHover={{scale: 1.05}}
         whileTap={{scale: 0.95}}
+
       >
         <Box
           style={{rotate: "-45deg"}} 

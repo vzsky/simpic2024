@@ -17,7 +17,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <SessionProvider>
       <ChakraProvider theme={theme}>
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" onExitComplete={() => {
+          if (typeof window !== 'undefined') {
+            window.scrollTo({ top: 0 })
+          }
+        }}>
           <Component {...pageProps} key={router.route} />
         </AnimatePresence>
       </ChakraProvider>

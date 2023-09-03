@@ -17,7 +17,6 @@ const SocialMedia = () => {
 
   useEffect(() => {
     if (inView) {
-      console.log('invier')
       control.start('animate') 
     }
   })
