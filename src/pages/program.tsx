@@ -21,8 +21,11 @@ const TableRow = ({schedule}: {schedule: Schedule}) => {
       borderColor={"white"}
       flexDirection={["column", "row"]}
       my={[0, 5]}
+      mx={[0, null, 5]}
+      px={[5]}
+      whileHover={{ scale: 1.05 }}
     >
-      <Box w={["100%", "30%"]}>
+      <Box w={["100%", "30%"]} mt={[2, 0]}>
         <Text> {schedule.time} </Text>
       </Box>
       <MotionBox layout="position" w={["100%", "70%"]}>
@@ -51,49 +54,24 @@ const TableRow = ({schedule}: {schedule: Schedule}) => {
   )
 }
 
-/*
-      <MotionBox layout="position"> 
-        <Text fontSize={'md'}> {schedule.time} </Text>
-      </MotionBox>
-      <MotionBox layout> 
-        <MotionBox layout>
-          <Text fontSize={["sm", "md"]} align="right"> {schedule.title} </Text>
-        </MotionBox>
-        {open && 
-          <MotionFlex 
-            mt={2} mb={2} color="orange.200" 
-            w={"100%"}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            alignItems={"end"}
-            justifyContent={"end"}
-            flexDirection={"row"}
-          >
-            <Icon mt={'2px'} alignSelf={"end"} boxSize={'15px'} as={FaLocationArrow} /> 
-            <Text whiteSpace={["pre", null, "normal"]} align={'right'} fontSize={12} ml={1}> {schedule.venue} </Text>
-          </MotionFlex>
-        }
-      </MotionBox>
-*/
-
 const Itinerary = ({schedules} : {schedules: Schedule[][]}) => {
   const [selector, setSelector] = useState(1)
   return (
-    <Flex direction="column" w={["100%"]} maxW="100%">
+    <Flex direction="column" w={["100%"]} maxW="700px">
       <Flex justifyContent="space-evenly" flexWrap={"wrap"}>
-        <Button size="sm" m={1} variant={selector==0?"orange":"green"} onClick={() => setSelector(0)}> Day 0 </Button>
-        <Button size="sm" m={1} variant={selector==1?"orange":"green"} onClick={() => setSelector(1)}> Day 1 </Button>
-        <Button size="sm" m={1} variant={selector==2?"orange":"green"} onClick={() => setSelector(2)}> Day 2 </Button>
-        <Button size="sm" m={1} variant={selector==3?"orange":"green"} onClick={() => setSelector(3)}> Day 3 </Button>
-        <Button size="sm" m={1} variant={selector==4?"orange":"green"} onClick={() => setSelector(4)}> Day 4 </Button>
+        <Button size={["sm", null, "md"]} m={1} variant={selector==0?"orange":"green"} onClick={() => setSelector(0)}> Day 0 </Button>
+        <Button size={["sm", null, "md"]} m={1} variant={selector==1?"orange":"green"} onClick={() => setSelector(1)}> Day 1 </Button>
+        <Button size={["sm", null, "md"]} m={1} variant={selector==2?"orange":"green"} onClick={() => setSelector(2)}> Day 2 </Button>
+        <Button size={["sm", null, "md"]} m={1} variant={selector==3?"orange":"green"} onClick={() => setSelector(3)}> Day 3 </Button>
+        <Button size={["sm", null, "md"]} m={1} variant={selector==4?"orange":"green"} onClick={() => setSelector(4)}> Day 4 </Button>
       </Flex>
       <MotionBox w={['100%']} overflow="hidden"> 
         <MotionBox fontSize={["sm", "lg"]} color="white">
           <MotionFlex pt={5} pb={5} justifyContent={"space-between"} flexDirection={['column', 'row']}>
-            <Heading fontSize={[10, 12]} mt={[0, 2]}> Day {selector} : {selector + 17} Jan 2024 </Heading>
+            <Heading fontSize={[15, 14, 18]} ml={[0, null, 2]} mt={[0, 2]}> Day {selector} : {selector + 17} Jan 2024 </Heading>
             <Flex mt={2} alignSelf={"end"}> 
-              <Icon boxSize={'15px'} as={GiClothes}/> 
-              <Heading whiteSpace={'pre'} fontSize={[8, 12]} ml={1}> {schedules[selector][0].clothes} </Heading>
+              <Icon boxSize={['15px', null, '22px']} as={GiClothes}/> 
+              <Heading whiteSpace={'pre'} fontSize={[13, 14]} ml={1}> {schedules[selector][0].clothes} </Heading>
             </Flex>
           </MotionFlex>
         </MotionBox>

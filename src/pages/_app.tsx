@@ -3,16 +3,23 @@ import type { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
 import { SessionProvider } from "next-auth/react"
 import theme from '../theme/theme'
+import { AnimatePresence } from 'framer-motion'
 
 import '@fontsource/kodchasan'
 import '@fontsource/chakra-petch'
 import '@fontsource/silkscreen'
+import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }: AppProps) {
+
+  const router = useRouter()
+
   return (
     <SessionProvider>
       <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
+        <AnimatePresence mode="wait">
+          <Component {...pageProps} key={router.route} />
+        </AnimatePresence>
       </ChakraProvider>
     </SessionProvider>
   )

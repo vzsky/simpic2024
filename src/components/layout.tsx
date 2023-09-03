@@ -2,7 +2,8 @@ import { ReactNode } from 'react'
 import { Box, Container, useToken } from "@chakra-ui/react"
 import Navbar from './nav/navbar'
 import Footer from './footer'
-import { LayoutGroup } from 'framer-motion'
+import { AnimatePresence, LayoutGroup } from 'framer-motion'
+import { MotionBox } from './motionFactory'
 
 type Props = {
   children: ReactNode

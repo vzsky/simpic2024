@@ -3,24 +3,37 @@ import Layout from "../components/layout"
 import { Box, Button, Center, Heading, Text, Image, Flex } from "@chakra-ui/react"
 import HistoryBox from "../components/historyBox"
 import Link from "next/link"
-import { LayoutGroup } from "framer-motion"
+import { LayoutGroup, motion, useAnimation, useInView } from "framer-motion"
+import { MotionBox } from "../components/motionFactory"
+import { useEffect, useRef } from "react"
 
-export const AboutSection   = () => (
-  <Box mt={'3rem'}>
-    <Heading size={'xl'}>
-      About SIMPIC
-    </Heading>
-    <Text mt={5}>
-      Welcome to Siriraj International Medical Microbiology, Parasitology, and Immunology Competition (SIMPIC 2024) ! 
-      <br/> <br/>
-      As a prestigious and globally recognized event, we take immense pride in helding space and opportunities that bring together brilliant minds in the fields of microbiology,  parasitology, and immunology from all around the world. 
-      <br/> <br/>
-      Our competition serves as a hub for aspiring medical students to showcase their medical knowledge, and forge meaningful connections within the scientific community and international friendships. With a rich tradition of excellence, we are committed to advancing knowledge, promoting collaboration, and driving advancements in these vital disciplines. 
-      <br/> <br/>
-      Join us in this exciting journey of discovery, learning, and exploration as we collectively strive to push the boundaries of scientific understanding and culture exchanging
-    </Text>
-  </Box>
-)
+export const AboutSection = () => {
+  const ref = useRef(null)
+  const inView = useInView(ref, {once: true})
+  const control = useAnimation()
+
+  useEffect(() => {
+    if (inView) {
+      control.start('animate') 
+    }
+  })
+  return (
+    <MotionBox ref={ref} initial="initial" animate={control} variants={{animate: {transition: { staggerChildren: 0.1 }}}} mt={'3rem'}>
+      <Heading as={motion.h2} variants={{initial: {opacity: 0}, animate: {opacity: 1}}} size={'xl'}>
+        About SIMPIC
+      </Heading>
+      <Text as={motion.p} variants={{initial:{opacity: 0}, animate:{opacity: 1}}} mt={5}>
+        Welcome to Siriraj International Medical Microbiology, Parasitology, and Immunology Competition (SIMPIC 2024) ! 
+        <br/> <br/>
+        As a prestigious and globally recognized event, we take immense pride in helding space and opportunities that bring together brilliant minds in the fields of microbiology,  parasitology, and immunology from all around the world. 
+        <br/> <br/>
+        Our competition serves as a hub for aspiring medical students to showcase their medical knowledge, and forge meaningful connections within the scientific community and international friendships. With a rich tradition of excellence, we are committed to advancing knowledge, promoting collaboration, and driving advancements in these vital disciplines. 
+        <br/> <br/>
+        Join us in this exciting journey of discovery, learning, and exploration as we collectively strive to push the boundaries of scientific understanding and culture exchanging
+      </Text>
+    </MotionBox>
+  )
+}
 
 const HistorySection = () => (
   <Box mt={'3rem'}>
@@ -81,48 +94,62 @@ const HistorySection = () => (
   </Box>
 )
 
-export const PresMesSection = () => (
-  <Box mt={'4rem'}>
-    <Heading size={'xl'}>
-      President Message
-    </Heading>
-    <Flex direction={["column-reverse", "column-reverse", "column-reverse", "row"]}>
-      <Box w={["100%", "100%", "100%", "50%"]}>
-        <Text mt={5}>
-          With the year gone by, the wait is now done. Our annual competition is back for everyone! <br/>
-          Hello, aspiring participants, <br/> <br/>
+export const PresMesSection = () => {
+  const ref = useRef(null)
+  const inView = useInView(ref, {once: true})
+  const control = useAnimation()
 
-          We, on behalf of the SIMPIC organizing committee, extend a warm embrace to medical students from every corner of the world. Welcome to our esteemed international competition, SIMPIC 2024! <br/> <br/>
+  useEffect(() => {
+    if (inView) {
+      control.start('animate') 
+    }
+  })
 
-          Across thirteen years of evolution, this year marks a leap forward in crafting an extraordinary and indelible event, specially customized for medical students. <br/> <br/>
+  return (
+    <MotionBox ref={ref} initial="initial" animate={control} variants={{ animate: { transition: { staggerChildren: 0.1 } } }} mt={'4rem'}>
+      <Heading as={motion.h2} variants={{initial: { opacity: 0 }, animate: { opacity: 1 }}} size={'xl'}>
+        President Message
+      </Heading>
+      <Flex direction={["column-reverse", "column-reverse", "column-reverse", "row"]}>
+        <Box w={["100%", "100%", "100%", "50%"]}>
+          <Text as={motion.p} variants={{initial: { opacity: 0 }, animate: { opacity: 1 }}} mt={5}>
+            With the year gone by, the wait is now done. Our annual competition is back for everyone! <br/>
+            Hello, aspiring participants, <br/> <br/>
 
-          Mark your calendars for January 18–21, 2024. With meticulous consideration, we've refined the competition rules, drawing from invaluable insights garnered over previous editions. Anticipate a year of heightened thrills, profound engagement, and unparalleled fervor that surpasses all past experiences. <br/> <br/>
+            We, on behalf of the SIMPIC organizing committee, extend a warm embrace to medical students from every corner of the world. Welcome to our esteemed international competition, SIMPIC 2024! <br/> <br/>
 
-          "Join Us for an Unforgettable Journey: A symphony of unique competitions, cultural immersion, and the allure of Bangkok awaits. From the very first note to the final crescendo, let SIMPIC be the canvas where we paint smiles and weave cherished memories together." <br/> <br/>
+            Across thirteen years of evolution, this year marks a leap forward in crafting an extraordinary and indelible event, specially customized for medical students. <br/> <br/>
 
-          Be part of the SIMPIC family! <br/>
+            Mark your calendars for January 18–21, 2024. With meticulous consideration, we've refined the competition rules, drawing from invaluable insights garnered over previous editions. Anticipate a year of heightened thrills, profound engagement, and unparalleled fervor that surpasses all past experiences. <br/> <br/>
 
-          Naphak Banditrittidej <br/>
-          Presidents, SIMPIC 2024 <br/>
+            "Join Us for an Unforgettable Journey: A symphony of unique competitions, cultural immersion, and the allure of Bangkok awaits. From the very first note to the final crescendo, let SIMPIC be the canvas where we paint smiles and weave cherished memories together." <br/> <br/>
 
-      </Text>
-      </Box>
+            Be part of the SIMPIC family! <br/>
 
-      <Center
-          w={["100%", "100%", "100%", "50%"]}
-      >
-        <Image 
-          pl={[0, 0, 0, 5]} mt={5} 
-          w={"100%"}
-          maxW={["400px", "400px", "400px", "450px"]}
-          objectFit={"contain"} 
-          src={"pres.jpeg"} 
-          alt={"president"} 
-        />
-      </Center>
-    </Flex>
-  </Box>
-)
+            Naphak Banditrittidej <br/>
+            Presidents, SIMPIC 2024 <br/>
+
+        </Text>
+        </Box>
+
+        <Center
+            w={["100%", "100%", "100%", "50%"]}
+        >
+          <Image
+            as={motion.img}
+            variants={{ initial: { opacity: 0 }, animate: { opacity: 1 }}}
+            pl={[0, 0, 0, 5]} mt={5} 
+            w={"100%"}
+            maxW={["400px", "400px", "400px", "450px"]}
+            objectFit={"contain"} 
+            src={"pres.jpeg"} 
+            alt={"president"} 
+          />
+        </Center>
+      </Flex>
+    </MotionBox>
+  )
+}
 
 const About: NextPage = () => {
   return (

@@ -14,7 +14,7 @@ export const Button = {
       color: 'green.400',
       bgColor: 'dark.600',
       _hover: {
-        bg: 'green.500',
+        bg: 'green.700',
         borderColor: 'dark.500',
         color: 'white',
       }
@@ -24,7 +24,7 @@ export const Button = {
       color: 'orange.400',
       bgColor: 'dark.600',
       _hover: {
-        bg: 'orange.500',
+        bg: 'orange.700',
         borderColor: 'dark.500',
         color: 'white',
       }

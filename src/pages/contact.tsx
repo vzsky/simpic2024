@@ -16,6 +16,7 @@ const Contact: NextPage = () => {
     <Layout>
       <Center flexDirection={"column"}>
         <Heading size="3xl"> Contact </Heading>
+        
         <Form url="/api/contact" questions={questions} shouldSubmitOnChange={false} />
       </Center>
     </Layout>

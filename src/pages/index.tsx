@@ -10,6 +10,7 @@ import { AboutSection, PresMesSection } from './about'
 import { Program } from './program'
 import { Society } from './society'
 import Link from 'next/link'
+import { MotionBox } from '../components/motionFactory'
 
 const position = (top: number, left: number) => ({position: 'relative', top, left})
 
@@ -24,7 +25,7 @@ const TiltedBoxes = () => {
   let m = 0.16 * width
   let u = 0.8 * m
   return (
-    <Box h={[8*s, 8*t, 3.5*m]} minH={"100vh"} overflow={"hidden"} ref={boxRef}>
+    <Box h={[8*s, 8*t, 3.5*m]} minH={"100vh"} overflow={"hidden"} ref={boxRef} >
       <Flex position={"relative"} top={[s/2, t/2, u]} left={[0, 0, -1.8*u]} alignItems={"center"} direction={"column"} > 
         <TiltedBox 
           style={[position(0, -s/2), position(0, -t/2), position(0.313*u, -0.45*u)]} 
@@ -111,9 +112,14 @@ const Home: NextPage = () => {
       <Box mt={10}> 
         <Society />
       </Box>
-      <Center mt={5} flexDirection="column">
+      <Center
+        border="5px dashed" 
+        mt={'50px'} 
+        py={5} 
+        flexDirection="column"
+        _hover={{color: "orange.200"}}
+      >
         <Heading size="2xl"> Register now! </Heading>
-        <Link href="/user"> <Button mt={3}> Register </Button> </Link>
       </Center>
     </Layout>
   )
