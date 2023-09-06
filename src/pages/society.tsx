@@ -60,16 +60,28 @@ const SocialMedia = () => {
 const Pandemos = () => (
   <Flex w={"90%"} alignItems={"center"} justifyContent={"space-evenly"} direction={["column", "column", "row"]}>
     <Link href={"/pandemos1.pdf"}>
-      <Image src={"/pandemos1.jpg"} alt={"pandemos 1"} w={[180, 225, 120, 180]} m={[5, null, 2]} />
+      <Image
+        as={motion.img} whileHover={{ scale: 1.1 }} 
+        src={"/pandemos1.jpg"} alt={"pandemos 1"} w={[180, 225, 120, 180]} m={[5, null, 2]} 
+      />
     </Link>
     <Link href={"/pandemos2.pdf"}>
-      <Image src={"/pandemos2.jpg"} alt={"pandemos 2"} w={[180, 225, 120, 180]} m={[5, null, 2]}/>
+      <Image 
+        as={motion.img} whileHover={{ scale: 1.1 }} 
+        src={"/pandemos2.jpg"} alt={"pandemos 2"} w={[180, 225, 120, 180]} m={[5, null, 2]}
+      />
     </Link>
     <Link href={"/pandemos3.pdf"}>
-      <Image src={"/pandemos3.jpg"} alt={"pandemos 3"} w={[180, 225, 120, 180]} m={[5, null, 2]} />
+      <Image
+        as={motion.img} whileHover={{ scale: 1.1 }} 
+        src={"/pandemos3.jpg"} alt={"pandemos 3"} w={[180, 225, 120, 180]} m={[5, null, 2]} 
+      />
     </Link>
     <Link href={"/pandemos4.pdf"}>
-      <Image src={"/pandemos4.jpg"} alt={"pandemos 4"} w={[180, 225, 120, 180]} m={[5, null, 2]} />
+      <Image
+        as={motion.img} whileHover={{ scale: 1.1 }} 
+        src={"/pandemos4.jpg"} alt={"pandemos 4"} w={[180, 225, 120, 180]} m={[5, null, 2]} 
+      />
     </Link>
   </Flex>
 )

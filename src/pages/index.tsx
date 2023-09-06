@@ -148,8 +148,10 @@ const Home: NextPage = () => {
     <Layout>
       <TiltedBoxes />
       <Divider orientation='horizontal' border={"2px dashed"} color={"white"}/>
-      <AboutSection />
-      <PresMesSection />
+      <Center flexDirection={"column"}>
+        <AboutSection />
+        <PresMesSection />
+      </Center>
       <Divider mt={10} orientation='horizontal' border={"2px dashed"} color={"white"}/>
       <Box mt={10}> 
         <Program />

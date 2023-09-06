@@ -1,25 +1,25 @@
-import { Box, Center, Flex, Heading, Text } from "@chakra-ui/react"
+import { Center, Flex, Heading, Text } from "@chakra-ui/react"
 import { NextPage } from "next"
 import Layout from "../components/layout"
 import { useState } from "react"
-import { MotionBox, MotionFlex } from "../components/motionFactory"
+import { MotionBox } from "../components/motionFactory"
 import { AnimatePresence, LayoutGroup } from "framer-motion"
 
 type QuestionProp = {
   ind: number, 
   question: { q: string, a: string }
+  open: boolean, 
+  onClick: () => void
 }
 
-const Question = ({question, ind}: QuestionProp) => {
-  const [open, setOpen] = useState(false)
-  const toggleOpen = () => {setOpen(!open)}
+const Question = ({question, ind, open, onClick}: QuestionProp) => {
   console.log(ind)
   return (
     <MotionBox
       m={2}
       cursor={'pointer'}
       border="dashed"
-      onClick={toggleOpen}
+      onClick={onClick}
       layout
     >
       <MotionBox
@@ -87,17 +87,28 @@ const questions = [
   }
 ]
 
-const FAQ: NextPage = () => (
-  <Layout>
-    <Center flexDirection={"column"}>
-      <Heading size="3xl"> FAQ </Heading>
-      <Flex flexDirection="column" mt={5} w={['100%', '60%']}>
-        <LayoutGroup>
-          {questions.map((question, ind) => (<Question question={question} key={ind} ind={ind}/>))}
-        </LayoutGroup>
-      </Flex>
-    </Center>
-  </Layout>
-)
+const FAQ: NextPage = () => {
+  const [ select, setSelect ] = useState(-1)
+  return (
+    <Layout>
+      <Center flexDirection={"column"}>
+        <Heading size="3xl"> FAQ </Heading>
+        <Flex flexDirection="column" mt={5} w={['100%', '60%']}>
+          <LayoutGroup>
+            {questions.map((question, ind) => (
+              <Question 
+                question={question}
+                key={ind} 
+                ind={ind}
+                open={select==ind}
+                onClick={() => setSelect(select==ind ? -1 : ind)}
+              />
+            ))}
+          </LayoutGroup>
+        </Flex>
+      </Center>
+    </Layout>
+  )
+}
 
 export default FAQ

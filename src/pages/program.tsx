@@ -1,4 +1,4 @@
-import { Box, Button, Center, Flex, Heading, Icon, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react"
+import { Box, Button, Center, Flex, Heading, Icon, ListItem, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, UnorderedList } from "@chakra-ui/react"
 import { NextPage } from "next"
 import Layout from "../components/layout"
 import { useState } from "react"
@@ -7,6 +7,7 @@ import { GiClothes } from "react-icons/gi"
 import { MotionBox, MotionFlex } from "../components/motionFactory"
 import { schedules, Schedule } from "../helper/data/schedules"
 import { AnimatePresence } from "framer-motion"
+import { excursion } from "../helper/data/excursion"
 
 const TableRow = ({schedule}: {schedule: Schedule}) => {
   const [open, setOpen] = useState(false)
@@ -87,6 +88,7 @@ const Itinerary = ({schedules} : {schedules: Schedule[][]}) => {
 
 const Excursion = () => {
   const [ route, setRoute ] = useState(0)
+
   return (
     <Box>
       <Text textAlign={"justify"}>
@@ -95,6 +97,35 @@ After enjoying all of the cultural activities and tiring from the intense compet
 It’s your choice! Choose one of these and enjoy your time with friends on this unforgettable trip. <br/> 
         We are all waiting to welcome you to Thailand.
       </Text>
+
+      <Flex w={"100%"} justifyContent={"center"} alignItems={"center"}>
+        <Flex direction={["column", "row"]} w={"100%"} maxW={"500px"} mt={5}>
+          <Flex w={"100%"} justifyContent={"space-around"}>
+            <Button size={["sm", "md"]} onClick={() => setRoute(0)} variant={route==0?"orange":"green"}> Route 1 </Button> 
+            <Button size={["sm", "md"]} onClick={() => setRoute(1)} variant={route==1?"orange":"green"}> Route 2 </Button>
+          </Flex>
+          <Flex mt={[2, 0]} w={"100%"} justifyContent={"space-around"}>
+            <Button size={["sm", "md"]} onClick={() => setRoute(2)} variant={route==2?"orange":"green"}> Route 3 </Button> 
+            <Button size={["sm", "md"]} onClick={() => setRoute(3)} variant={route==3?"orange":"green"}> Route 4 </Button> 
+          </Flex> 
+        </Flex>
+      </Flex>
+
+      <Center w={"100%"}>
+        <Flex maxW={"700px"} direction="column" w={"100%"} mt={5}>
+          <Heading size={["md", "lg"]}> Route {route+1}: {excursion[route].name} </Heading>
+          <UnorderedList>
+            {excursion[route].places.map((place, ind) => (
+              <ListItem mt={5} key={ind}> 
+                <Heading size={["sm", "md"]}> {place.location} </Heading>
+                <Text whiteSpace={"pre-wrap"} textAlign="justify">
+                  {place.description}
+                </Text>
+              </ListItem>
+            ))}
+          </UnorderedList>
+        </Flex> 
+      </Center>
     </Box>
   )
 }
@@ -105,12 +136,12 @@ export const Program = () => {
       <Heading size="3xl"> PROGRAM </Heading>
 
       <Flex w={"100%"} direction={"column"} alignItems={["start", "start", "center"]} mt={5}>
-        <Heading my={3} size={["md", "xl", "lg"]}> TIMETABLE </Heading>
+        <Heading my={3} size={["lg", "xl", "lg"]}> TIMETABLE </Heading>
         <Itinerary schedules={schedules} />
       </Flex>
 
       <Flex w={"100%"} direction={"column"}  alignItems={["start", "start", "center"]} mt={5}>
-        <Heading my={3} size={["md", "xl", "lg"]}> EXCURSION </Heading>
+        <Heading my={3} size={["lg", "xl", "lg"]}> EXCURSION </Heading>
         <Excursion />
       </Flex> 
 
