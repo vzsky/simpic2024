@@ -65,11 +65,12 @@ export const RenderQuestion = ({question, field, submit, errors, disabled, onCha
       />
     )}
     {(question.type == 'custom') && (
-      <question.render 
+      <question.Render 
         field={field} 
         submit={submit}
         disabled={disabled}
         onChange={onChange}
+        errors={errors}
       />
     )}
   </Flex>
@@ -105,7 +106,7 @@ export const RenderGroupedQuestion = (
             />
           )
           if (question.type == 'decoration') return (
-            <question.render />
+            <question.Render key={ind} />
           )
           else return (
             <Controller

@@ -8,7 +8,7 @@ export const Footer = () => (
     layout="position"
     borderTop="2px dashed" 
     fontFamily="silkscreen"
-    fontSize="8"
+    fontSize={["8", "10", "12"]}
   >
     <Grid
       templateColumns='repeat(3, 1fr)'
@@ -26,22 +26,22 @@ export const Footer = () => (
       <Center>
         <Image alt="logo" src="logo.png" w={10} />
       </Center>
-      <Center flexDirection="column">
+      <Center pr={2} flexDirection="column">
         <Text>
           contact@simpic2024.com
         </Text>
         <Box mt={2}>
           <Link href="https://www.facebook.com/SIMPICOfficial"> 
-            <Icon boxSize={'10px'} mx={2} as={FaFacebookF} />
+            <Icon boxSize={['10px', '12px', '14px']} mx={2} as={FaFacebookF} />
           </Link>
-          <Link href="https://www.tiktok.com/@simpic_official">
-            <Icon boxSize={'10px'} mx={2} as={FaTiktok} />
+          <Link href="https://www.tiktok.com/@simpic2024">
+            <Icon boxSize={['10px', '12px', '14px']} mx={2} as={FaTiktok} />
           </Link>
           <Link href="https://www.instagram.com/simpic_official/">
-            <Icon boxSize={'10px'} mx={2} as={FaInstagram} />
+            <Icon boxSize={['10px', '12px', '14px']} mx={2} as={FaInstagram} />
           </Link>
-          <Link href="/"> 
-            <Icon boxSize={'10px'} mx={2} as={FaYoutube} /> 
+          <Link href="https://www.youtube.com/@SIMPICPR"> 
+            <Icon boxSize={['10px', '12px', '14px']} mx={2} as={FaYoutube} /> 
           </Link>
         </Box>
       </Center>

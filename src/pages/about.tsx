@@ -22,7 +22,7 @@ export const AboutSection = () => {
       <Heading as={motion.h2} variants={{initial: {opacity: 0}, animate: {opacity: 1}}} size={'xl'}>
         About SIMPIC
       </Heading>
-      <Text as={motion.p} variants={{initial:{opacity: 0}, animate:{opacity: 1}}} mt={5}>
+      <Text as={motion.p} variants={{initial:{opacity: 0}, animate:{opacity: 1}}} mt={5} textAlign="justify">
         Welcome to Siriraj International Medical Microbiology, Parasitology, and Immunology Competition (SIMPIC 2024) ! 
         <br/> <br/>
         As a prestigious and globally recognized event, we take immense pride in helding space and opportunities that bring together brilliant minds in the fields of microbiology,  parasitology, and immunology from all around the world. 
@@ -112,8 +112,8 @@ export const PresMesSection = () => {
       </Heading>
       <Flex direction={["column-reverse", "column-reverse", "column-reverse", "row"]}>
         <Box w={["100%", "100%", "100%", "50%"]}>
-          <Text as={motion.p} variants={{initial: { opacity: 0 }, animate: { opacity: 1 }}} mt={5}>
-            With the year gone by, the wait is now done. Our annual competition is back for everyone! <br/>
+          <Text as={motion.p} variants={{initial: { opacity: 0 }, animate: { opacity: 1 }}} mt={5} textAlign="justify">
+            With the year gone by, the wait is now done. <br/> Our annual competition is back for everyone! <br/><br/>
             Hello, aspiring participants, <br/> <br/>
 
             We, on behalf of the SIMPIC organizing committee, extend a warm embrace to medical students from every corner of the world. Welcome to our esteemed international competition, SIMPIC 2024! <br/> <br/>
@@ -126,8 +126,8 @@ export const PresMesSection = () => {
 
             Be part of the SIMPIC family! <br/>
 
-            Naphak Banditrittidej <br/>
-            Presidents, SIMPIC 2024 <br/>
+            Napak Banditrittidej <br/>
+            Presidents of SIMPIC 2024 <br/>
 
         </Text>
         </Box>

@@ -4,11 +4,11 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { SessionProvider } from "next-auth/react"
 import theme from '../theme/theme'
 import { AnimatePresence } from 'framer-motion'
+import { useRouter } from 'next/router'
 
 import '@fontsource/kodchasan'
 import '@fontsource/chakra-petch'
 import '@fontsource/silkscreen'
-import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }: AppProps) {
 

@@ -2,6 +2,7 @@ import { extendTheme, ThemeConfig } from '@chakra-ui/react'
 import colors from './colors'
 import styles from './styles'
 import Button from './components/Button'
+import localFont from 'next/font/local'
 
 const components = {
   Button
@@ -15,13 +16,19 @@ const breakpoints = {
   '2xl': 1500,
 }
 
+ 
+const pixelBoy = localFont({
+  src: './pixelboy.woff2',
+  display: 'swap',
+})
+
 // const fonts = {
-//   heading: `'Chakra Petch', sans-serif`, 
-//   body: `'Kodchasan', sans-serif`
+//   heading: `'Silkscreen', sans-serif`, 
+//   body: `'Chakra Petch', sans-serif`
 // }
 
 const fonts = {
-  heading: `'Silkscreen', sans-serif`, 
+  heading: pixelBoy.style.fontFamily, 
   body: `'Chakra Petch', sans-serif`
 }
 

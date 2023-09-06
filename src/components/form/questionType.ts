@@ -23,19 +23,20 @@ export interface SelectQuestion extends GenericSelectQuestion {
 export interface CustomQuestion {
   type: 'custom', 
   name: string,
-  render: (props:{
+  Render: (props:{
     field: ControllerRenderProps<FieldValues, string>
     fieldState?: ControllerFieldState
     formState?: UseFormStateReturn<FieldValues>
     submit?: SubmitFunction
     onChange?: (_: any) => void
-    disabled?: boolean
+    disabled?: boolean,
+    errors: {[error: string]: any},
   }) => JSX.Element,
 }
 
 export interface Decoration {
   type: 'decoration', 
-  render: () => JSX.Element
+  Render: () => JSX.Element
 }
 
 export interface GroupedQuestions {

@@ -18,7 +18,7 @@ export const getUserId = async (email:string) => {
 
 export const updateUser = async (id:Types.ObjectId, update:Object) => {
   await connectMongoose()
-  const result = await UserModel.updateOne({_id:id}, update)
+  const result = await UserModel.updateOne({_id:id}, update, { runValidators: true })
   return result
 }
 

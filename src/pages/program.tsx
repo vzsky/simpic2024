@@ -6,7 +6,7 @@ import { FaLocationArrow } from "react-icons/fa"
 import { GiClothes } from "react-icons/gi"
 import { MotionBox, MotionFlex } from "../components/motionFactory"
 import { schedules, Schedule } from "../helper/data/schedules"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence } from "framer-motion"
 
 const TableRow = ({schedule}: {schedule: Schedule}) => {
   const [open, setOpen] = useState(false)
@@ -29,7 +29,7 @@ const TableRow = ({schedule}: {schedule: Schedule}) => {
         <Text> {schedule.time} </Text>
       </Box>
       <MotionBox layout="position" w={["100%", "70%"]}>
-        <Text mb={2} align={"right"}> {schedule.title} </Text>
+        <Text mb={2} align={["right", "left"]}> {schedule.title} </Text>
         <AnimatePresence>
           {open && 
             <MotionFlex 
@@ -89,10 +89,11 @@ const Excursion = () => {
   const [ route, setRoute ] = useState(0)
   return (
     <Box>
-      <Text>
+      <Text textAlign={"justify"}>
 After enjoying all of the cultural activities and tiring from the intense competition, get ready to meet the most exciting highlights of SIMPIC 2024 as we embark on a captivating journey to explore numerous tourist attractions, which are deliberately chosen and arranged into four routes to suit your interests. A glimpse of the cultural heritage of Thailand, the history of Thailand in the fresh learning experience and classical architecture, a hidden green oasis with canalside lifestyle on the outskirts of Bangkok, or captivating street art and various galleries.
 <br/><br/>
-It’s your choice! Choose one of these and enjoy your time with friends on this unforgettable trip. We are all waiting to welcome you to Thailand.
+It’s your choice! Choose one of these and enjoy your time with friends on this unforgettable trip. <br/> 
+        We are all waiting to welcome you to Thailand.
       </Text>
     </Box>
   )

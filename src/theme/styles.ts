@@ -4,7 +4,7 @@ export const styles = {
     body: {
       background: "dark.700",
       color: "white",
-      "-webkit-tap-highlight-color": "transparent",
+      WebkitTapHighlightColor: "transparent",
     }  
   }
 }

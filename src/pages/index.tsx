@@ -1,4 +1,4 @@
-import { Box, Button, Center, Flex, Heading, Img } from '@chakra-ui/react'
+import { Box, Button, Center, Divider, Flex, Heading, Img } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import Grid from '../components/grid'
 import Layout from '../components/layout'
@@ -147,11 +147,14 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <TiltedBoxes />
+      <Divider orientation='horizontal' border={"2px dashed"} color={"white"}/>
       <AboutSection />
       <PresMesSection />
+      <Divider mt={10} orientation='horizontal' border={"2px dashed"} color={"white"}/>
       <Box mt={10}> 
         <Program />
       </Box>
+      <Divider mt={10} orientation='horizontal' border={"2px dashed"} color={"white"}/>
       <Box mt={10}> 
         <Society />
       </Box>
@@ -163,7 +166,7 @@ const Home: NextPage = () => {
           flexDirection="column"
           _hover={{color: "orange.200"}}
         >
-          <Heading size="2xl"> Register now! </Heading>
+          <Heading size={["lg", "2xl"]}> Register now! </Heading>
         </Center>
       </Link>
     </Layout>

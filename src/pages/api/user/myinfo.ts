@@ -18,7 +18,11 @@ const makeUpdate = async (req: NextApiRequest): Promise<Data|{}> => {
     }
   }
 
-  let result = await updateUser(user._id, updator)
+  try {
+    let result = await updateUser(user._id, updator)
+  } catch(e) { 
+    console.log("error in updating")//, e)
+  } 
   return {}
 }
 

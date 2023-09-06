@@ -8,7 +8,7 @@ export type Schedule = {
 
 export const schedules: Schedule[][] = [
   [
-    { time: "13.00 onwards", title: "Arrival and Checkin", venue: "Hotel", clothes: "Casual"}
+    { time: "13.00 onwards", title: "Checkin", venue: "Hotel", clothes: "Casual"}
   ], [
     { time: "from 6.30", title: "Breakfast", venue: "Hotel", clothes: "Uniform / Formal"},
     {
