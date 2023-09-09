@@ -22,8 +22,8 @@ export const SelectQuestion = <Tname extends string>({
   disabled, field, label, choices, submit, width, number, errors, required, onChange
 }: SelectQuestionProps<Tname>) => {
   return (
-    <Box>
-      <FormLabel mt={3}> {label} : </FormLabel>
+    <Box w={"100%"}>
+      <FormLabel mt={2}> {label} : </FormLabel>
       <Select {...field} isDisabled={disabled} onChange={onChange} w={width} placeholder={(required?'* ':'') + (label || "Select...")}>
         {choices.map((choice, ind) => (
           <option key={ind} value={choice.value}>{choice.label}</option>

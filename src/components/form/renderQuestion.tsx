@@ -85,12 +85,19 @@ interface RenderGroupedQuestionsProps {
   display: ResponsiveValue<'none'|'flex'>
   disabled: boolean
   shouldSubmitOnChange: boolean
+  width?: ResponsiveValue<number | string>
 }
 export const RenderGroupedQuestion = (
-  {questions, submit, errors, control, groupedDirection, display, disabled, shouldSubmitOnChange}:RenderGroupedQuestionsProps
+  {questions, submit, errors, control, groupedDirection, display, disabled, shouldSubmitOnChange, width}:RenderGroupedQuestionsProps
 ):JSX.Element => {
   return (
-      <Flex position="relative" direction={groupedDirection} display={display} justifyContent={'space-between'} w="100%">
+      <Flex 
+        position="relative"
+        direction={groupedDirection} 
+        display={display} 
+        justifyContent={'space-between'}
+        w={width ? width : "100%"}
+      >
         {questions.map((question, ind) => {
           if (question.type == 'group') return (
             <RenderGroupedQuestion
@@ -103,6 +110,7 @@ export const RenderGroupedQuestion = (
               display={question.display}
               disabled={disabled}
               shouldSubmitOnChange={shouldSubmitOnChange}
+              width={question.width}
             />
           )
           if (question.type == 'decoration') return (

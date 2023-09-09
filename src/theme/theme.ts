@@ -17,20 +17,20 @@ const breakpoints = {
 }
 
  
-const pixelBoy = localFont({
-  src: './pixelboy.woff2',
-  display: 'swap',
-})
-
-// const fonts = {
-//   heading: `'Silkscreen', sans-serif`, 
-//   body: `'Chakra Petch', sans-serif`
-// }
+// const pixelBoy = localFont({
+  // src: './pixelboy.woff2',
+  // display: 'swap',
+// })
 
 const fonts = {
-  heading: pixelBoy.style.fontFamily, 
+  heading: `'Silkscreen', sans-serif`, 
   body: `'Chakra Petch', sans-serif`
 }
+
+// const fonts = {
+//   heading: pixelBoy.style.fontFamily, 
+//   body: `'Chakra Petch', sans-serif`
+// }
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',

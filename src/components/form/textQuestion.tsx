@@ -53,7 +53,7 @@ export const TextQuestion = <Tname extends string>({
   )
   return (
     <NumberLabel number={number}>
-      <FormControl isInvalid={errors[field.name]?true:false}>
+      <FormControl mt={2} isInvalid={errors[field.name]?true:false}>
         <FormLabel style={{whiteSpace: 'pre-wrap'}}>{(required?'* ':'')}{label} :</FormLabel>
         {img && (
           <Center>

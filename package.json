@@ -30,6 +30,7 @@
     "react-hook-form": "^7.45.4",
     "react-icons": "^4.10.1",
     "react-pixelate": "^0.0.1",
+    "react-select": "^5.7.4",
     "swr": "^2.2.1"
   },
   "devDependencies": {

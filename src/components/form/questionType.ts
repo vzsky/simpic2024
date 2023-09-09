@@ -42,6 +42,7 @@ export interface Decoration {
 export interface GroupedQuestions {
   type: 'group',
   groupedDirection: ResponsiveValue<'row'|'column'|'initial'|'inherit'>,
+  width?: ResponsiveValue<number|string>,
   questions: Questions,
   display: ResponsiveValue<'none'|'flex'>
 }

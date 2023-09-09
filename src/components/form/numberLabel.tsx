@@ -7,7 +7,7 @@ type NumberLabelProps = {
 };
 export const NumberLabel = ({children, number}:NumberLabelProps) => {
   if (!number) return (
-    <Box mt={5} w={"100%"}>
+    <Box w={"100%"}>
       {children}
     </Box>
   )

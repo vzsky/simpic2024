@@ -32,7 +32,7 @@ export const ChoiceQuestion = <Tname extends string>({
 
   const group = getRootProps()
   return (
-    <Box mt={5}>
+    <Box mt={2}>
       <NumberLabel number={number}>
         <FormLabel style={{whiteSpace: 'pre-wrap'}}>
           {(required?'* ':'')}{label}
@@ -60,7 +60,7 @@ export const ChoiceQuestion = <Tname extends string>({
           {choices.map((choice)=>{
             const radio = getRadioProps({ value:choice.value })
             return (
-              <Box mt={2} key={choice.value}>
+              <Box mt={1} key={choice.value}>
                 <RadioCard {...radio} isDisabled={disabled} direction={direction}> 
                   <Box>
                     {
