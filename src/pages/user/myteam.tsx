@@ -5,6 +5,7 @@ import useSWR from "swr";
 import { fetcher, httpReq } from "../../helper/client";
 import { ITeam } from "../../database/team.model";
 import { teamName } from "../../helper/dbInterface";
+import Link from "next/link";
 
 const MyTeam: NextPage = () => {
   const { data, mutate, error } = useSWR("/api/user/myteam", fetcher)
@@ -19,7 +20,7 @@ const MyTeam: NextPage = () => {
           <Box key={ind}> 
             <Heading> Team {ind+1} </Heading>
             <Text> Team {teamName(team)} </Text>
-            <Button> Edit Team </Button> 
+            <Link href={`/user/team/${ind}`}> <Button> Edit Team </Button> </Link>
             <Button onClick={async () => {
               await httpReq("/api/user/myteam", "DELETE", { id: team._id }); 
               await mutate()}

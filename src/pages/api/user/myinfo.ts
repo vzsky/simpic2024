@@ -1,8 +1,8 @@
-import Joi from "joi";
 import { makeFormHandler } from "../../../components/form/formApi";
 import { UserInfo } from "../../../database/userinfo";
 import { getUserFromRequest, updateUser } from "../../../helper/dbQuery";
 import { NextApiRequest } from "next";
+import { UserInfoJOIS, getDefUserInfo, updateUserInfo } from "../../../helper/form/userinfo.api";
 
 type Data = UserInfo
 
@@ -12,28 +12,21 @@ const makeUpdate = async (req: NextApiRequest): Promise<Data|{}> => {
 
   let updator: object = { 
     $set: {
-      ["userinfo"]: {
-        ...updateValue,
-      }
+      ["userinfo"]: updateUserInfo(updateValue)
     }
   }
 
-  try {
-    let result = await updateUser(user._id, updator)
-  } catch(e) { 
-    console.log("error in updating")//, e)
-  } 
+  let result = await updateUser(user._id, updator)
   return {}
 }
 
-const getDefaultValue = async (req: NextApiRequest): Promise<Data> => {
+const getDefaultValue = async (req: NextApiRequest) => {
   const user = await getUserFromRequest(req)
-  let userinfo = user.userinfo
-  return userinfo
+  if (user.userinfo == undefined) return {}
+  let userinfo = (user.userinfo as any).toObject() as UserInfo
+  return getDefUserInfo(userinfo)
 }
 
-const schema = Joi.object().unknown(true)
-
-const handler = makeFormHandler({ schema, getDefaultValue, makeUpdate })
+const handler = makeFormHandler({ schema: UserInfoJOIS, getDefaultValue, makeUpdate })
 
 export default handler

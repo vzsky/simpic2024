@@ -4,6 +4,7 @@ import Navbar from './nav/navbar'
 import Footer from './footer'
 import { AnimatePresence, LayoutGroup } from 'framer-motion'
 import { MotionBox } from './motionFactory'
+import Head from 'next/head'
 
 type Props = {
   children: ReactNode
@@ -14,6 +15,9 @@ const Layout = ({children, footer = true}: Props) => {
   // const [blue, orange] = useToken('colors', ['blue.990', 'orange.900'])
   return (
     <LayoutGroup>
+      <Head>
+        <title> SIMPIC 2024 </title>
+      </Head>
       <Box
         overflow="hidden" 
         bgGradient={"linear(to-tr, blue.990, orange.900)"}

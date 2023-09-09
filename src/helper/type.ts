@@ -1,3 +1,5 @@
+import { emailRegex } from "./validate"
+
 export type Role = "user"|"admin"
 export type ImageProps = {
   src: string,
@@ -6,7 +8,7 @@ export type ImageProps = {
   height?: number | number[]
 }
 export type Choice = {
-  value:string, 
+  value:any, 
   label?:string, 
   image?: ImageProps
 }
@@ -44,9 +46,8 @@ export const isArray = (data: unknown): data is unknown[] =>
 export const isBoolean = (data: unknown): data is boolean =>
   data == 0 || data == 1
 
-export const isEmail = (data: unknown): data is string => {
-  const email: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
-  return isString(data) && email.test(data)
+export const isEmail = (data: unknown): data is string => { 
+  return isString(data) && emailRegex.test(data)
 }
 
 export const toOptObject  = isToOption(isObject)

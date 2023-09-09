@@ -13,7 +13,6 @@ type QuestionProp = {
 }
 
 const Question = ({question, ind, open, onClick}: QuestionProp) => {
-  console.log(ind)
   return (
     <MotionBox
       m={2}

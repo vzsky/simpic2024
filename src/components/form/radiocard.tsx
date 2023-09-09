@@ -11,8 +11,8 @@ export const RadioCard = (props:RadioCardProps) => {
     props.direction === undefined ? undefined : props.direction.map(flip)
   return (
     <Center flexDirection={direction}>
-      <Radio colorScheme="brand" {...props}> </Radio>
-      <Text> {props.children}  </Text>
+      <Radio colorScheme="orange" {...props}> </Radio>
+      {props.children}
     </Center>
   )
 }

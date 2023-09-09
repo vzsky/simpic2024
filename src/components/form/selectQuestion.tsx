@@ -5,7 +5,7 @@ import { SubmitFunction } from "./genericForm";
 
 export interface GenericSelectQuestion {
   label: string
-  choices: {label: string, value:string}[]
+  choices: {label: string, value:any}[]
   width?: number|string|(number|string)[]
   number?: number
   required?: boolean

@@ -34,6 +34,15 @@ const Home: NextPage = () => {
           > 
             My Team
           </TiltedBox>
+
+          <TiltedBox 
+            size={[s, null, m]} 
+            style={[position(0, 0), null, position(-m, 2*m-60)]}
+            color="white"
+            href="/user/status"
+          > 
+            Status
+          </TiltedBox>
         </Flex>
       </Box>
     </Layout>

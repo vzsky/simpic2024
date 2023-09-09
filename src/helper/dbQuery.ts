@@ -22,6 +22,12 @@ export const updateUser = async (id:Types.ObjectId, update:Object) => {
   return result
 }
 
+export const updateTeam = async (id:Types.ObjectId, update:Object) => {
+  await connectMongoose()
+  const result = await TeamModel.updateOne({_id:id}, update, { runValidators: true })
+  return result
+}
+
 export const queryUser = async (id:Types.ObjectId): Promise<IUser> => {
   await connectMongoose()
   const user = await UserModel.findOne({_id:id})
@@ -32,6 +38,11 @@ export const queryTeam = async (id:Types.ObjectId): Promise<ITeam> => {
   await connectMongoose()
   const team = await TeamModel.findOne({_id:id})
   return team
+}
+
+export const deleteTeam = async (id:Types.ObjectId): Promise<void> => {
+  await connectMongoose()
+  await TeamModel.deleteOne({_id: id})
 }
 
 export const getUserFromRequest = async (req: NextApiRequest) => {

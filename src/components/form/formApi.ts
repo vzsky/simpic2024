@@ -2,6 +2,7 @@ import Joi from 'joi'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { REGISTRATION_CLOSED } from '../../settings'
 import { isString } from '../../helper/type'
+import { tryServe } from '../../helper/api'
 
 export interface makeFormHandlerProps<Data> {
   getDefaultValue: (req: NextApiRequest) => Promise<Data>
@@ -38,7 +39,7 @@ export const makeFormHandler = <Data>({
   }
 
   // the type must contain additional data, and might or might not contain data
-  return async (
+  return tryServe(async (
     req: NextApiRequest,
     res: NextApiResponse<Data|{}>
   ) => {
@@ -53,17 +54,17 @@ export const makeFormHandler = <Data>({
       if(REGISTRATION_CLOSED) throw "registration closed"
       const formError = await validateData(req.body)
       if (formError) return res.status(400).json(formError)
-      let document = await makeUpdate(req)
-      return res.status(200).json(document)
-    }
-    if (req.method == "GET") {
       try {
-        const defaultValue = await getDefaultValue(req)
-        return res.status(200).json(defaultValue)
-      } catch (error) {
-        throw "failed to get default values"
+        let document = await makeUpdate(req)
+        return res.status(200).json(document)
+      } catch (err) {
+        return res.status(400).json({})
       }
     }
+    if (req.method == "GET") {
+      const defaultValue = await getDefaultValue(req)
+      return res.status(200).json(defaultValue)
+    }
     throw "method not accepted"
-  }
+  })
 }

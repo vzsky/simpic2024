@@ -14,6 +14,8 @@ const SignIn = () => {
 
   return (
     <Layout>
+      <Heading size={["lg", "xl"]}> Not yet opened for registration </Heading>
+
       <Heading size={["lg", "xl"]}> No need for password </Heading>
       <Heading size={["sm", "md"]} mt={2}> Sign up or Log in with your email </Heading>
       

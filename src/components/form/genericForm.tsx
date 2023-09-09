@@ -85,7 +85,10 @@ const GenericForm = ({url, renderForm, defaultValues, preSubmit}: Props) => {
   }, [reset, data]);
 
   // Handle errors + loading state
-  if (error) return <Error />
+  if (error) {
+    console.log(error)
+    return <Error />
+  }
 
   // render the form
   return <form>

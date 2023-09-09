@@ -13,7 +13,7 @@ export const tryServe =
       await func(req, res)
       return
     } catch (e) {
-      console.log(e)
+      console.log('error is ', e)
       if (isString(e)) return res.status(500).json({ error: e })
       return res.status(500).json({ error: 'internal error' })
     }

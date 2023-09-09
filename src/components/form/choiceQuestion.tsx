@@ -1,6 +1,5 @@
 import { Box, FormLabel, Text, useRadioGroup, Flex, Center } from "@chakra-ui/react";
 import { ControllerRenderProps, FieldValues } from "react-hook-form";
-import { submitOnChange } from "../../helper/client";
 import { SubmitFunction } from "./genericForm";
 import { RadioCard } from './radiocard'
 import { Choices, ImageProps } from "../../helper/type";
@@ -26,10 +25,9 @@ interface ChoiceQuestionProps<Tname extends string> extends GenericChoiceQuestio
 export const ChoiceQuestion = <Tname extends string>({
   disabled, field, label, choices, submit, direction, wrap, justify, number, img, required, onChange
 }: ChoiceQuestionProps<Tname>) => {
-  
 
   const { getRootProps, getRadioProps } = useRadioGroup({
-    ...field, onChange: onChange
+    ...field
   })
 
   const group = getRootProps()
