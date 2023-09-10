@@ -79,9 +79,7 @@ const Welcome = () => {
     return data.user.email
   }
   if (status == "authenticated" && data && data.user) return (
-    <Center>
-      <Text ml={0} mt={0} fontSize={"13"}> Welcome, {getName(data)} </Text>
-    </Center>
+    <Text ml={5} mt={0} fontSize={["10", "13"]}> Welcome, {getName(data)} </Text>
   )
   return <> </>
 }
@@ -111,7 +109,7 @@ const Navbar = () => {
               <Image src={"/logo.png"} alt={''} width={50} height={50} />
             </Link>
             <Link href='/'>
-              <Heading ml={[1, 2, 5]} fontSize={[30]}>
+              <Heading whiteSpace={"pre"} ml={[1, 2, 5]} fontSize={[23, 23, 23, 30]}>
                 SIMPIC 2024
               </Heading>
               <Welcome />

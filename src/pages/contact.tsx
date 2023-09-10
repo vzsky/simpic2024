@@ -20,8 +20,8 @@ const Contact: NextPage = () => {
           <Image src="/logo.png" alt="logo" width={["100px", "120px", "180px"]} height={["100px", "120px", "180px"]} />
           <Box mt={[5, 0]} ml={[0, 5]}> 
             <Heading size="xl"> SIMPIC 2024 </Heading>  
-            <Heading size="sm"> Siriraj International Medical Microbiology, Parasitology, and Immunology Competition </Heading>  
-            <Text textAlign="justify">As a prestigious and globally recognized event, we take immense pride in helding space and opportunities that bring together brilliant minds in the fields of microbiology, parasitology, and immunology from all around the world.</Text>  
+            <Heading mt={2} size={["xs", "sm"]}> Siriraj International Medical Microbiology, Parasitology, and Immunology Competition </Heading>  
+            <Text mt={5} textAlign="justify"> As a prestigious and globally recognized event, we take immense pride in helding space and opportunities that bring together brilliant minds in the fields of microbiology, parasitology, and immunology from all around the world.</Text>  
           </Box> 
         </Flex>
         <Heading mt={10} size="xl"> Leave a Message </Heading>   

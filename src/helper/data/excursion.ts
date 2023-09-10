@@ -7,6 +7,13 @@ export type Excursion = {
   }[]
 }[]
 
+export const selectExcursionRoute = [
+  {value: '1', label: "Route 1"},
+  {value: '2', label: "Route 2"}, 
+  {value: '3', label: "Route 3"}, 
+  {value: '4', label: "Route 4"}
+]
+
 export const excursion: Excursion = [
   { name: "Heritage of Rattanakosin", places: [
     { location: "Bangkok National Museum", 

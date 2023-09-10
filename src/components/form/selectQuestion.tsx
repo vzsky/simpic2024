@@ -1,4 +1,4 @@
-import { Box, FormErrorMessage, FormLabel, Select } from "@chakra-ui/react";
+import { Box, FormControl, FormErrorMessage, FormLabel, Select } from "@chakra-ui/react";
 import { ControllerRenderProps, FieldValues } from "react-hook-form";
 import { submitOnChange } from "../../helper/client";
 import { SubmitFunction } from "./genericForm";
@@ -23,13 +23,21 @@ export const SelectQuestion = <Tname extends string>({
 }: SelectQuestionProps<Tname>) => {
   return (
     <Box w={"100%"}>
-      <FormLabel mt={2}> {label} : </FormLabel>
-      <Select {...field} isDisabled={disabled} onChange={onChange} w={width} placeholder={(required?'* ':'') + (label || "Select...")}>
-        {choices.map((choice, ind) => (
-          <option key={ind} value={choice.value}>{choice.label}</option>
-        ))}
-      </Select>
-      <FormErrorMessage>{errors[field.name]?.message}</FormErrorMessage>
+      <FormControl isInvalid={errors[field.name]?.message}>
+        <FormLabel mt={2}> {label} : </FormLabel>
+        <Select 
+          {...field} 
+          isDisabled={disabled} 
+          onChange={onChange}
+          w={width}
+          placeholder={(required?'* ':'') + (label || "Select...")}
+        >
+          {choices.map((choice, ind) => (
+            <option key={ind} value={choice.value}>{choice.label}</option>
+          ))}
+        </Select>
+        <FormErrorMessage>{errors[field.name]?.message}</FormErrorMessage>
+      </FormControl>
     </Box>
   )
 }

@@ -31,28 +31,29 @@ const colourStyles: StylesConfig<string> = {
 
 
 export const questions: Questions = [
+  { type: 'decoration', Render: () => (<Text mt={5} size={['sm']}> Fields marked * is required </Text>)},
   { type: 'decoration', Render: () => (<Heading mt={5} size={['md']}> Part 1: Personal Information </Heading>)},
   { type: 'group', display: 'flex', groupedDirection: ['column', 'column', 'column', 'row'], questions: [
     { type: 'group', width: ['100%', null, null, '300%'], display: 'flex', groupedDirection: ['column', 'column', 'row'], questions: [
-      { type: 'text', name: 'fname', label: 'First name', placeholder: "John", width: ["100%"] },
-      { type: 'text', name: 'lname', label: 'Last name', placeholder: "Smith", width: ["100%"]},
+      { type: 'text', name: 'fname', label: 'First name', placeholder: "John", width: ["100%"], required: true },
+      { type: 'text', name: 'lname', label: 'Last name', placeholder: "Smith", width: ["100%"], required: true },
     ]},
     { type: 'text', name: 'nname', label: 'Nickname', width: ["100%"]},
   ]}, 
   { type: 'group', display: 'flex', groupedDirection: ['column', 'column', 'row'], questions: [
     { type: 'group', width: ["100%", "100%", "200%"], display: 'flex', groupedDirection: ['column', 'row'], questions: [
-      { type: 'text', name: 'nationality', label: 'Nationality', width: ["100%"]},
-      { type: 'text', name: 'natId', label: 'Thai ID / Passport ID', width: ["100%"]},
+      { type: 'text', name: 'nationality', label: 'Nationality', width: ["100%"], required: true},
+      { type: 'text', name: 'natId', label: 'Thai ID / Passport ID', width: ["100%"], required: true},
     ]},
-    { type: 'text', name: 'birthday', label: "Birthday", placeholder: "28/04/2003", width: ["100%"] },
+    { type: 'text', name: 'birthday', label: "Birthday", placeholder: "28/04/2003", width: ["100%"], required: true},
   ]},
   { type: 'group', display: 'flex', groupedDirection: ['column', 'column', 'row'], questions: [
     { type: 'group', width: ['100%', '100%', '200%'], display: 'flex', groupedDirection: ['column', 'row'], questions: [
-      { type: 'select', name: 'sex', label: "Sex", width: ["100%"], 
+      { type: 'select', name: 'sex', label: "Sex", width: ["100%"], required: true, 
         choices: [{ label: "Male", value: "M" }, { label: "Female", value: "F" }]},
       { type: 'text', name: 'gender', label: "Gender", width: ["100%"] },
     ]},
-    { type: 'select', name: 'shirtSize', label: "SIMPIC T-Shirt Size", width: ["100%"], 
+    { type: 'select', name: 'shirtSize', label: "SIMPIC T-Shirt Size", width: ["100%"], required: true,
       choices: [
         { value: "SSS", label: "SSS (Length: 24, Width: 34)" }, 
         { value: "SS", label: "SS (Length: 25, Width: 36)" }, 
@@ -74,9 +75,9 @@ export const questions: Questions = [
   { type: 'text', name: 'relCeremony', label: 'religious ceremony (e.g. Islamic Prayer Times. Please write clearly)', width: ["100%"]},
   { type: 'text', name: 'other', label: 'other', width: ["100%"]},
   { type: 'decoration', Render: () => (<Heading mt={5} size={['md']}> Part 2: Contact </Heading>)},
-  { type: 'text', name: 'email', label: 'email', width: ["100%"]},
+  { type: 'text', name: 'email', label: 'email', width: ["100%"], required: true},
 
-  { type: 'group', display: ['flex', 'flex', 'none'], groupedDirection: ['row'], questions: [
+  { type: 'group', display: ['flex', 'flex', 'none'], groupedDirection: ['column'], questions: [
     { type: 'group', display: 'flex', groupedDirection: ['column', 'row'], questions: [
       { type: 'text', name: 'phone', label: 'phone', width: ["100%"]},
       { type: 'text', name: 'telegram', label: 'telegram', width: ["100%"]},
@@ -104,20 +105,20 @@ export const questions: Questions = [
   ]},
 
   { type: 'group', display: 'flex', groupedDirection: ['column', 'column', 'row'], questions: [
-    { type: 'text', name: 'emergencyName', label: 'Contact for Emergency'},
-    { type: 'text', name: 'emergencyPhone', label: 'Phone Number for Emergency'},
+    { type: 'text', name: 'emergencyName', label: 'Contact for Emergency', required: true},
+    { type: 'text', name: 'emergencyPhone', label: 'Phone Number for Emergency', required: true},
   ]},
   { type: 'decoration', Render: () => (<Heading mt={5} size={['md']}> Part 3: Medical Information </Heading>)},
-  { type: 'text', name: 'medCond', label: 'medical condition', width: ["100%"]}, 
-  { type: 'text', name: 'medRequire', label: 'medication and medical requirements', width: ["100%"]}, 
-  { type: 'text', name: 'allergy', label: 'allergy', width: ["100%"]},
+  { type: 'text', name: 'medCond', label: 'medical condition', width: ["100%"], required: true}, 
+  { type: 'text', name: 'medRequire', label: 'medication and medical requirements', width: ["100%"], required: true}, 
+  { type: 'text', name: 'allergy', label: 'allergy', width: ["100%"], required: true},
   
-  { type: 'choice', name: 'vegan', label: 'vegan or vegetarian', choices: [{ label: "Yes", value: 'T' },{ label: "No", value: 'F' }]},
+  { type: 'choice', name: 'vegan', label: 'vegan or vegetarian', choices: [{ label: "Yes", value: 'T' },{ label: "No", value: 'F' }] , required: true},
   { type: 'custom', name: 'dietary', Render: ({ field, onChange }) => {
     let defaultValue = options.filter((opt)=>(opt.value == field.value))[0]?.label || field.value
     return (
       <Box mt={5} w={"100%"}>
-        <Text mb={2}> dietary limitation: </Text>
+        <Text mb={2}> * dietary limitation: </Text>
         <Creatable 
           name={field.name}
           placeholder={defaultValue || "select or type"}
@@ -128,15 +129,15 @@ export const questions: Questions = [
       </Box>
     )
   }},  
-  { type: 'choice', name: 'seasick', label: 'experienced seasick', 
+  { type: 'choice', name: 'seasick', label: 'experienced seasick', required: true,
     choices: [{ label: "Yes", value: 'T' },{ label: "No", value: 'F' }]},
-  { type: 'choice', name: 'carsick', label: 'experienced carsick', 
+  { type: 'choice', name: 'carsick', label: 'experienced carsick', required: true, 
     choices: [{ label: "Yes", value: 'T' },{ label: "No", value: 'F' }]},
  
   { type: 'decoration', Render: () => (<Heading mt={5} size={['md']}> Part 4: Agreements </Heading>) },
   { type: 'custom', name: "rAndR", Render: ({ field, onChange }) => (
     <Flex w={"100%"}>
-      <Text> I agree to the rules and regulations </Text>
+      <Text> * I agree to the rules and regulations </Text>
       <Checkbox
         mt={1}
         mr={2}
@@ -151,7 +152,7 @@ export const questions: Questions = [
   { type: 'custom', name: "tAndC", Render: ({ field, onChange }) => (
     <Flex w={"100%"}>
       {field.value}
-      <Text> I agree to the terms and conditions </Text>
+      <Text> * I agree to the terms and conditions </Text>
       <Checkbox
         mt={1}
         mr={2}

@@ -41,8 +41,6 @@ export type UserInfo = Partial<{
   relCeremony: string 
   other: string
 
-  excursion: 0 | 1 | 2 | 3 
-
   rAndR: boolean
   tAndC: boolean
 }>
@@ -84,8 +82,6 @@ export const UserInfoSchema = new Schema<UserInfo>({
   religion: OptString, 
   relCeremony: OptString, 
   other: OptString, 
-
-  excursion: { type: Number, required: false, min: 0, max: 3}, 
 
   rAndR: OptBoolean,
   tAndC: OptBoolean

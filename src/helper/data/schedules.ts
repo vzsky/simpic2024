@@ -1,3 +1,7 @@
+export const selectCheckin = [
+  { value: '17', label: '17 Jan 2024' },   
+  { value: '18', label: '18 Jan 2024' }, 
+]
 
 export type Schedule = {
   time: string 
