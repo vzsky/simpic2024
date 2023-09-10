@@ -12,7 +12,7 @@ import { MotionBox } from "../../components/motionFactory";
 const TeamBox = ({ind, team, mutate}: any) => (
   <Center>
     <Link href={`/user/team/${ind}`}>
-      <MotionBox whileHover={{ scale: 1.02 }} w={"500px"} border={"2px dashed"} bg={"dark.600"} mx={5} p={2}>
+      <MotionBox whileHover={{ scale: 1.02 }} w={["200px", "350px", "500px"]} border={"2px dashed"} bg={"dark.600"} mx={5} p={2}>
         <Heading> Team {ind+1} </Heading>
         <Text ml={3}> {teamName(team)} </Text>
       </MotionBox>
