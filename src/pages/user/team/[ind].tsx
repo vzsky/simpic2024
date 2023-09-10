@@ -3,7 +3,7 @@ import Layout from "../../../components/layout";
 import { useRouter } from "next/router";
 import Form from "../../../components/form/form";
 import { questions as userinfoQuestions } from "../../../helper/form/userinfo.question";
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Center, Flex } from "@chakra-ui/react";
 import { useState } from "react";
 import { Questions } from "../../../components/form/questionType";
 
@@ -43,6 +43,7 @@ const MyTeam: NextPage = () => {
         <Button size={["sm", null, "md"]} m={1} variant={page==3?"orange":"green"} onClick={() => setPage(3)}> Team Info </Button>
       </Flex>
       <Form url={forms[page].url} questions={forms[page].questions}/>
+      <Center mt={5} w="100%"> <Button onClick={router.reload}> Submit </Button> </Center>
     </Layout>
   )
 }
