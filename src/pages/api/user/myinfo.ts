@@ -10,6 +10,8 @@ const makeUpdate = async (req: NextApiRequest): Promise<Data|{}> => {
   const user = await getUserFromRequest(req)
   const updateValue = req.body
 
+  console.log(req.body)
+
   let updator: object = { 
     $set: {
       ["userinfo"]: updateUserInfo(updateValue)
@@ -17,6 +19,7 @@ const makeUpdate = async (req: NextApiRequest): Promise<Data|{}> => {
   }
 
   let result = await updateUser(user._id, updator)
+  console.log(result)
   return {}
 }
 

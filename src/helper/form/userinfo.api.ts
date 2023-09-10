@@ -2,9 +2,11 @@ import Joi from "joi"
 import { UserInfo } from "../../database/userinfo"
 import { dateRegex, phoneRegex } from "../validate"
 
-export const toBoolean = (a?: string) => {
+export const toBoolean = (a?: string|boolean) => {
   if (a == "T") return true
   if (a == "F") return false
+  if (a) return true
+  if (!a) return false
 }
 
 export const fromBoolean = (a?: boolean) => {
@@ -35,8 +37,6 @@ export const getDefUserInfo = (userinfo: UserInfo) => (
         vegan: fromBoolean(userinfo.vegan),
         carsick: fromBoolean(userinfo.carsick),
         seasick: fromBoolean(userinfo.seasick),
-        tAndC: fromBoolean(userinfo.tAndC),
-        rAndR: fromBoolean(userinfo.rAndR),
       }
     : { } 
 )
@@ -58,11 +58,11 @@ export const UserInfoJOIS = Joi.object({
   }), 
   sex: Joi.string().valid('M', 'F').allow(''),  
   gender: Joi.string().alphanum().max(50).allow('').messages(m('your gender')),
-  shirtSize: Joi.string().valid('S', 'M', 'L', 'XL', '2XL').allow(''), 
+  shirtSize: Joi.string().valid('SSS', 'SS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL', '6XL', '7XL', '8XL').allow(''), 
 
   email: Joi.string().email().allow('').messages(m('your email')), 
   phone: Joi.string().regex(phoneRegex).allow('').messages({
-    'string.pattern.base': 'your phone number should contains only numbers'
+    'string.pattern.base': 'your phone number should contains country code (+XX) and numbers'
   }), 
 
   telegram: Joi.string().max(50).allow('').messages(m('telegram handle')),  
@@ -73,15 +73,15 @@ export const UserInfoJOIS = Joi.object({
   
   emergencyName: Joi.string().max(50).allow('').messages(m('name')),  
   emergencyPhone: Joi.string().regex(phoneRegex).allow('').messages({
-    'string.pattern.base': 'contact phone number should contains only numbers'
+    'string.pattern.base': 'contact phone number should contains country code (+XX) and numbers'
   }),  
 
   medCond: Joi.string().allow(''),  
   medRequire: Joi.string().allow(''),  
   allergy: Joi.string().allow(''), 
 
-  vegan: Joi.string().valid('T', 'F').allow(''),  
-  dietary: Joi.string().alphanum().allow(''),  
+  vegan: Joi.boolean().valid('T', 'F').allow(''),  
+  // dietary: Joi.string().alphanum().allow(''),  
   seasick: Joi.string().valid('T', 'F').allow(''),  
   carsick: Joi.string().valid('T', 'F').allow(''),  
 
@@ -91,7 +91,4 @@ export const UserInfoJOIS = Joi.object({
 
   excursion: Joi.string().valid("0", "1", "2", "3").allow(''), 
   
-  rAndR: Joi.string().valid('T', 'F').allow(''), 
-  tAndC: Joi.string().valid('T', 'F').allow(''), 
-
 }).unknown(true)

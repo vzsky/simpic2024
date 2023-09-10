@@ -28,7 +28,7 @@ export interface CustomQuestion {
     fieldState?: ControllerFieldState
     formState?: UseFormStateReturn<FieldValues>
     submit?: SubmitFunction
-    onChange?: (_: any) => void
+    onChange: (_: any) => void
     disabled?: boolean,
     errors: {[error: string]: any},
   }) => JSX.Element,

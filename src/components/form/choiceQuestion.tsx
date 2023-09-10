@@ -27,7 +27,7 @@ export const ChoiceQuestion = <Tname extends string>({
 }: ChoiceQuestionProps<Tname>) => {
 
   const { getRootProps, getRadioProps } = useRadioGroup({
-    ...field
+    ...field, onChange: onChange
   })
 
   const group = getRootProps()

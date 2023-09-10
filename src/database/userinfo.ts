@@ -14,7 +14,7 @@ export type UserInfo = Partial<{
   birthday: string
   sex: "M" | "F", 
   gender: string, 
-  shirtSize: "S" | "M" | "L" | "XL" | "2XL"
+  shirtSize: "SSS" | "SS" | "S" | "M" | "L" | "XL" | "2XL" | "3XL" | "4XL" | "5XL" | "6XL" | "7XL" | "8XL"
 
   email: string
   phone: string
@@ -59,7 +59,7 @@ export const UserInfoSchema = new Schema<UserInfo>({
   birthday: { ...OptString, match: dateRegex },
   sex: { ...OptString, enum: ['M', 'F'] },
   gender: OptString, 
-  shirtSize: { ...OptString, enum: ['S', 'M', 'L', "XL", "2XL"] },
+  shirtSize: { ...OptString, enum: ['SSS', 'SS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL', '6XL', '7XL', '8XL'] },
   
   email: { ...OptString, match: emailRegex }, 
   phone: { ...OptString, match: phoneRegex }, 

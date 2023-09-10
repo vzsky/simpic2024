@@ -17,11 +17,11 @@ const colourStyles: StylesConfig<string> = {
     backgroundColor: 'transparent',
     color: 'white'
   }),
-  option: (styles) => {
+  option: (styles, { isSelected }) => {
     return {
       ...styles,
-      color: 'var(--chakra-colors-orange-700)',
-      backgroundColor: '#fff'
+      color: 'var(--chakra-colors-dark-700)',
+      backgroundColor: isSelected ? 'var(--chakra-colors-orange-200)' : 'white', 
     };
   },
   input: (styles) => ({ ...styles, color: 'white' }),
@@ -54,14 +54,25 @@ export const questions: Questions = [
     ]},
     { type: 'select', name: 'shirtSize', label: "SIMPIC T-Shirt Size", width: ["100%"], 
       choices: [
-        { value: "S", label: "S" }, 
-        { value: "M", label: "M" }, 
-        { value: "L", label: "L" }, 
-        { value: "XL", label: "XL" }, 
-        { value: "2XL", label: "2XL" } 
+        { value: "SSS", label: "SSS (Length: 24, Width: 34)" }, 
+        { value: "SS", label: "SS (Length: 25, Width: 36)" }, 
+        { value: "S", label: "S (Length: 26, Width: 38)" }, 
+        { value: "M", label: "M (Length: 27, Width: 40)" }, 
+        { value: "L", label: "L (Length: 28, Width: 42)" }, 
+        { value: "XL", label: "XL (Length: 29, Width: 44)" }, 
+        { value: "2XL", label: "2XL (Length: 30, Width: 46)" }, 
+        { value: "3XL", label: "3XL (Length: 31, Width: 48)" }, 
+        { value: "4XL", label: "4XL (Length: 32, Width: 50)" }, 
+        { value: "5XL", label: "5XL (Length: 33, Width: 52)" }, 
+        { value: "6XL", label: "6XL (Length: 34, Width: 54)" }, 
+        { value: "7XL", label: "7XL (Length: 35, Width: 56)" }, 
+        { value: "8XL", label: "8XL (Length: 36, Width: 58)" }, 
       ]
     },
   ]},
+  { type: 'text', name: 'religion', label: 'religion', width: ["100%"]},
+  { type: 'text', name: 'relCeremony', label: 'religious ceremony (e.g. Islamic Prayer Times. Please write clearly)', width: ["100%"]},
+  { type: 'text', name: 'other', label: 'other', width: ["100%"]},
   { type: 'decoration', Render: () => (<Heading mt={5} size={['md']}> Part 2: Contact </Heading>)},
   { type: 'text', name: 'email', label: 'email', width: ["100%"]},
 
@@ -102,13 +113,21 @@ export const questions: Questions = [
   { type: 'text', name: 'allergy', label: 'allergy', width: ["100%"]},
   
   { type: 'choice', name: 'vegan', label: 'vegan or vegetarian', choices: [{ label: "Yes", value: 'T' },{ label: "No", value: 'F' }]},
-  // { type: 'text', name: 'dietary', label: 'dietary requirements' }, // make this custom
-  { type: 'custom', name: 'dietary', Render: ({ field, onChange }) => (
-    <Box mt={5} w={"100%"}>
-      <Text mb={2}> dietary limitation: </Text>
-      <Creatable placeholder="select or type" isClearable options={options as any} styles={colourStyles} />
-    </Box>
-  )},  
+  { type: 'custom', name: 'dietary', Render: ({ field, onChange }) => {
+    let defaultValue = options.filter((opt)=>(opt.value == field.value))[0]?.label || field.value
+    return (
+      <Box mt={5} w={"100%"}>
+        <Text mb={2}> dietary limitation: </Text>
+        <Creatable 
+          name={field.name}
+          placeholder={defaultValue || "select or type"}
+          isClearable options={options as any} 
+          styles={colourStyles} 
+          onChange={(event: any) => onChange(event ? event.value : null) } 
+        />
+      </Box>
+    )
+  }},  
   { type: 'choice', name: 'seasick', label: 'experienced seasick', 
     choices: [{ label: "Yes", value: 'T' },{ label: "No", value: 'F' }]},
   { type: 'choice', name: 'carsick', label: 'experienced carsick', 
@@ -131,6 +150,7 @@ export const questions: Questions = [
   )},
   { type: 'custom', name: "tAndC", Render: ({ field, onChange }) => (
     <Flex w={"100%"}>
+      {field.value}
       <Text> I agree to the terms and conditions </Text>
       <Checkbox
         mt={1}

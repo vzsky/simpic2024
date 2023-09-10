@@ -80,7 +80,7 @@ const Welcome = () => {
   }
   if (status == "authenticated" && data && data.user) return (
     <Center>
-      <Text ml={2} mt={-2} fontSize={"13"}> Welcome, {getName(data)} </Text>
+      <Text ml={0} mt={0} fontSize={"13"}> Welcome, {getName(data)} </Text>
     </Center>
   )
   return <> </>
@@ -111,9 +111,9 @@ const Navbar = () => {
               <Image src={"/logo.png"} alt={''} width={50} height={50} />
             </Link>
             <Link href='/'>
-              <Text ml={[1, 2, 5]} fontSize={[30]}>
+              <Heading ml={[1, 2, 5]} fontSize={[30]}>
                 SIMPIC 2024
-              </Text>
+              </Heading>
               <Welcome />
             </Link>
           </Flex>
