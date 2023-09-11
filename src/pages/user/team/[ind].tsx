@@ -51,7 +51,7 @@ const Accom = () => (
 
 const teaminfoQuestions: Questions = [
   { type: 'text', name: 'school', label: "School or University Name", required: true },
-  { type: 'text', as: "textarea", name: 'address', label: "School of University Address", require: true },
+  { type: 'text', as: "textarea", name: 'address', label: "School of University Address", required: true },
   { type: 'text', name: 'contactname', label: "Primary Contact Name", required: true },
   { type: 'text', name: 'contactemail', label: "Primary Contact Email", required: true },
   { type: 'decoration', Render: Accom },
