@@ -26,7 +26,7 @@ export const excursion: Excursion = [
       description: "one of the most prestigious temples in Bangkok. Here, witness the giant reclining Buddha and memorable sculptures such as \"Reusi Dat Ton\" and \"Yak Wat Pho.\""
     }
   ]}, 
-  { name: "In Retrospect", 
+  { name: "Hopping Through European Orient", 
     places: [
       { location: "Saranrom Park", 
         description: "the public park that has a beautiful garden and some historical places and monuments, such as Khana Ratsadon's Club or Saranrom Palace. You can leisurely walk, rest at pavilions around the park, or visit these places as mentioned before."
@@ -39,7 +39,7 @@ export const excursion: Excursion = [
       }
     ]
   }, 
-  { name: "The Green lung of Bangkok", 
+  { name: "Green lung of Bangkok", 
     places: [
       { location: "Sri Nakhon Khuean Khan Park and Botanical Garden", 
         description: "many activities are waiting for you. You can wander around, feed the fish, or, most popularly, rent a bike* and ride through lush and shady trails in the park that will make you feel relaxed. And before leaving, don’t forget to check in and take a photo while you’re walking on the bird-view tower!\n \n* Please take note that bike rental is available as an optional service. It's important to be aware that the cost of bike rental will not be included in any fees and will be your responsibility to cover."
@@ -49,7 +49,7 @@ export const excursion: Excursion = [
       }
     ]
   }, 
-  { name: "Art in the heart of town", 
+  { name: "Authentic Thai in Pieces", 
     places: [
       { location: "Chareonkrung street art", 
         description: "Immerse yourself in the dynamic world of street art as our guides take you on a curated tour of Charoenkrung's most captivating murals and urban artworks. Uncover the stories behind the art, the artists, and the messages they convey."
