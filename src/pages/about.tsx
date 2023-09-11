@@ -86,7 +86,7 @@ const HistorySection = () => (
           <Heading size={'md'}> Journeying 'Into a Small World' of Microbiology, Parasitology, and Immunology. </Heading>
           <Center flexDirection={'column'}>
             <Text size={'md'} mt={5}> Be Part of Our SIMPIC this year </Text>
-            <Link href={'/auth/signin'}> <Button variant="light" my={3}> Register Now </Button> </Link>
+            <Link href={'/user'}> <Button variant="light" my={3}> Register Now </Button> </Link>
           </Center>
         </HistoryBox>
       </Center>
