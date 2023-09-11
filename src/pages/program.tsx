@@ -1,4 +1,4 @@
-import { Box, Button, Center, Flex, Heading, Icon, ListItem, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, UnorderedList } from "@chakra-ui/react"
+import { Box, Button, Center, Flex, Heading, Icon, Image, ListItem, Text, UnorderedList } from "@chakra-ui/react"
 import { NextPage } from "next"
 import Layout from "../components/layout"
 import { useState } from "react"
@@ -91,12 +91,6 @@ const Excursion = () => {
 
   return (
     <Box>
-      <Text textAlign={"justify"}>
-After enjoying all of the cultural activities and tiring from the intense competition, get ready to meet the most exciting highlights of SIMPIC 2024 as we embark on a captivating journey to explore numerous tourist attractions, which are deliberately chosen and arranged into four routes to suit your interests. A glimpse of the cultural heritage of Thailand, the history of Thailand in the fresh learning experience and classical architecture, a hidden green oasis with canalside lifestyle on the outskirts of Bangkok, or captivating street art and various galleries.
-<br/><br/>
-It’s your choice! Choose one of these and enjoy your time with friends on this unforgettable trip. <br/> 
-        We are all waiting to welcome you to Thailand.
-      </Text>
 
       <Flex w={"100%"} justifyContent={"center"} alignItems={"center"}>
         <Flex direction={["column", "row"]} w={"100%"} maxW={"500px"} mt={5}>
@@ -114,16 +108,7 @@ It’s your choice! Choose one of these and enjoy your time with friends on this
       <Center w={"100%"}>
         <Flex maxW={"700px"} direction="column" w={"100%"} mt={5}>
           <Heading size={["md", "lg"]}> Route {route+1}: {excursion[route].name} </Heading>
-          <UnorderedList>
-            {excursion[route].places.map((place, ind) => (
-              <ListItem mt={5} key={ind}> 
-                <Heading size={["sm", "md"]}> {place.location} </Heading>
-                <Text whiteSpace={"pre-wrap"} textAlign="justify">
-                  {place.description}
-                </Text>
-              </ListItem>
-            ))}
-          </UnorderedList>
+          <Image mt={5} alt="excursion" src={`/exc/${route+1}.jpg`} /> 
         </Flex> 
       </Center>
     </Box>

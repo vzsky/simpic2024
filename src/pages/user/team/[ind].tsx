@@ -3,18 +3,24 @@ import Layout from "../../../components/layout";
 import { useRouter } from "next/router";
 import Form from "../../../components/form/form";
 import { questions as userinfoQuestions } from "../../../helper/form/userinfo.question";
-import { Box, Button, Center, Flex, Heading, Table, TableCaption, TableContainer, Thead, Tr, Th, Tbody, Td, Text } from "@chakra-ui/react";
+import { 
+  Box, Button, Center, Flex, Heading, Table, TableCaption, TableContainer, Thead, Tr, Th, Tbody, Td, Text, IconButton
+} from "@chakra-ui/react";
 import { useState } from "react";
 import { Questions } from "../../../components/form/questionType";
 import Link from "next/link";
 import { selectExcursionRoute } from "../../../helper/data/excursion";
 import { selectCheckin } from "../../../helper/data/schedules";
+import useSWR from "swr";
+import { TextQuestion } from "../../../components/form/textQuestion";
+import { fetcher } from "../../../helper/client";
+import { RepeatIcon } from "@chakra-ui/icons";
 
 const Accom = () => (
   <Box mt={10}>
     <TableContainer>
       <Table size={"sm"} variant='simple'>
-        <TableCaption color={"white"}> Accomodation Price </TableCaption>
+        <TableCaption color={"white"}> Accommodation Price </TableCaption>
         <Thead>
           <Tr>
             <Th color={"white"} >Rooms, Nights</Th>
@@ -49,15 +55,35 @@ const Accom = () => (
   </Box>
 )
 
-// TODO
-const AccomPrice = ({ teamInd }: any) => {
-  const { data } = useSWR(`/api/user/teaminfo?teamind=${teamInd}`) 
-  let price
+const AccomPrice = () => {
+  const router = useRouter()
+  const teamInd = router.query.ind
+  const { data, mutate } = useSWR(`/api/user/teaminfo?teamind=${teamInd}`, fetcher)
+  console.log(data)
+  let priceNow = (early: number, regular: number) => {
+    let now = new Date()
+    let treshold = new Date("2023-09-19T00:00:00.000+07:00")
+    console.log(now, treshold)
+    if (now < treshold) return early
+    return regular
+  }
 
-  if (data.checkin == '17' && data.room == '2') price = 0
+  if (!data || !data.checkin || !data.room) return <></>
+
+  let price
+  if (data.checkin == '18' && data.room == '2') price = priceNow(749, 849)
+  if (data.checkin == '17' && data.room == '2') price = priceNow(849, 949)
+  if (data.checkin == '18' && data.room == '3') price = priceNow(899, 999)
+  if (data.checkin == '17' && data.room == '3') price = priceNow(1049, 1149)
 
   return (
-    <Text> Accomodation Price: {price} </Text>
+    <Center w={"100%"} flexDirection="column">
+      <Center mt={5}>
+        <Heading size={"md"}> Accommodation Price: {price} </Heading>
+        <IconButton m={2} aria-label="refresh" icon={<RepeatIcon/>} onClick={mutate} />
+      </Center>
+      <Box mt={5} w={"80%"} borderBottom={"2px dashed"} />
+    </Center>
   )
 }
 
@@ -68,7 +94,18 @@ const teaminfoQuestions: Questions = [
   { type: 'text', name: 'contactemail', label: "Primary Contact Email", required: true },
   { type: 'decoration', Render: Accom },
   { type: 'select', name: 'checkin', label: "Check In Date", choices: selectCheckin },
-  { type: 'select', name: 'room', label: "Number of Hotel Rooms", choices: [{ value: "2", label: "2" }, { value: "3", label: "3" }]}, 
+  { type: 'decoration', Render: 
+    () => <Flex mx={2}>
+      <TextQuestion
+        label="Check Out Date"
+        errors={{}}
+        field={{ value: "21 Jan 2024"} as any}
+        disabled
+      /> 
+    </Flex>
+  },
+  { type: 'select', name: 'room', label: "Number of Hotel Rooms (2 persons / room)", choices: [{ value: "2", label: "2" }, { value: "3", label: "3" }]}, 
+  { type: 'decoration', Render: () => <AccomPrice/> },
   { type: 'decoration', Render: () => (
     <Center>
       <Link href={"https://drive.google.com/drive/folders/1OjS5bUUyhfGwjrukGnvgjG7X9xfNURc1"}>

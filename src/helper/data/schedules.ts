@@ -12,7 +12,7 @@ export type Schedule = {
 
 export const schedules: Schedule[][] = [
   [
-    { time: "13.00 onwards", title: "Checkin", venue: "Hotel", clothes: "Casual"}
+    { time: "13.00 onwards", title: "Check-in", venue: "Hotel", clothes: "Casual"}
   ], [
     { time: "from 6.30", title: "Breakfast", venue: "Hotel", clothes: "Uniform / Formal"},
     {
@@ -46,7 +46,7 @@ export const schedules: Schedule[][] = [
       clothes: "Uniform / Formal"
     },
     {
-      time: "15:00 - 17:00", 
+      time: "15:00 - 18:00", 
       title: "Cultural Activities", 
       venue: "Rajapaethayalai Auditorium", 
       clothes: "Uniform / Formal"
@@ -81,7 +81,7 @@ export const schedules: Schedule[][] = [
   ], [
     { time: "from 6:30", title: "Breakfast", venue: "Hotel", clothes: "Uniform / Formal \n/ Smart Casual"}, 
     { 
-      time: "9:00 - 12:00", 
+      time: "9:00 - 11:30", 
       title: "Examination: Round 2", 
       venue: "Chulabhorn Conference Room, \nSyamindra Building, 2nd floor", 
       clothes: "Uniform / Formal \n/ Smart Casual"

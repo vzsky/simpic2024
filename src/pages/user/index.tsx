@@ -72,7 +72,7 @@ const Page: NextPage = () => {
             <Button m={2} onClick={async ()=>{
               await httpReq('/api/user/register', "POST", {as: 'observer'})
               await mutate({as: 'observer'})
-            }}> A Observer </Button>
+            }}> An Observer </Button>
           </Flex>
         </Center>
       </Layout>

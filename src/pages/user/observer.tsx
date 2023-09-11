@@ -7,10 +7,19 @@ import { Questions } from "../../components/form/questionType";
 import Link from "next/link";
 import { selectExcursionRoute } from "../../helper/data/excursion";
 import { selectCheckin } from "../../helper/data/schedules";
+import { TextQuestion } from "../../components/form/textQuestion";
 
 const observerQuestions: Questions = [
   { type: 'text', name: 'organization', label: "Organization" },
   { type: 'select', name: 'checkin', label: "Check In Date", choices: selectCheckin },
+  { type: 'decoration', Render: 
+    () => <TextQuestion
+      label="Check Out Date"
+      errors={{}}
+      field={{ value: "20 Jan 2024"} as any}
+      disabled
+    /> 
+  },
   { type: 'decoration', Render: () => (
     <Center>
       <Link href={"https://drive.google.com/drive/folders/1OjS5bUUyhfGwjrukGnvgjG7X9xfNURc1"}>

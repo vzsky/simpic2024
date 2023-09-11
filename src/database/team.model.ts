@@ -9,6 +9,7 @@ export type TeamInfo = Partial<{
   contactemail: string
   checkin: string
   checkout: string
+  room: string
   excursion1: string, 
   excursion2: string, 
   excursion3: string, 
@@ -24,6 +25,7 @@ const TeamInfoSchema = new Schema<TeamInfo>({
   contactemail: {...OptString, match: emailRegex}, 
   checkin: {...OptString }, 
   checkout: {...OptString },
+  room: {...OptString },
   excursion1: { type: String, required: false },  
   excursion2: { type: String, required: false },  
   excursion3: { type: String, required: false },  
