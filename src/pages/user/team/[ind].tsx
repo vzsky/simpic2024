@@ -3,7 +3,7 @@ import Layout from "../../../components/layout";
 import { useRouter } from "next/router";
 import Form from "../../../components/form/form";
 import { questions as userinfoQuestions } from "../../../helper/form/userinfo.question";
-import { Box, Button, Center, Flex, Heading, Table, TableCaption, TableContainer, Thead, Tr, Th, Tbody, Td } from "@chakra-ui/react";
+import { Box, Button, Center, Flex, Heading, Table, TableCaption, TableContainer, Thead, Tr, Th, Tbody, Td, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { Questions } from "../../../components/form/questionType";
 import Link from "next/link";
@@ -39,7 +39,7 @@ const Accom = () => (
             <Td isNumeric>$ 999</Td>
           </Tr>
           <Tr>
-            <Td>4 rooms, 3 nights</Td>
+            <Td>3 rooms, 4 nights</Td>
             <Td isNumeric>$ 1049</Td>
             <Td isNumeric>$ 1149</Td>
           </Tr>
@@ -48,6 +48,18 @@ const Accom = () => (
     </TableContainer>
   </Box>
 )
+
+// TODO
+const AccomPrice = ({ teamInd }: any) => {
+  const { data } = useSWR(`/api/user/teaminfo?teamind=${teamInd}`) 
+  let price
+
+  if (data.checkin == '17' && data.room == '2') price = 0
+
+  return (
+    <Text> Accomodation Price: {price} </Text>
+  )
+}
 
 const teaminfoQuestions: Questions = [
   { type: 'text', name: 'school', label: "School or University Name", required: true },
