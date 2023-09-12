@@ -6,6 +6,8 @@ import { dateRegex, emailRegex, phoneRegex } from "../helper/validate"
 // upload school representative
 
 export type UserInfo = Partial<{
+  submit: Date
+
   fname: string
   lname: string 
   nname: string
@@ -49,6 +51,8 @@ const OptString = { type: String, required: false }
 const OptBoolean = { type: Boolean, required: false }
 
 export const UserInfoSchema = new Schema<UserInfo>({
+  submit: { type: Date, required: false, default: undefined },
+
   fname: OptString, 
   lname: OptString, 
   nname: OptString, 

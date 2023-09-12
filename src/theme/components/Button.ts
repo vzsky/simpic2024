@@ -2,7 +2,10 @@ export const Button = {
   baseStyle: {
     border: '2px dashed',
     borderRadius: 0,
-    boxShadow: 'md'
+    boxShadow: 'md',
+    _disabled: {
+      pointerEvents: "none"
+    }
   },
   variants: {
     link: {

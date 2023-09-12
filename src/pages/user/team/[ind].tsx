@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Form from "../../../components/form/form";
 import { questions as userinfoQuestions } from "../../../helper/form/userinfo.question";
 import { 
-  Box, Button, Center, Flex, Heading, Table, TableCaption, TableContainer, Thead, Tr, Th, Tbody, Td, Text, IconButton
+  Box, Button, Center, Flex, Heading, Table, TableCaption, TableContainer, Thead, Tr, Th, Tbody, Td, Text, IconButton, useDisclosure
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Questions } from "../../../components/form/questionType";
@@ -15,6 +15,10 @@ import useSWR from "swr";
 import { TextQuestion } from "../../../components/form/textQuestion";
 import { fetcher } from "../../../helper/client";
 import { RepeatIcon } from "@chakra-ui/icons";
+import { disallow } from "joi";
+import SubmitModal from "../../../components/modal";
+import { toOptString } from "../../../helper/type";
+import { win32 } from "path";
 
 const Accom = () => (
   <Box mt={10}>
@@ -122,7 +126,12 @@ const teaminfoQuestions: Questions = [
 
 const MyTeam: NextPage = () => {
   const router = useRouter()
-  const teamInd = router.query.ind
+  let { data: submit } = useSWR('/api/user/status', fetcher)
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [ page, setPage ] = useState(0)
+
+  const teamInd = toOptString(router.query.ind)
+  if (!teamInd) return <></>
 
   const forms = [
     { url: `/api/user/teamUserinfo?contestant=1&teamind=${teamInd}}`, 
@@ -139,7 +148,15 @@ const MyTeam: NextPage = () => {
     },
   ]
 
-  const [ page, setPage ] = useState(0)
+  const disabled =  page < 3 
+    ? (submit && submit.teams && submit.teams[teamInd] && submit.teams[teamInd][`contestant${page+1}`] === "submitted")
+    : (submit && submit.teams && submit.teams[teamInd] && submit.teams[teamInd].teaminfo === "submitted")
+    
+
+  const formid = page < 3 
+    ? `team-${teamInd}-${page+1}`
+    : `teaminfo-${teamInd}`
+
   return (
     <Layout>
       <Flex justifyContent="space-evenly" flexWrap={"wrap"}>
@@ -148,8 +165,15 @@ const MyTeam: NextPage = () => {
         <Button size={["sm", null, "md"]} m={1} variant={page==2?"orange":"green"} onClick={() => setPage(2)}> Contestant 3 </Button>
         <Button size={["sm", null, "md"]} m={1} variant={page==3?"orange":"green"} onClick={() => setPage(3)}> Team Info </Button>
       </Flex>
-      <Form url={forms[page].url} questions={forms[page].questions}/>
-      <Center mt={5} w="100%"> <Button onClick={router.reload}> Submit </Button> </Center>
+      <Form url={forms[page].url} questions={forms[page].questions} disabled={disabled}/>
+      <Center mt={5} w="100%"> 
+        <Button isDisabled={disabled} onClick={onOpen}> Submit </Button>
+      </Center>
+      <SubmitModal formid={formid} isOpen={isOpen} onClose={onClose} Header={() => (
+        <Heading> {page < 3 ? `Contestant ${page+1}` : "Team"} Info Submission </Heading>
+      )} Body={() => (
+        <Text> Once submitted, the information cannot be changed. </Text>
+      )}/>
     </Layout>
   )
 }
