@@ -4,7 +4,7 @@ import { NextApiRequest } from "next";
 import { omap, toOptString } from "../../../helper/type";
 import { TeamInfo } from "../../../database/team.model";
 import Joi from "joi";
-import { dateRegex, emailRegex } from "../../../helper/validate";
+import { emailRegex } from "../../../helper/validate";
 
 type Data = TeamInfo
 
@@ -52,6 +52,22 @@ const schema = Joi.object({
     "any.invalid": 'excursion ranking cannot duplicate'
   }),
 }).unknown(true)
+
+export const requiredFields = [
+  "school", "address", "contactname", "contactemail", "checkin", "room", "excursion1", "excursion2", "excursion3", "excursion4"
+] as (keyof TeamInfo)[]
+
+export const isCompleted = (teaminfo: TeamInfo) => {
+  if (!teaminfo) return "not-complete"
+  
+  for (let field of requiredFields) {
+    if (teaminfo[field] === undefined) return "not-complete"
+    if (teaminfo[field] === '')        return "not-complete"
+  }
+
+  if (teaminfo.submit) return "submitted"
+  return "complete"
+}
 
 const handler = makeFormHandler({ schema, getDefaultValue, makeUpdate })
 

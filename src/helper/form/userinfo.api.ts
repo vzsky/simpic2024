@@ -101,7 +101,7 @@ export const requiredFields = [
   "emergencyName", "emergencyPhone", "medCond", "medRequire", "allergy", "vegan", "dietary", 
   "seasick", "carsick", 
   "tAndC", "rAndR"
-] as const// direct messages not marked but required
+] as const // direct messages not marked but required
 
 export const isCompleted = (userinfo?: UserInfo): Status => {
   if (!userinfo) return "not-complete"

@@ -15,10 +15,8 @@ import useSWR from "swr";
 import { TextQuestion } from "../../../components/form/textQuestion";
 import { fetcher } from "../../../helper/client";
 import { RepeatIcon } from "@chakra-ui/icons";
-import { disallow } from "joi";
 import SubmitModal from "../../../components/modal";
 import { toOptString } from "../../../helper/type";
-import { win32 } from "path";
 
 const Accom = () => (
   <Box mt={10}>
@@ -97,7 +95,7 @@ const teaminfoQuestions: Questions = [
   { type: 'text', name: 'contactname', label: "Primary Contact Name", required: true },
   { type: 'text', name: 'contactemail', label: "Primary Contact Email", required: true },
   { type: 'decoration', Render: Accom },
-  { type: 'select', name: 'checkin', label: "Check In Date", choices: selectCheckin },
+  { type: 'select', name: 'checkin', label: "Check In Date", choices: selectCheckin, required: true },
   { type: 'decoration', Render: 
     () => <Flex mx={2}>
       <TextQuestion
@@ -108,7 +106,7 @@ const teaminfoQuestions: Questions = [
       /> 
     </Flex>
   },
-  { type: 'select', name: 'room', label: "Number of Hotel Rooms (2 persons / room)", choices: [{ value: "2", label: "2" }, { value: "3", label: "3" }]}, 
+  { type: 'select', name: 'room', label: "Number of Hotel Rooms (2 persons / room)", choices: [{ value: "2", label: "2" }, { value: "3", label: "3" }], required: true}, 
   { type: 'decoration', Render: () => <AccomPrice/> },
   { type: 'decoration', Render: () => (
     <Center>
@@ -118,10 +116,10 @@ const teaminfoQuestions: Questions = [
       </Link>
     </Center>
   )},
-  { type: 'select', name: 'excursion1', label: "Excursion Preference 1", choices: selectExcursionRoute},
-  { type: 'select', name: 'excursion2', label: "Excursion Preference 2", choices: selectExcursionRoute},
-  { type: 'select', name: 'excursion3', label: "Excursion Preference 3", choices: selectExcursionRoute},
-  { type: 'select', name: 'excursion4', label: "Excursion Preference 4", choices: selectExcursionRoute}, 
+  { type: 'select', name: 'excursion1', label: "Excursion Preference 1", choices: selectExcursionRoute, required: true},
+  { type: 'select', name: 'excursion2', label: "Excursion Preference 2", choices: selectExcursionRoute, required: true},
+  { type: 'select', name: 'excursion3', label: "Excursion Preference 3", choices: selectExcursionRoute, required: true},
+  { type: 'select', name: 'excursion4', label: "Excursion Preference 4", choices: selectExcursionRoute, required: true}, 
 ]
 
 const MyTeam: NextPage = () => {

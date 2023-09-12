@@ -1,14 +1,15 @@
 import { model, models, Schema, Types } from 'mongoose'
 import { UserInfo, UserInfoSchema } from './userinfo'
-import { dateRegex, emailRegex } from '../helper/validate'
+import { emailRegex } from '../helper/validate'
 
 export type TeamInfo = Partial<{
+  submit: Date
+
   school: string
   address: string 
   contactname: string
   contactemail: string
   checkin: string
-  checkout: string
   room: string
   excursion1: string, 
   excursion2: string, 
@@ -19,12 +20,13 @@ export type TeamInfo = Partial<{
 const OptString = { type: String, required: false }
 
 const TeamInfoSchema = new Schema<TeamInfo>({
+  submit: { type: Date, required: false, default: undefined },
+
   school: OptString, 
   address: OptString, 
   contactname: OptString, 
   contactemail: {...OptString, match: emailRegex}, 
   checkin: {...OptString }, 
-  checkout: {...OptString },
   room: {...OptString },
   excursion1: { type: String, required: false },  
   excursion2: { type: String, required: false },  

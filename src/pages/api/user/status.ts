@@ -2,6 +2,8 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { tryServe, withDB } from '../../../helper/api'
 import { getUserFromRequest, queryTeam } from '../../../helper/dbQuery'
 import { isCompleted as userinfoIsCompleted } from '../../../helper/form/userinfo.api'
+import { isCompleted as observerIsCompleted } from './observer'
+import { isCompleted as teaminfoIsCompleted } from './teaminfo'
 
 export type Status = "complete" | "not-complete" | "submitted"
 
@@ -29,10 +31,10 @@ const handler = async (
         contestant1: userinfoIsCompleted(team.contestant1),
         contestant2: userinfoIsCompleted(team.contestant2),
         contestant3: userinfoIsCompleted(team.contestant3),
-        teaminfo: false // TODO
+        teaminfo: teaminfoIsCompleted(team.info)
       }))
 
-    let observer = false // TODO
+    let observer = observerIsCompleted(user.observer)
 
     return res.status(200).json({
       myinfo, 
