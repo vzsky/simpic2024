@@ -4,6 +4,7 @@ import { getUserFromRequest, queryTeam } from '../../../helper/dbQuery'
 import { isCompleted as userinfoIsCompleted } from '../../../helper/form/userinfo.api'
 import { isCompleted as observerIsCompleted } from './observer'
 import { isCompleted as teaminfoIsCompleted } from './teaminfo'
+import { teamName } from '../../../helper/dbInterface'
 
 export type Status = "complete" | "not-complete" | "submitted"
 
@@ -28,6 +29,7 @@ const handler = async (
     let teams = (await Promise.all(
         user.teams.map(queryTeam)
       )).map((team) => ({
+        name: teamName(team),
         contestant1: userinfoIsCompleted(team.contestant1),
         contestant2: userinfoIsCompleted(team.contestant2),
         contestant3: userinfoIsCompleted(team.contestant3),
