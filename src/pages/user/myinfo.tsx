@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Layout from "../../components/layout";
 import Form from "../../components/form/form";
-import { questions } from '../../helper/form/userinfo.question'
+import { preSubmit, questions } from '../../helper/form/userinfo.question'
 import { Button, Center, Heading, Text, useDisclosure } from "@chakra-ui/react";
 import SubmitModal from "../../components/modal";
 import useSWR from 'swr'
@@ -14,7 +14,7 @@ const MyInfo: NextPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <Layout>
-      <Form url={"/api/user/myinfo"} questions={questions} disabled={disabled} />
+      <Form preSubmit={preSubmit} url={"/api/user/myinfo"} questions={questions} disabled={disabled} />
       <Center mt={5} w="100%">
         <Button isDisabled={disabled} onClick={onOpen}> Submit </Button>
       </Center>

@@ -1,5 +1,6 @@
 import { Schema } from "mongoose"
 import { dateRegex, emailRegex, phoneRegex } from "../helper/validate"
+import { FileSchema } from "./file"
 
 // profile picture.
 // upload consent form
@@ -20,6 +21,12 @@ export type UserInfo = Partial<{
 
   email: string
   phone: string
+  
+  picture: {
+    name: string
+    encoding: string
+    time: number
+  }
 
   telegram: string
   line: string
@@ -52,6 +59,8 @@ const OptBoolean = { type: Boolean, required: false }
 
 export const UserInfoSchema = new Schema<UserInfo>({
   submit: { type: Date, required: false, default: undefined },
+
+  picture: FileSchema,
 
   fname: OptString, 
   lname: OptString, 

@@ -38,6 +38,9 @@ const getDefaultValue = async (req: NextApiRequest) => {
   
   const team = await queryTeam(teamid)
   let userinfo = (team as any).toObject()[`contestant${contestant}`] as UserInfo
+
+  console.log(getDefUserInfo(userinfo))
+
   return getDefUserInfo(userinfo)
 }
 

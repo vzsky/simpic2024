@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import Layout from "../../../components/layout";
 import { useRouter } from "next/router";
 import Form from "../../../components/form/form";
-import { questions as userinfoQuestions } from "../../../helper/form/userinfo.question";
+import { preSubmit, questions as userinfoQuestions } from "../../../helper/form/userinfo.question";
 import { 
   Box, Button, Center, Flex, Heading, Table, TableCaption, TableContainer, Thead, Tr, Th, Tbody, Td, Text, IconButton, useDisclosure
 } from "@chakra-ui/react";
@@ -65,7 +65,6 @@ const AccomPrice = () => {
   let priceNow = (early: number, regular: number) => {
     let now = new Date()
     let treshold = new Date("2023-09-19T00:00:00.000+07:00")
-    console.log(now, treshold)
     if (now < treshold) return early
     return regular
   }
@@ -163,7 +162,7 @@ const MyTeam: NextPage = () => {
         <Button size={["sm", null, "md"]} m={1} variant={page==2?"orange":"green"} onClick={() => setPage(2)}> Contestant 3 </Button>
         <Button size={["sm", null, "md"]} m={1} variant={page==3?"orange":"green"} onClick={() => setPage(3)}> Team Info </Button>
       </Flex>
-      <Form url={forms[page].url} questions={forms[page].questions} disabled={disabled}/>
+      <Form preSubmit={preSubmit} url={forms[page].url} questions={forms[page].questions} disabled={disabled}/>
       <Center mt={5} w="100%"> 
         <Button isDisabled={disabled} onClick={onOpen}> Submit </Button>
       </Center>

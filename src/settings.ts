@@ -15,3 +15,6 @@ export const REGISTRATION_CLOSED = false
 //   ].includes(email)
 // }
 export const isAllowedToSignIn = (_: any) => true
+
+export const maxUploadFileSize = 500000
+export const textMaxUploadFileSize = "500 kB"

@@ -56,7 +56,6 @@ const Home: NextPage = () => {
 const Page: NextPage = () => {
   let { data, mutate } = useSWR('/api/user/register', fetcher)
   
-  console.log(data)
   if (!data || !data.as) {
     return (
       <Layout>

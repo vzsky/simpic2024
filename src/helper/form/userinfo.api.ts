@@ -15,10 +15,13 @@ export const fromBoolean = (a?: boolean) => {
   return a ? "T" : "F"
 }
 
+const now = () => ( (new Date()).getTime() )
+
 export const updateUserInfo = (updateValue: any): UserInfo => (
   updateValue 
     ? {
         ...updateValue,
+        picture: updateValue.picture && updateValue.picture.encoding ? { ...updateValue.picture, time: now() } : undefined,
         vegan: toBoolean(updateValue.vegan),
         carsick: toBoolean(updateValue.carsick),
         seasick: toBoolean(updateValue.seasick),
@@ -34,7 +37,8 @@ export const updateUserInfo = (updateValue: any): UserInfo => (
 export const getDefUserInfo = (userinfo: UserInfo) => (
   userinfo  
     ? { 
-        ...userinfo, 
+        ...userinfo,
+        picture: userinfo.picture ? { name: userinfo.picture.name, time: userinfo.picture.time } : undefined,
         vegan: fromBoolean(userinfo.vegan),
         carsick: fromBoolean(userinfo.carsick),
         seasick: fromBoolean(userinfo.seasick),
@@ -99,10 +103,12 @@ export const UserInfoJOIS = Joi.object({
 export const requiredFields = [
   "fname", "lname", "birthday", "nationality", "natId", "sex", "shirtSize", "email", 
   "emergencyName", "emergencyPhone", "medCond", "medRequire", "allergy", "vegan", "dietary", 
-  "seasick", "carsick", 
+  "seasick", "carsick", "picture",
   "tAndC", "rAndR"
 ] as const // direct messages not marked but required
 
+
+// TODO - picture
 export const isCompleted = (userinfo?: UserInfo): Status => {
   if (!userinfo) return "not-complete"
   

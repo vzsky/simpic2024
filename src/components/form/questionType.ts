@@ -4,6 +4,7 @@ import { SubmitFunction } from "./genericForm"
 import { GenericSelectQuestion } from "./selectQuestion"
 import { GenericTextQuestion } from "./textQuestion"
 import { ResponsiveValue } from "@chakra-ui/react"
+import { GenericFileQuestion } from "./fileQuestion"
 
 export interface ChoiceQuestion extends GenericChoiceQuestion {
   type: 'choice'
@@ -17,6 +18,11 @@ export interface TextQuestion extends GenericTextQuestion {
 
 export interface SelectQuestion extends GenericSelectQuestion {
   type: 'select', 
+  name: string
+}
+
+export interface FileQuestion extends GenericFileQuestion {
+  type: 'file', 
   name: string
 }
 
@@ -46,7 +52,7 @@ export interface GroupedQuestions {
   questions: Questions,
   display: ResponsiveValue<'none'|'flex'>
 }
-export type Question = (ChoiceQuestion | TextQuestion | SelectQuestion | CustomQuestion | Decoration) & {
+export type Question = (ChoiceQuestion | TextQuestion | SelectQuestion | FileQuestion | CustomQuestion | Decoration) & {
   required?: boolean
 }
 export type Questions = (Question|GroupedQuestions)[]

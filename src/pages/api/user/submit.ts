@@ -19,6 +19,9 @@ const handler = async (
     return res.status(200).json({})
   }
   if (req.method == "POST") {
+
+    console.log("RECIEVE A POST SUBMIT", req.body)
+
     let user = await getUserFromRequest(req)
     let formid = req.body.formid
 

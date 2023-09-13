@@ -3,6 +3,8 @@ import { Box, Checkbox, Flex, Heading, Text } from "@chakra-ui/react";
 import { StylesConfig } from "react-select";
 import Creatable from 'react-select/creatable';
 import { requiredFields } from "./userinfo.api";
+import { maxUploadFileSize } from "../../settings";
+import { toBase64 } from "../client";
 
 let options  = [
   { value: 'None', label: 'None'},
@@ -42,6 +44,7 @@ export const questions: Questions = [
     ]},
     { type: 'text', name: 'nname', label: 'Nickname', width: ["100%"], required: r('nname')},
   ]}, 
+  { type: 'file', name: 'picture', label: 'Profile Picture', fileTypes: 'image/*', required: r('picture') },
   { type: 'group', display: 'flex', groupedDirection: ['column', 'column', 'row'], questions: [
     { type: 'group', width: ["100%", "100%", "200%"], display: 'flex', groupedDirection: ['column', 'row'], questions: [
       { type: 'text', name: 'nationality', label: 'Nationality', width: ["100%"], required: r('nationality')},
@@ -174,3 +177,20 @@ export const questions: Questions = [
     </Flex>
   )}
 ]
+
+export const preSubmit = async (data:any):Promise<object> => {
+  const picture = data.picture
+  let encoded;
+  if (picture) {
+    if (picture.size < maxUploadFileSize) {
+      encoded = await toBase64(picture)
+    }
+  }
+  return {
+    ...data, 
+    picture: { 
+      encoding: encoded,
+      name: picture?.name
+    },
+  }
+}

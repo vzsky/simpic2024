@@ -1,12 +1,20 @@
 import { model, models, Schema, Types } from 'mongoose'
 import { UserInfo, UserInfoSchema } from './userinfo'
 import { emailRegex } from '../helper/validate'
+import { FileSchema } from './file'
 
 export type TeamInfo = Partial<{
   submit: Date
 
   school: string
   address: string 
+
+  cert: {  
+    name: string
+    encoding: string
+    time: number
+  }
+
   contactname: string
   contactemail: string
   checkin: string
@@ -24,6 +32,9 @@ const TeamInfoSchema = new Schema<TeamInfo>({
 
   school: OptString, 
   address: OptString, 
+
+  cert: FileSchema,
+
   contactname: OptString, 
   contactemail: {...OptString, match: emailRegex}, 
   checkin: {...OptString }, 
