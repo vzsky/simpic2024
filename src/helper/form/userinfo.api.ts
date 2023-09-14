@@ -1,6 +1,7 @@
 import Joi from "joi"
 import { UserInfo } from "../../database/userinfo"
-import { dateRegex, phoneRegex } from "../validate"
+import { dateRegex, emailRegex, phoneRegex } from "../validate"
+import { Status } from "../../pages/api/user/status"
 
 export const toBoolean = (a?: string|boolean) => {
   if (a == "T") return true
@@ -14,10 +15,13 @@ export const fromBoolean = (a?: boolean) => {
   return a ? "T" : "F"
 }
 
+const now = () => ( (new Date()).getTime() )
+
 export const updateUserInfo = (updateValue: any): UserInfo => (
   updateValue 
     ? {
         ...updateValue,
+        picture: updateValue.picture && updateValue.picture.encoding ? { ...updateValue.picture, time: now() } : undefined,
         vegan: toBoolean(updateValue.vegan),
         carsick: toBoolean(updateValue.carsick),
         seasick: toBoolean(updateValue.seasick),
@@ -33,7 +37,8 @@ export const updateUserInfo = (updateValue: any): UserInfo => (
 export const getDefUserInfo = (userinfo: UserInfo) => (
   userinfo  
     ? { 
-        ...userinfo, 
+        ...userinfo,
+        picture: userinfo.picture ? { name: userinfo.picture.name, time: userinfo.picture.time } : undefined,
         vegan: fromBoolean(userinfo.vegan),
         carsick: fromBoolean(userinfo.carsick),
         seasick: fromBoolean(userinfo.seasick),
@@ -60,7 +65,9 @@ export const UserInfoJOIS = Joi.object({
   gender: Joi.string().alphanum().max(50).allow('').messages(m('your gender')),
   shirtSize: Joi.string().valid('SSS', 'SS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL', '6XL', '7XL', '8XL').allow(''), 
 
-  email: Joi.string().email().allow('').messages(m('your email')), 
+  email: Joi.string().regex(emailRegex).allow('').messages({
+    'string.pattern.base': "your email must be a valid email",
+  }), 
   phone: Joi.string().regex(phoneRegex).allow('').messages({
     'string.pattern.base': 'your phone number should contains country code (+XX) and numbers'
   }), 
@@ -92,3 +99,35 @@ export const UserInfoJOIS = Joi.object({
   excursion: Joi.string().valid("0", "1", "2", "3").allow(''), 
   
 }).unknown(true)
+
+export const requiredFields = [
+  "fname", "lname", "birthday", "nationality", "natId", "sex", "shirtSize", "email", 
+  "emergencyName", "emergencyPhone", "medCond", "medRequire", "allergy", "vegan", "dietary", 
+  "seasick", "carsick", "picture",
+  "tAndC", "rAndR"
+] as const // direct messages not marked but required
+
+
+// TODO - picture
+export const isCompleted = (userinfo?: UserInfo): Status => {
+  if (!userinfo) return "not-complete"
+  
+  for (let field of requiredFields) {
+    if (userinfo[field] === undefined) return "not-complete"
+    if (userinfo[field] === '')        return "not-complete"
+  }
+
+  if (userinfo["rAndR"] != true) return "not-complete"
+  if (userinfo["tAndC"] != true) return "not-complete"
+
+  let socialMedia = ["telegram", "line", "whatapps", "facebook", "instagram"] as const 
+  let haveContact: boolean = false
+  for (let social of socialMedia) {
+    if (userinfo[social] != undefined && userinfo[social] != '') haveContact = true
+  }
+
+  if (!haveContact) return "not-complete"
+
+  if (userinfo.submit) return "submitted"
+  return "complete"
+}

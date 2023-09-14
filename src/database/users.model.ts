@@ -1,21 +1,22 @@
 import { model, models, Schema, Types } from 'mongoose'
 import { UserInfo, UserInfoSchema } from './userinfo'
-import { dateRegex } from '../helper/validate'
 
 export interface IObserver {
+  submit: Date 
+
   organization: string, 
   checkin: string, 
-  checkout: string,
   excursion1: string, 
   excursion2: string, 
   excursion3: string, 
   excursion4: string, 
 }
 
-export const ObserverSchema = new Schema<IObserver>({
+export const ObserverSchema = new Schema<IObserver>({ 
+  submit: { type: Date, required: false, default: undefined },
+
   organization: { type: String, required: false }, 
   checkin: { type: String, required: false }, 
-  checkout: { type: String, required: false },
   excursion1: { type: String, required: false },  
   excursion2: { type: String, required: false },  
   excursion3: { type: String, required: false },  

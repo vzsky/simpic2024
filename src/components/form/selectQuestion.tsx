@@ -24,7 +24,7 @@ export const SelectQuestion = <Tname extends string>({
   return (
     <Box w={"100%"}>
       <FormControl isInvalid={errors[field.name]?.message}>
-        <FormLabel mt={2}> {label} : </FormLabel>
+        <FormLabel mt={2}> {(required?'* ':'') + label} : </FormLabel>
         <Select 
           {...field} 
           isDisabled={disabled} 

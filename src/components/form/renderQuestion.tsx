@@ -6,7 +6,7 @@ import { SelectQuestion } from "./selectQuestion"
 import { TextQuestion } from "./textQuestion"
 import { Question, Questions } from "./questionType"
 import { submitOnChange } from "../../helper/client"
-
+import { FileQuestion } from "./fileQuestion"
 
 interface RenderQuestionProps {
   question: Question, 
@@ -50,7 +50,8 @@ export const RenderQuestion = ({question, field, submit, errors, disabled, onCha
         required={question.required}
         disabled={disabled}
       />
-    )}{(question.type == 'select') && (
+    )}
+    {(question.type == 'select') && (
       <SelectQuestion
         field={field} 
         onChange={onChange}
@@ -58,6 +59,19 @@ export const RenderQuestion = ({question, field, submit, errors, disabled, onCha
         label={question.label}
         width={question.width}
         number={question.number}
+        submit={submit}
+        errors={errors}
+        required={question.required}
+        disabled={disabled}
+      />
+    )}
+    {(question.type == 'file') && (
+      <FileQuestion 
+        field={field}
+        onChange={onChange}
+        label={question.label}
+        number={question.number} 
+        fileTypes={question.fileTypes}
         submit={submit}
         errors={errors}
         required={question.required}
