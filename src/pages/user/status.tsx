@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import Layout from "../../components/layout";
-import { Box, Center, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Center, Flex, Heading, Text } from "@chakra-ui/react";
 import useSWR from 'swr'
 import { fetcher } from "../../helper/client";
 import { Status } from "../api/user/status";
@@ -43,10 +43,32 @@ const Competitor = ({status}: any) => (
         </Box>
       </Box>
     ))}
+    <Center mt={5}>
+      <a href={'/LoA.pdf'} download> <Button>
+        Download Letter of Approval
+      </Button> </a>
+    </Center>
+    <Center mt={5}>
+      <a href={'/Consent.pdf'} download> <Button>
+        Download Consent Form
+      </Button> </a>
+    </Center>
   </Box>
 )
 
-const Observer = ({status}: any) => (<></>
+const Observer = ({status}: any) => (<>
+    <Flex direction={['column', null, 'row']}>
+      <Heading size={"md"}> Personal Infomation: </Heading> <S s={status?.myinfo} />
+    </Flex>
+    <Flex direction={['column', null, 'row']}>
+      <Heading size={"md"}> Traveling Infomation: </Heading> <S s={status?.observer} />
+    </Flex>
+    <Center mt={5}>
+      <a href={'/Consent.pdf'} download> <Button>
+        Download Consent Form
+      </Button> </a>
+    </Center>
+</>
 )
 
 const Status: NextPage = () => {
