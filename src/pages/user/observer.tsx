@@ -20,7 +20,7 @@ const observerQuestions: Questions = [
       <TextQuestion
         label="Check Out Date"
         errors={{}}
-        field={{ value: "20 Jan 2024"} as any}
+        field={{ value: "21 Jan 2024"} as any}
         disabled
       /> 
     </Center>
