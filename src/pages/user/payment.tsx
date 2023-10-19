@@ -19,7 +19,7 @@ const S = ({s}: {s: Status}) => {
 
 const Competitor = ({status}: any) => (
   <Box mt={10}>
-    <Flex direction={['column', null, 'row']}>
+    <Flex direction={['column']}>
       <Heading textAlign={"center"} size={"sm"}> Please check all your information before proceed. </Heading>
       <br/>
       <Center m={3} mb={7} flexDirection="column"> 
