@@ -17,11 +17,11 @@ const Home: NextPage = () => {
   let m = 0.2 * width
   return (
     <Layout>
-      <Box h={[4*s, null, 3*m]} overflow={"hidden"} ref={boxRef}> 
-        <Flex position={"relative"} top={[`${0.4*s}px`]} left={[`${-0.6*s}px`]} alignItems={"center"} direction={"column"} > 
+      <Box h={[5*s, null, 4*m]} overflow={"hidden"} ref={boxRef}> 
+        <Flex position={"relative"} top={[`${0.4*s}px`, `${0.3*m}`]} left={[`${-0.6*s}px`]} alignItems={"center"} direction={"column"} > 
           <TiltedBox
             size={[s, null, m]} 
-            style={[position(0, 0), null, position(0, 0)]}
+            style={[position(0, 0), null, position(0, m-30)]}
             color="white"
             href="/user/myinfo"
           >
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
 
           <TiltedBox 
             size={[s, null, m]} 
-            style={[position(0, m+40), null, position(-m, 2*m-60)]}
+            style={[position(0, m+40), null, position(-30, 2*m-60)]}
             color="white"
             href="/user/status"
           > 
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
 
           <TiltedBox 
             size={[s, null, m]} 
-            style={[position(0, 0), null, position(-m, m-30)]}
+            style={[position(0, 0), null, position(-m-30, 0)]}
             color="white"
             href={data.as == 'competitor' ? "/user/myteam" : "/user/observer"}
           > 
@@ -47,6 +47,16 @@ const Home: NextPage = () => {
               "Team" : "Traveling"
             }
           </TiltedBox>
+
+          <TiltedBox 
+            size={[s, null, m]} 
+            style={[position(0, m+40), null, position(-m-60, m-30)]}
+            color="white"
+            href="/user/payment"
+          > 
+            Payment
+          </TiltedBox>
+
         </Flex>
       </Box>
     </Layout>
