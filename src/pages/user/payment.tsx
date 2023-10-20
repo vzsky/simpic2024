@@ -7,6 +7,7 @@ import { Status } from "../api/user/status";
 import Link from "next/link";
 
 const PAYMENTLINK = "https://www2.si.mahidol.ac.th/sirirajconference/event/sm/content/3189/TH"
+const CHECKIDLINK = "https://simpic2024-team-id.my.canva.site/team-id"
 
 const combineStatus = (s: Status[]): Status => {
   if (s.some((status) => status == "not-complete")) return "not-complete"
@@ -61,8 +62,8 @@ const Competitor = ({status}: any) => (
         </>)) }
       </Center>
       <Center mt={50} flexDirection={"column"}>
-        <Button> <Link href="https://simpic2024-team-id.my.canva.site/team-id"> Check your Team ID </Link> </Button>
-        <Button mt={5}> <Link href={PAYMENTLINK}> Proceed To Payment </Link> </Button>
+        <Button> <Link href={CHECKIDLINK} target="_blank"> Check your Team ID </Link> </Button>
+        <Button mt={5}> <Link href={PAYMENTLINK} target="_blank"> Proceed To Payment </Link> </Button>
       </Center>
     </Flex>
   </Box>
@@ -79,8 +80,8 @@ const Observer = ({status}: any) => {
 
         {status && 
         <Center mt={100} flexDirection={"column"}>
-          <Button> <Link href="https://simpic2024-team-id.my.canva.site/team-id"> Check your Observer ID </Link> </Button>
-          <Button isDisabled={status.observer} mt={5}> <Link href={PAYMENTLINK}> Proceed To Payment </Link> </Button>
+          <Button> <Link href={CHECKIDLINK} target="_blank"> Check your Observer ID </Link> </Button>
+          <Button isDisabled={status.observer} mt={5}> <Link href={PAYMENTLINK} target="_blank"> Proceed To Payment </Link> </Button>
         </Center>
         }
       </Flex>

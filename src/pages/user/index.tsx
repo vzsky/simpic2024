@@ -18,14 +18,14 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <Box h={[5*s, null, 4*m]} overflow={"hidden"} ref={boxRef}> 
-        <Flex position={"relative"} top={[`${0.4*s}px`, `${0.3*m}`]} left={[`${-0.6*s}px`]} alignItems={"center"} direction={"column"} > 
+        <Flex position={"relative"} top={[`${0.45*s}px`, null, `${0.3*m}`]} left={[`${-0.6*s}px`]} alignItems={"center"} direction={"column"} > 
           <TiltedBox
             size={[s, null, m]} 
             style={[position(0, 0), null, position(0, m-30)]}
             color="white"
             href="/user/myinfo"
           >
-            {data.as == "competitor" ? "Advisor" : "My Info"}
+            <Heading size={['sm', 'lg', 'md', 'lg']}> {data.as == "competitor" ? "Advisor" : "My Info"} </Heading>
           </TiltedBox>
 
           <TiltedBox 
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
             color="white"
             href="/user/status"
           > 
-            Status
+            <Heading size={['sm', 'lg', 'md', 'lg']}> Status </Heading>
           </TiltedBox>
 
           <TiltedBox 
@@ -43,9 +43,11 @@ const Home: NextPage = () => {
             color="white"
             href={data.as == 'competitor' ? "/user/myteam" : "/user/observer"}
           > 
+            <Heading size={['sm', 'lg', 'md', 'lg']}>
             {data.as == "competitor" ?  
               "Team" : "Traveling"
             }
+            </Heading>
           </TiltedBox>
 
           <TiltedBox 
@@ -54,7 +56,7 @@ const Home: NextPage = () => {
             color="white"
             href="/user/payment"
           > 
-            Payment
+            <Heading size={['sm', 'lg', 'md', 'lg']}>  Payment  </Heading>
           </TiltedBox>
 
         </Flex>
