@@ -24,7 +24,7 @@ export const Footer = () => (
         </Text>
       </Center>
       <Center>
-        <Image alt="logo" src="logo.png" w={10} />
+        <Image alt="logo" src="/logo.png" w={10} />
       </Center>
       <Center pr={2} flexDirection="column">
         <Text>

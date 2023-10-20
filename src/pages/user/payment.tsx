@@ -6,6 +6,8 @@ import { fetcher } from "../../helper/client";
 import { Status } from "../api/user/status";
 import Link from "next/link";
 
+const PAYMENTLINK = "https://www2.si.mahidol.ac.th/sirirajconference/event/sm/content/3189/TH"
+
 const combineStatus = (s: Status[]): Status => {
   if (s.some((status) => status == "not-complete")) return "not-complete"
   if (s.some((status) => status == "complete")) return "complete"
@@ -30,25 +32,31 @@ const Competitor = ({status}: any) => (
       </Center>
       <Center flexDirection={"column"}>
         <Button> <Link href="https://simpic2024-team-id.my.canva.site/team-id"> Check your Team ID </Link> </Button>
-        <Button mt={5}> <Link href="#"> Proceed To Payment </Link> </Button>
+        <Button mt={5}> <Link href={PAYMENTLINK}> Proceed To Payment </Link> </Button>
       </Center>
     </Flex>
   </Box>
 )
 
-const Observer = ({status}: any) => (
-  <Box mt={10}>
-    <Flex direction={['column', null, 'row']}>
-      <Heading textAlign={"center"} size={"sm"}> Please check all your information before proceeding. </Heading>
-      <br/>
-      <Center flexDirection={"column"}>
-        <Button> <Link href="https://simpic2024-team-id.my.canva.site/team-id"> Check your Observer ID </Link> </Button>
-        <Button isDisabled={status.observer} mt={5}> <Link href="#"> Proceed To Payment </Link> </Button>
-      </Center>
-    </Flex>
-  </Box>
-)
+const Observer = ({status}: any) => {
+  return (
+    <Box mt={10}>
+      <Flex direction={['column']}>
+        <Heading textAlign={"center"} size={"sm"}> Please check all your information before proceeding. </Heading>
+        <br/>
+        
+        <Heading textAlign={"center"} color="orange.300" size={["md", "lg", "xl"]}> The observer fee is $299 </Heading>
 
+        {status && 
+        <Center mt={100} flexDirection={"column"}>
+          <Button> <Link href="https://simpic2024-team-id.my.canva.site/team-id"> Check your Observer ID </Link> </Button>
+          <Button isDisabled={status.observer} mt={5}> <Link href={PAYMENTLINK}> Proceed To Payment </Link> </Button>
+        </Center>
+        }
+      </Flex>
+    </Box>
+  )
+}
 const Payment: NextPage = () => {
   const { data: role } = useSWR('/api/user/register', fetcher)
   const { data: status } = useSWR('/api/user/status', fetcher)
@@ -63,7 +71,7 @@ const Payment: NextPage = () => {
           {role?.as=="competitor" ? " a COMPETITOR" : " an OBSERVER"} 
         </Heading> 
 
-        { role?.as == "competitor" && <Competitor status={status} />}
+        { role?.as == "competitor" && <Observer status={status} />}
         { role?.as == "observer" && <Observer status={status} />}
 
       </Center>
