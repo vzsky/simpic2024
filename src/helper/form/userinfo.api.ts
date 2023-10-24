@@ -93,7 +93,6 @@ export const UserInfoJOIS = Joi.object({
   carsick: Joi.string().valid('T', 'F').allow(''),  
 
   religion: Joi.string().alphanum().max(50).allow('').messages(m('your religion name')),  
-  relCeremony: Joi.string().alphanum().max(100).allow('').messages(m('your ceremony detail')),  
   other: Joi.string().alphanum().max(100).allow('').messages(m('detail')),  
 
   excursion: Joi.string().valid("0", "1", "2", "3").allow(''), 
