@@ -41,8 +41,8 @@ const Price = ({teamInd}: {teamInd: any}) => {
   const { data } = useSWR(`/api/user/teaminfo?teamind=${teamInd}`, fetcher)
   if (!data) return
   return (<> 
-    <Text> This team opted for checking in on January {data.checkin} 2024 </Text>
-    <Text> to a room of {data.room} people </Text>
+    <Text> This team opted for checking in on January {data.checkin} 2024 and checking out on 21 January 2024 </Text>
+    <Text> for a total of {21 - parseInt(data.checkin)} nights in {data.room} rooms of 2 persons each.  </Text>
     <Heading size="sm"> Event Fee: {getPrice(data.checkin, data.room, data.submit)} </Heading> 
   </>)
 }
