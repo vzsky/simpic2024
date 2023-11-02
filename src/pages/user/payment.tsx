@@ -70,6 +70,7 @@ const Competitor = ({status}: any) => (
 )
 
 const Observer = ({status}: any) => {
+  console.log(status)
   return (
     <Box mt={10}>
       <Flex direction={['column']}>
@@ -79,10 +80,10 @@ const Observer = ({status}: any) => {
         <Heading textAlign={"center"} color="orange.300" size={["md", "lg", "xl"]}> The observer fee is $299 </Heading>
 
         {status && 
-        <Center mt={100} flexDirection={"column"}>
-          <Button> <Link href={CHECKIDLINK} target="_blank"> Check your Observer ID </Link> </Button>
-          <Button isDisabled={status.observer} mt={5}> <Link href={PAYMENTLINK} target="_blank"> Proceed To Payment </Link> </Button>
-        </Center>
+          <Center mt={100} flexDirection={"column"}>
+            <Button> <Link href={CHECKIDLINK} target="_blank"> Check your Observer ID </Link> </Button>
+            <Button isDisabled={status.observer != "submitted" || status.myinfo != "submitted"} mt={5}> <Link href={PAYMENTLINK} target="_blank"> Proceed To Payment </Link> </Button>
+          </Center>
         }
       </Flex>
     </Box>

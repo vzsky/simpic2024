@@ -46,6 +46,7 @@ def getUserInfo(document):
         "seasick": opGet(["seasick"]),
         "carsick": opGet(["carsick"]),
         "religion": opGet(["religion"]),
+        "rel_cere": opGet(["relCeremony"]),
         "other": opGet(["other"]),
     }
     return result
