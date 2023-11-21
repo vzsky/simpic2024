@@ -6,6 +6,7 @@ import { Button, Center, Heading, Text, useDisclosure } from "@chakra-ui/react";
 import SubmitModal from "../../components/modal";
 import useSWR from 'swr'
 import { fetcher } from "../../helper/client";
+import { REGISTRATION_CLOSED } from "../../settings";
 
 const MyInfo: NextPage = () => {
   let { data } = useSWR('/api/user/register', fetcher)
@@ -20,9 +21,10 @@ const MyInfo: NextPage = () => {
       </Center>
       <SubmitModal formid="userinfo" isOpen={isOpen} onClose={onClose} Header={() => (
         <Heading> {data.as == "competitor" ? "Advisor" : "Personal"} Info Submission </Heading>
-      )} Body={() => (
-        <Text> Once submitted, the information cannot be changed. </Text>
-      )}/>
+      )} Body={() => (REGISTRATION_CLOSED 
+          ? <Text> The registration was closed </Text>
+          : <Text> Once submitted, the information cannot be changed. </Text>
+        )}/>
     </Layout>
   )
 }

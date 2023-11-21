@@ -11,6 +11,7 @@ import { TextQuestion } from "../../components/form/textQuestion";
 import { fetcher } from "../../helper/client";
 import useSWR from 'swr'
 import SubmitModal from "../../components/modal";
+import { REGISTRATION_CLOSED } from "../../settings";
 
 const observerQuestions: Questions = [
   { type: 'text', name: 'organization', label: "Organization" },
@@ -57,9 +58,10 @@ const Observer: NextPage = () => {
       </Center>
       <SubmitModal formid={"observer"} isOpen={isOpen} onClose={onClose} Header={() => (
         <Heading> Traveling Info Submission </Heading>
-      )} Body={() => (
-        <Text> Once submitted, the information cannot be changed. </Text>
-      )}/>
+      )} Body={() => (REGISTRATION_CLOSED 
+          ? <Text> The registration was closed </Text>
+          : <Text> Once submitted, the information cannot be changed. </Text>
+        )}/>
     </Layout>
   )
 }

@@ -30,6 +30,7 @@ def getUserInfo(document):
         "birthday": opGet(["birthday"]),
         "sex": opGet(["sex"]),
         "gender": opGet(["gender"]),
+        "shirtSize": opGet(["shirtSize"]),
         "email": opGet(["email"]),
         "phone": opGet(["phone"]),
         "telegram": opGet(["phone"]),
