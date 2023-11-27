@@ -2,6 +2,7 @@ import GenericForm, { FormProps } from "./genericForm";
 import { RenderGroupedQuestion } from './renderQuestion'
 import { Questions } from "./questionType";
 import { Button, Center } from "@chakra-ui/react";
+import { REGISTRATION_CLOSED } from "../../settings";
 
 const getInitialDefaultValues = (questions:Questions): {[x:string]:any} => (
   questions
@@ -32,7 +33,7 @@ export const Form = ({questions, url, preSubmit, disabled, shouldSubmitOnChange 
       return (
         <>
           <RenderGroupedQuestion
-            disabled={disabled || false}
+            disabled={REGISTRATION_CLOSED || disabled || false}
             display="flex"
             questions={questions} 
             submit={submit}

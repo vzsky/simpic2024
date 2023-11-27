@@ -17,6 +17,7 @@ import { fetcher } from "../../../helper/client";
 import { RepeatIcon } from "@chakra-ui/icons";
 import SubmitModal from "../../../components/modal";
 import { toOptString } from "../../../helper/type";
+import { REGISTRATION_CLOSED } from "../../../settings";
 
 const Accom = () => (
   <Box mt={10}>
@@ -168,9 +169,10 @@ const MyTeam: NextPage = () => {
       </Center>
       <SubmitModal formid={formid} isOpen={isOpen} onClose={onClose} Header={() => (
         <Heading> {page < 3 ? `Contestant ${page+1}` : "Team"} Info Submission </Heading>
-      )} Body={() => (
-        <Text> Once submitted, the information cannot be changed. </Text>
-      )}/>
+      )} Body={() => (REGISTRATION_CLOSED 
+          ? <Text> The registration was closed </Text>
+          : <Text> Once submitted, the information cannot be changed. </Text>
+        )}/>
     </Layout>
   )
 }
