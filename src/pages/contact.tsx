@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import { Box, Button, Center, Flex, FormControl, FormLabel, Heading, Image, Input, Text } from "@chakra-ui/react"
 import Form from "../components/form/form"
 import { Questions } from "../components/form/questionType"
+import { SocialMedia } from "./society"
 
 const questions: Questions = [
   { type: 'text', name: 'email', label: 'email', placeholder: "email@example.com", width: [200, 300, 400] },
@@ -24,8 +25,14 @@ const Contact: NextPage = () => {
             <Text mt={5} textAlign="justify"> As a prestigious and globally recognized event, we take immense pride in helding space and opportunities that bring together brilliant minds in the fields of microbiology, parasitology, and immunology from all around the world.</Text>  
           </Box> 
         </Flex>
-        <Heading mt={10} size="xl"> Leave a Message </Heading>   
-        <Form url="/api/contact" questions={questions} shouldSubmitOnChange={false} />
+
+        <Box mt={5}>
+          <SocialMedia />
+        </Box>
+        {
+          //<Heading mt={10} size="xl"> Leave a Message </Heading>   
+          //<Form url="/api/contact" questions={questions} shouldSubmitOnChange={false} />
+        }
       </Center>
     </Layout>
   )
