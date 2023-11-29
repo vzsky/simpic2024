@@ -10,7 +10,7 @@ import { useEffect, useRef } from "react"
 
 const fadeLeft = { initial: { opacity: 0, x: -10 }, animate: { opacity: 1, x: 0 }}
 
-const SocialMedia = () => { 
+export const SocialMedia = () => { 
   const ref = useRef(null)
   const inView = useInView(ref, {once: true})
   const control = useAnimation()
