@@ -5,7 +5,7 @@ import HistoryBox from "../components/historyBox"
 import Link from "next/link"
 import { LayoutGroup, motion, useAnimation, useInView } from "framer-motion"
 import { MotionBox } from "../components/motionFactory"
-import { useEffect, useRef } from "react"
+import { ReactNode, useEffect, useRef } from "react"
 
 export const AboutSection = () => {
   const ref = useRef(null)
@@ -151,12 +151,126 @@ export const PresMesSection = () => {
   )
 }
 
+export const SponsorBox = ({children}: {children: ReactNode}) => {
+  const ref = useRef(null)
+  const inView = useInView(ref, {once: true})
+  const control = useAnimation()
+
+  useEffect(() => {
+    if (inView) {
+      control.start('animate') 
+    }
+  })
+
+  return (
+    <MotionBox ref={ref} initial="initial" animate={control} variants={{animate: {transition: { staggerChildren: 0.1 }}}} mt={'3rem'}>
+      {children}
+    </MotionBox>
+  )
+}
+
+export const Sponsor = () => {
+  const ref = useRef(null)
+  const inView = useInView(ref, {once: true})
+  const control = useAnimation()
+
+  useEffect(() => {
+    if (inView) {
+      control.start('animate') 
+    }
+  })
+  return (
+    <MotionBox ref={ref} initial="initial" animate={control} variants={{animate: {transition: { staggerChildren: 0.1 }}}} mt={'3rem'}>
+      <Heading as={motion.h2} variants={{initial: {opacity: 0}, animate: {opacity: 1}}} size={'xl'}>
+        Sponsored by
+      </Heading>
+
+      <SponsorBox>
+        <Flex justifyContent={"center"} alignItems={"center"}>
+          <Heading as={motion.h2} variants={{initial: {opacity: 0}, animate: {opacity: 1}}} size={'lg'} >
+            Bronze Tier
+          </Heading>
+        </Flex> 
+        <Flex direction={["column", "row"]} alignItems={"center"} justifyContent={"space-around"} height={[300, 100]}>
+          <Image src="/sponsor/bronze/doubleA.webp" alt="Double A" width={[150]} mt={[5, 0]} />
+          <Image src="/sponsor/bronze/GPO.svg" alt="GPO" width={[150]}/>
+          <Image src="/sponsor/bronze/Lactasoy.svg" alt="Lactasoy" width={[150]}/>
+        </Flex>
+      </SponsorBox>
+      <SponsorBox>
+        <Flex justifyContent={"center"} alignItems={"center"}>
+          <Heading as={motion.h2} variants={{initial: {opacity: 0}, animate: {opacity: 1}}} size={'lg'} >
+            Silver Tier
+          </Heading>
+        </Flex> 
+
+        <Flex display={["flex", null, null, "none"]} direction={["column"]} alignItems={"space-around"} justifyContent={"space-around"} height={[700, 310]}>
+          <Flex direction={["column", "row"]} alignItems={"center"} justifyContent={"space-around"}>
+            <Image src="/sponsor/silver/bertram.png" alt="Bertram" my={2} width={[200]} mt={[10, 0]} />
+            <Image src="/sponsor/silver/BNH.png" alt="BNH Hospital" my={[0, 5]} width={[85]}/>
+            <Image src="/sponsor/silver/Thonburi.svg" alt="Thonburi Hospital" width={[170]}/>
+          </Flex>
+          <Flex direction={["column", "row"]} alignItems={"center"} justifyContent={"space-around"}>
+            <Image src="/sponsor/silver/TMC.png" alt="Thonburi Medical Center" width={[105]}/>
+            <Image src="/sponsor/silver/Alumni.png" alt="Siriraj Alumni" my={5} width={[110]}/>
+          </Flex>
+        </Flex>
+        <Flex display={["none", null, null, "flex"]} direction={"row"} alignItems={"space-around"} justifyContent={"space-around"} height={200}>
+          <Image src="/sponsor/silver/bertram.png" alt="Bertram" my={8} width={[200]} />
+          <Image src="/sponsor/silver/BNH.png" alt="BNH Hospital" my={14} width={[79]}/>
+          <Image src="/sponsor/silver/Thonburi.svg" alt="Thonburi Hospital" width={[170]}/>
+          <Image src="/sponsor/silver/TMC.png" alt="Thonburi Medical Center" my={10} width={[105]}/>
+          <Image src="/sponsor/silver/Alumni.png" alt="Siriraj Alumni" my={"50px"} width={[110]}/>
+        </Flex>
+
+      </SponsorBox>
+      <SponsorBox>
+        <Flex justifyContent={"center"} alignItems={"center"}>
+          <Heading as={motion.h2} variants={{initial: {opacity: 0}, animate: {opacity: 1}}} size={'lg'} >
+            Gold Tier
+          </Heading>
+        </Flex> 
+
+        <Flex display={["flex", null, null, "none"]} direction={["column"]} alignItems={"space-around"} justifyContent={"space-around"} height={[700, 350]}>
+          <Flex direction={["column", "row"]} alignItems={"center"} justifyContent={"space-around"}>
+            <Image src="/sponsor/gold/MBK.png" alt="MBK" my={2} mb={["55px", 0]} mx={[0, 8]} width={[170]} />
+            <Image src="/sponsor/gold/MY.png" alt="Meow Yak" mx={[0, 10]} width={[100]}/>
+          </Flex>
+          <Flex direction={["column", "row"]} alignItems={"center"} justifyContent={"space-around"}>
+            <Image src="/sponsor/gold/AMSA_W.png" alt="AMSA" mb={["55px", 0]} mx={[0, 8]} width={[150]}/>
+            <Image src="/sponsor/gold/SMST_W.png" alt="SMST" mx={[0, 3]} width={[150]}/>
+          </Flex>
+        </Flex>
+        <Flex display={["none", null, null, "flex"]} direction={"row"} alignItems={"space-around"} justifyContent={"space-around"} height={200}>
+          <Image src="/sponsor/gold/MBK.png" alt="MBK" my={"50px"} width={[170]} />
+          <Image src="/sponsor/gold/MY.png" alt="Meow Yak" my={"35px"} width={[100]}/>
+          <Image src="/sponsor/gold/AMSA_W.png" alt="AMSA" my={"20px"} width={[150]}/>
+          <Image src="/sponsor/gold/SMST_W.png" alt="SMST" my={"20px"} width={[150]}/>
+        </Flex>
+
+      </SponsorBox>
+      <SponsorBox>
+        <Flex justifyContent={"center"} alignItems={"center"}>
+          <Heading as={motion.h2} variants={{initial: {opacity: 0}, animate: {opacity: 1}}} size={'lg'} >
+            Platinum Tier
+          </Heading>
+        </Flex> 
+        <Flex direction={["column"]} alignItems={"center"} justifyContent={"space-around"} height={[200]}>
+          <Image src="/sponsor/platinum/Preceptor.png" alt="Preceptor" width={[250, 350, null, 450]} />
+        </Flex>
+      </SponsorBox>
+
+    </MotionBox>
+  )
+}
+
 const About: NextPage = () => {
   return (
     <Layout> 
       <AboutSection/>
       <PresMesSection/>
       <HistorySection/>
+      <Sponsor/>
     </Layout>
   )
 }
