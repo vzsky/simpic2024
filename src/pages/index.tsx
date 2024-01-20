@@ -6,7 +6,7 @@ import TiltedBox from '../components/tiltedBox'
 import { useMeasure } from '../helper/client'
 import { useRef } from 'react'
 import { useSession } from 'next-auth/react'
-import { AboutSection, PresMesSection } from './about'
+import { AboutSection, PresMesSection, Sponsor } from './about'
 import { Program } from './program'
 import { Society } from './society'
 import Link from 'next/link'
@@ -171,6 +171,7 @@ const Home: NextPage = () => {
           <Heading size={["lg", "2xl"]}> Register now! </Heading>
         </Center>
       </Link>
+      <Sponsor/>
     </Layout>
   )
 }
