@@ -1,6 +1,6 @@
 export const MaxSessionAge = 60 * 60 * 24 * 10
 export const debouncedTime = 500
-export const REGISTRATION_CLOSED = false
+export const REGISTRATION_CLOSED = true
 // export const isAllowedToSignIn = (email: string|null|undefined) => {
 //   if (!email) return false
 //   return [
