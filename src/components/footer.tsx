@@ -46,7 +46,7 @@ export const Footer = () => (
         </Box>
       </Center>
     </Grid>
-    <Center flexDir={"column"} my={3}>
+    <Center flexDir={"column"} py={3}>
       <Text>
         Faculty of Medicine Siriraj Hospital, Mahidol University
       </Text>

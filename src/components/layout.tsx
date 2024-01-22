@@ -2,16 +2,16 @@ import { ReactNode } from 'react'
 import { Box, Container, useToken } from "@chakra-ui/react"
 import Navbar from './nav/navbar'
 import Footer from './footer'
-import { AnimatePresence, LayoutGroup } from 'framer-motion'
+import { LayoutGroup } from 'framer-motion'
 import { MotionBox } from './motionFactory'
 import Head from 'next/head'
 
 type Props = {
   children: ReactNode
-  footer?: boolean
+  FooterComponent?: () => ReactNode 
 }
 
-const Layout = ({children, footer = true}: Props) => {
+const Layout = ({children, FooterComponent}: Props) => {
   // const [blue, orange] = useToken('colors', ['blue.990', 'orange.900'])
   return (
     <LayoutGroup>
@@ -21,7 +21,7 @@ const Layout = ({children, footer = true}: Props) => {
       <Box
         overflow="hidden" 
         bgGradient={"linear(to-tr, blue.990, orange.900)"}
-    // style={{backgroundImage: `url(https://grainy-gradients.vercel.app/noise.svg), linear-gradient(to top right,${blue}, ${orange})`}}
+        // style={{backgroundImage: `url(https://grainy-gradients.vercel.app/noise.svg), linear-gradient(to top right,${blue}, ${orange})`}}
       >
         <Box minH="100vh">
           <Navbar />
@@ -31,7 +31,10 @@ const Layout = ({children, footer = true}: Props) => {
             </MotionBox>
           </Container>
         </Box>
-        {footer && <Footer />}
+        {FooterComponent 
+          ? <FooterComponent/>
+          : <Footer/>
+        }
       </Box>
     </LayoutGroup>
   )

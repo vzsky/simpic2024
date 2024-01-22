@@ -1,16 +1,16 @@
-import { Box, Button, Center, Divider, Flex, Heading, Img } from '@chakra-ui/react'
+import { Box, Center, Divider, Flex, Heading, Img } from '@chakra-ui/react'
 import type { NextPage } from 'next'
-import Grid from '../components/grid'
 import Layout from '../components/layout'
 import TiltedBox from '../components/tiltedBox'
 import { useMeasure } from '../helper/client'
 import { useRef } from 'react'
 import { useSession } from 'next-auth/react'
-import { AboutSection, PresMesSection, Sponsor } from './about'
+import { AboutSection, PresMesSection } from './about'
 import { Program } from './program'
 import { Society } from './society'
 import Link from 'next/link'
-import { MotionBox, MotionFlex } from '../components/motionFactory'
+import { MotionFlex } from '../components/motionFactory'
+import { SponsorFooter } from '../components/sponsorFooter'
 
 const position = (top: number, left: number) => ({position: 'relative', top, left})
 
@@ -145,7 +145,7 @@ const TiltedBoxes = () => {
 
 const Home: NextPage = () => {
   return (
-    <Layout>
+    <Layout FooterComponent={SponsorFooter}>
       <TiltedBoxes />
       <Divider orientation='horizontal' border={"2px dashed"} color={"white"}/>
       <Center flexDirection={"column"}>
@@ -171,7 +171,6 @@ const Home: NextPage = () => {
           <Heading size={["lg", "2xl"]}> Register now! </Heading>
         </Center>
       </Link>
-      <Sponsor/>
     </Layout>
   )
 }
