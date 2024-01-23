@@ -46,7 +46,7 @@ export const Sponsor = () => {
           <Flex direction={["column", "row"]} alignItems={"center"} justifyContent={"space-around"} height={[250, 200]}>
             <Image src="/logo.png" alt="SIMPIC" mb={[0, 0]} mx={[0, 8]} width={[100, 125]} />
             <Box display={["none", null, "block"]} >
-              <Image src="/mu_temp.png" alt="Mahidol University" mx={[0, 10]} width={[400]}/>
+              <Image src="/mu_si.png" alt="Mahidol University" mx={[0, 10]} width={[430]}/>
             </Box>
             <Box display={["block", null, "none"]} >
               <Image src="/mu_circ.png" alt="Mahidol University" mx={[0, 10]} width={[100, 125]} mb={2}/>
@@ -121,12 +121,18 @@ export const Sponsor = () => {
 }
 
 export const SponsorFooter = () => (
-  <Box backgroundColor={"#efede1"} color="#415b1b">
+  <Box backgroundColor={"#efede1"}>
+  <Box 
+    // the gradient is linear(to-br, blue.990, orange.900)
+    backgroundImage={`linear-gradient(to-br, rgba(0, 61, 60, 0.2), rgba(122, 104, 0, 0.2)), url("/bg_txt.png")`} 
+    color="green.999"
+  >
     <Container maxW={'5xl'} pb={10} pt={10}>
       <MotionBox exit={{ opacity: 0 }}>
         <Sponsor />
       </MotionBox>
     </Container>
     <Footer />
+  </Box>
   </Box>
 )
